@@ -1,3 +1,5 @@
+import { normalizeAssetPaths, normalizeMarkdownAssetUrls } from './image-path'
+
 const files = import.meta.glob('/src/content/**/*.md', {
   query: '?raw',
   import: 'default',
@@ -6,7 +8,7 @@ const files = import.meta.glob('/src/content/**/*.md', {
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
-  if (!match) return { data: {}, content: raw }
+  if (!match) return { data: {}, content: normalizeMarkdownAssetUrls(raw) }
 
   const data = {}
   for (const line of match[1].split('\n')) {
@@ -25,7 +27,10 @@ function parseFrontmatter(raw) {
     data[key] = value
   }
 
-  return { data, content: match[2].trim() }
+  return {
+    data: normalizeAssetPaths(data),
+    content: normalizeMarkdownAssetUrls(match[2].trim()),
+  }
 }
 
 const articles = []
@@ -55,8 +60,10 @@ const dataFiles = import.meta.glob('/src/data/**/*.json', {
 })
 
 for (const [filePath, jsonData] of Object.entries(dataFiles)) {
+  const normalizedJsonData = normalizeAssetPaths(jsonData)
+
   if (filePath.includes('projects.json')) {
-    for (const [tenure, projects] of Object.entries(jsonData)) {
+    for (const [tenure, projects] of Object.entries(normalizedJsonData)) {
       for (const project of projects) {
         articles.push({
           id: `project-${project.id}`,
@@ -73,7 +80,7 @@ for (const [filePath, jsonData] of Object.entries(dataFiles)) {
   }
 
   if (filePath.includes('events.json')) {
-    for (const [tenure, tenureData] of Object.entries(jsonData)) {
+    for (const [tenure, tenureData] of Object.entries(normalizedJsonData)) {
       const tenureEvents = Array.isArray(tenureData)
         ? tenureData
         : Object.values(tenureData)

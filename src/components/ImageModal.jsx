@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { imagePath } from '../lib/image-path'
 
 const exifFields = [
   { label: 'Telescope', key: 'telescope' },
@@ -27,7 +28,7 @@ export default function ImageModal({ image, onClose }) {
         <button className="image-modal__close" onClick={onClose}>X Close</button>
         <div className="image-modal__body">
           <div className="image-modal__photo">
-            <img src={image.imageSrc} alt={image.title} />
+            <img src={imagePath(image.imageSrc)} alt={image.title} />
           </div>
           <div className="image-modal__info">
             <h2 className="image-modal__title">{image.title}</h2>

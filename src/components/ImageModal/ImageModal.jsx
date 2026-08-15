@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from 'react'
+import { imagePath } from '../../lib/image-path'
 import './ImageModal.css'
 
 const exifFields = [
@@ -44,7 +45,7 @@ export default function ImageModal({ image, onClose }) {
         <div className="image-modal-body">
           <div className="image-modal-left-column">
             <img
-              src={image.highResImageSrc || image.imageSrc || image.src}
+              src={imagePath(image.highResImageSrc || image.imageSrc || image.src)}
               alt={image.title}
               className="image-modal-image"
             />

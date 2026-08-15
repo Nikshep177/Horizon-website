@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getArticles } from '../lib/content-loader'
-import gallery from '../data/astro-gallery.json'
+import rawGallery from '../data/astro-gallery.json'
+import { normalizeAssetPaths } from '../lib/image-path'
 import Particles from '../components/Particles/Particles'
 import Masonry from '../components/Masonry/Masonry'
 import ImageModal from '../components/ImageModal/ImageModal'
 import EquipmentInventory from '../components/EquipmentInventory'
 import '../styles/events.css'
 import './Astrophotography.css'
+
+const gallery = normalizeAssetPaths(rawGallery)
 
 const masonryHeights = [380, 320, 420, 300, 360, 400, 340, 300, 420, 360, 320, 400]
 

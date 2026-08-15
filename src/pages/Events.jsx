@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { imagePath } from '../lib/image-path'
-import eventsData from '../data/events.json'
+import { imagePath, normalizeAssetPaths } from '../lib/image-path'
+import rawEventsData from '../data/events.json'
 import SpaceBackground from '../components/SpaceBackground'
 import '../styles/events.css'
 
+const eventsData = normalizeAssetPaths(rawEventsData)
 const years = Object.keys(eventsData).sort().reverse()
 const categoryColors = {
   g2g: { bg: '#2d1b69', accent: '#7c3aed' },

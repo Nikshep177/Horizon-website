@@ -1,9 +1,10 @@
 import { Link, useSearchParams, useLocation } from 'react-router-dom'
-import { imagePath } from '../lib/image-path'
-import projects from '../data/projects.json'
+import { imagePath, normalizeAssetPaths } from '../lib/image-path'
+import rawProjects from '../data/projects.json'
 import SpaceBackground from '../components/SpaceBackground'
 import '../styles/events.css'
 
+const projects = normalizeAssetPaths(rawProjects)
 const tenures = Object.keys(projects).sort()
 
 const projectPalette = [

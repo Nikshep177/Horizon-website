@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-import { imagePath } from '../lib/image-path'
-import competitions from '../data/competitions.json'
+import { imagePath, normalizeAssetPaths } from '../lib/image-path'
+import rawCompetitions from '../data/competitions.json'
+
+const competitions = normalizeAssetPaths(rawCompetitions)
 
 const achievements = [
   { year: 2024, competition: 'Indian National Physicists\' Tournament (INPT)', result: '1st & 2nd Place, ₹35,000 prizes' },
@@ -45,7 +47,7 @@ export default function Guild() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <svg className="btn-icon" aria-hidden="true"><use href="/icons.svg#instagram-icon" /></svg>
+                <svg className="btn-icon" aria-hidden="true"><use href={imagePath('/icons.svg#instagram-icon')} /></svg>
                 Instagram
               </a>
             </div>

@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from 'react'
 import teamData from '../data/team.json'
 import SpaceBackground from '../components/SpaceBackground'
 import GalleryRow from '../components/GalleryRow'
+import { imagePath, normalizeAssetPaths } from '../lib/image-path'
 import '../styles/events.css'
 
-const tenures = Object.keys(teamData).sort()
+const normalizedTeamData = normalizeAssetPaths(teamData)
+const tenures = Object.keys(normalizedTeamData).sort()
 const sectionLabel = { core: 'Core Team', coordinator: 'Coordinators' }
 
 const imageMap = {
@@ -63,7 +65,7 @@ const getMemberStyle = (name) => {
   }
 }
 
-const galleryGroups = {
+const galleryGroups = normalizeAssetPaths({
   '2025-26': [
     {
       title: 'Trip 2025-26',
@@ -161,7 +163,7 @@ const galleryGroups = {
       ],
     },
   ],
-}
+})
 
 export default function Team() {
   const [activeTenure, setActiveTenure] = useState('2026-27')
@@ -169,7 +171,7 @@ export default function Team() {
   const observerRef = useRef(null)
   const [failedImages, setFailedImages] = useState(new Set())
 
-  const members = teamData[activeTenure]
+  const members = normalizedTeamData[activeTenure]
 
   const grouped = {}
   for (const m of members) {
@@ -233,7 +235,7 @@ export default function Team() {
                           <div className={`team-card__image${!hasImage ? ' team-card__image--placeholder' : ''}`}>
                             {hasImage ? (
                               <img
-                                src={imageSrc}
+                                src={imagePath(imageSrc)}
                                 alt={m.name}
                                 loading="lazy"
                                 style={getMemberStyle(m.name)}
