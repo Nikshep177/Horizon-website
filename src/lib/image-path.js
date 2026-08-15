@@ -55,7 +55,7 @@ export function normalizeAssetPaths(value) {
 export function normalizeMarkdownAssetUrls(content) {
   if (typeof content !== 'string') return content
 
-  return content.replace(/(\!?\[[^\]]*\]\()\/((?:assets|Gallery|images|icons\.svg|favicon\.svg)[^)]+)(\))/g, (match, prefix, assetPath, suffix) => {
+  return content.replace(/(!?\[[^\]]*\]\()\/((?:assets|Gallery|images|icons\.svg|favicon\.svg)[^)]+)(\))/g, (match, prefix, assetPath, suffix) => {
     return `${prefix}${resolveAssetPath(`/${assetPath}`)}${suffix}`
   }).replace(/(src=|href=)["']\/((?:assets|Gallery|images|icons\.svg|favicon\.svg)[^"']+)["']/g, (match, attr, assetPath) => {
     return `${attr}"${resolveAssetPath(`/${assetPath}`)}"`

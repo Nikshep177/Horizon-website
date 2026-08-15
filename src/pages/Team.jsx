@@ -56,6 +56,9 @@ const imagePosition = {
   'Rohit': 'center 25%',
   'Shruti': 'center 25%',
   'Srikiran Ravanam': 'center 22%',
+  'Nikhil Kanakam': 'center 20%',
+  'Akshay KC': 'center 20%',
+  'J Olive Jerusha': 'center 22%',
 }
 
 const getMemberStyle = (name) => {
