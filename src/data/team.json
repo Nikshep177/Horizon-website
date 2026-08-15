@@ -1,0 +1,41 @@
+{
+  "2025-26": [
+    { "name": "Rohit", "role": "Head", "section": "core" },
+    { "name": "Mirudhula", "role": "Head", "section": "core" },
+    { "name": "Toshith", "role": "Strategist", "section": "core" },
+    { "name": "Shruti", "role": "Strategist", "section": "core" },
+    { "name": "Lekhashree", "role": "Strategist", "section": "core" },
+    { "name": "RACHANA SRI", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Srikiran Ravanam", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Ajeya P", "role": "Coordinator", "section": "coordinator" },
+    { "name": "HARICCHARAN M", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Nikshep", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Aditya Goel", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Abishekapriyan S", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Suraj Ramnath", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Kirtana Prakash", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Gedela Avinash", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Asim Vats", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Nantha Kumaran", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Harsh Meena", "role": "Coordinator", "section": "coordinator" }
+  ],
+  "2026-27": [
+    { "name": "Nantha Kumaran", "role": "Head", "section": "core" },
+    { "name": "Harsh Meena", "role": "Head", "section": "core" },
+    { "name": "Nikshep DC", "role": "Strategist", "section": "core" },
+    { "name": "Ananya Desle", "role": "Strategist", "section": "core" },
+    { "name": "Aditya Goel", "role": "Strategist", "section": "core" },
+    { "name": "Nikhil Kanakam", "role": "Strategist", "section": "core" },
+    { "name": "G Sathvik", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Ranesh Mohan", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Gawthaman A", "role": "Coordinator", "section": "coordinator" },
+    { "name": "S Rajeev Yuvan", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Sankeerthan Krishna P", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Vidisha", "role": "Coordinator", "section": "coordinator" },
+    { "name": "J Olive Jerusha", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Akshay KC", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Rohit S", "role": "Coordinator", "section": "coordinator" },
+    { "name": "V. Thiruselvi", "role": "Coordinator", "section": "coordinator" },
+    { "name": "Keerthana", "role": "Coordinator", "section": "coordinator" }
+  ]
+}

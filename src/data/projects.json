@@ -1,0 +1,210 @@
+{
+  "2025-26": [
+    {
+      "id": "optiqomm",
+      "title": "OptiQomm",
+      "date": "2026-02-12",
+      "author": "Horizon Instrumentation Team",
+      "image": "/assets/images/projects/2025/optiqomm.png",
+      "excerpt": "OptiQomm aims to develop a portable optical ground station for tracking LEO satellites and establishing optical links for quantum communication. The project combines precision satellite tracking, optics, and quantum key distribution to explore secure satellite-to-ground communication.",
+      "tags": ["Instrumentation", "Cosmic Rays"],
+      "team": {
+        "leads": ["Lekhashree"],
+        "members": ["Balendu", "Ananya", "Hariccharan", "Arudhra", "Suraj", "Chandra Teja", "Mohan krishna", "Thanoof", "Mizal", "Sayam", "Tanisha"],
+        "image": "/assets/images/projects/2025/optiqommteam.jpeg"
+      },
+      "github": "https://github.com/horizon/muon-detector",
+      "content": "<h2>Overview</h2><p>OptiQomm is developing a portable optical ground station for tracking LEO satellites, with the goal of establishing optical and quantum links for Quantum Key Distribution (QKD).</p><hr/><h2>Motivation</h2><ul><li>Develop a portable system capable of accurately tracking LEO satellites.</li><li>Establish reliable optical links for quantum communication and secure key distribution.</li><li>Explore the challenges of satellite-to-ground quantum communication, including atmospheric effects.</li></ul><hr/><h2>Method</h2><p><strong>Satellite Tracking:</strong> Use a dual-layer tracking algorithm, combining open-loop TLE-based tracking with closed-loop image tracking for high-precision pointing.</p><p><strong>Optical System:</strong> Employ a motorized equatorial mount with wide- and narrow-field-of-view cameras for coarse and fine tracking, supported by Kalman filtering.</p><p><strong>Quantum Communication:</strong> Implement the BB84 protocol and study photon detection, time-tagging, and time-multiplexing techniques.</p><p><strong>Optical Setup:</strong> Develop a Quantum Transmitter/\"Alice Station\" and study atmospheric effects such as scintillation to optimize communication performance.</p><hr/><h2>Results</h2><ul><li>Successfully developed and tested the satellite tracking system, including custom firmware and ASCOM-compatible software.</li><li>Captured the image of a satellite using the in-house telescope and tracking setup.</li><li>Finalized the BB84 protocol implementation and established the initial optical setup for quantum links.</li><li>Evaluated quantum bit error rates and secure key rates using atmospheric models.</li></ul><hr/><h2>Future Improvements</h2><ul><li>Integrate a 3D-printed galvohead scanner and mirror-steering system for improved beam pointing.</li><li>Implement real-time modelling of atmospheric scintillation to optimize communication performance.</li><li>Successfully track satellites and establish quantum links in future experiments.</li><li>Develop a single-photon detection system using Avalanche Photodiodes (APDs) and build a single-photon source for the setup.</li></ul>"
+    },
+    {
+      "id": "radian",
+      "title": "Radian",
+      "date": "2026-02-12",
+      "author": "Horizon Instrumentation Team",
+      "image": "/assets/images/projects/2025/radian.png",
+      "excerpt": "Aims to mitigate radio-frequency interference and recover faint astronomical signals such as the 21 cm hydrogen line using specialized antennas and signal-processing techniques.",
+      "tags": ["Instrumentation", "Radio Astronomy", "RFI Detection"],
+      "team": {
+        "leads": ["Mirudhula J"],
+        "members": ["Kiran", "Ayaan", "Yashwitha"],
+        "image": "/assets/images/projects/2025/radianteam.png"
+      },
+      "github": "https://github.com/horizon/radian",
+      "content": "<h2>Overview</h2><p>The <strong>RADIAN Project</strong> aims to mitigate <strong>Radio Frequency Interference (RFI)</strong>—unwanted man-made radio signals that often overpower the faint radio waves arriving from space. The project's primary goal is to detect the <strong>21 cm hydrogen line (1420 MHz)</strong>, an important astronomical signal emitted by neutral hydrogen. Although this frequency is protected for radio astronomy, interference from satellites, radar systems, mobile communications, and even the instrument itself makes detection extremely challenging.</p><hr/><h2>Motivation</h2><ul><li>Detect the faint <strong>21 cm hydrogen line</strong>, which is crucial for radio astronomy</li><li>Remove artificial radio signals that obscure valuable astronomical data</li><li>Improve the quality of observations for studying the Universe</li></ul><hr/><h2>Method</h2><p><strong>Data Collection:</strong> Use a <strong>Log-Periodic Dipole Antenna (LPDA)</strong> to collect radio signals over a wide range of frequencies with an improved signal-to-noise ratio.</p><p><strong>Spectrogram Generation:</strong> Convert the raw data into a spectrogram to analyze signal power across time and frequency.</p><p><strong>Noise Removal:</strong> Apply edge detection and baseline fitting to identify RFI and remove background noise generated by the instrument.</p><p><strong>RFI Detection:</strong> Identify interference patterns such as bursts, broadband noise, and narrowband signals using algorithms like the <strong>Sum-Threshold</strong> method.</p><hr/><h2>Results</h2><ul><li>Successfully detects and flags several common forms of radio frequency interference</li><li>Produces cleaner radio astronomy data while preserving the underlying astronomical signal</li><li>Faces challenges due to the large memory requirements of processing radio data and the risk of accidentally removing weak cosmic signals</li></ul><hr/><h2>Future Improvements</h2><ul><li>Develop machine learning models to automatically classify different types of RFI</li><li>Improve interference removal while preserving faint astronomical signals</li><li>Enhance the pipeline to achieve reliable detection of the <strong>21 cm hydrogen line</strong></li></ul>"
+    },
+    {
+      "id": "starspec",
+      "title": "StarSpec",
+      "date": "2026-02-12",
+      "author": "Horizon Instrumentation Team",
+      "image": "/assets/images/projects/2025/starspec.png",
+      "excerpt": "Turning starlight into rainbows — decoding the temperature, composition, and motion of the Sun, stars, and planets through spectroscopy.",
+      "tags": ["Astronomy", "Spectroscopy"],
+      "team": {
+        "leads": ["Rohit Jain"],
+        "members": ["Mahesh", "Srikiran", "Rachana", "Harshita", "Aparna", "Anwesh", "Harsh"],
+        "image": "/assets/images/projects/2025/starspecteam.jpg"
+      },
+      "github": "https://github.com/horizon/starspec",
+      "content": "<h2>Overview</h2><p><strong>StarSpec</strong> is a spectroscopy project dedicated to studying the Sun, stars, and planets by analyzing the light they emit. Spectroscopy allows astronomers to determine properties such as temperature, chemical composition, motion, and luminosity, making it one of the most powerful tools for understanding celestial objects.</p><hr/><h2>Motivation</h2><ul><li>Use spectroscopy to uncover the physical properties of stars, planets, and the Sun</li><li>Gain hands-on experience by designing, building, and operating spectrographs</li><li>Explore how light can reveal information hidden across the cosmos</li></ul><hr/><h2>Method</h2><p><strong>Solar Spectroscopy (Sol'Ex):</strong> Use the <strong>Solar Explorer (Sol'Ex)</strong> spectrograph to observe sunspots, solar flares, and the solar atmosphere.</p><p><strong>Spectrum Formation:</strong> Sunlight passes through a <strong>10 µm slit</strong>, is collimated, dispersed by a <strong>2400 lines/mm diffraction grating</strong>, and focused onto a detector to produce a spectrum.</p><p><strong>Data Analysis:</strong> Analyze the recorded spectra using <strong>SpecINTI</strong>, calibrated with a neon lamp spectrum, to measure properties such as solar flare velocities through the <strong>Doppler effect</strong>.</p><p><strong>Stellar Spectroscopy (Star'Ex):</strong> A modified version of Sol'Ex with a <strong>100 lines/mm diffraction grating</strong> and a guiding module enables observations of distant stars by improving light collection and maintaining accurate tracking.</p><hr/><h2>Results</h2><ul><li>Successfully captures and analyzes spectra from the Sun, bright stars, and planets</li><li>Extracts valuable information such as temperature, chemical composition, luminosity, and motion from observed spectra</li><li>Demonstrates the effectiveness of custom-built spectrographs for both solar and stellar observations</li></ul><hr/><h2>Future Improvements</h2><ul><li>Build more advanced, in-house spectroscopy instruments, including the <strong>UVEX (UltraViolet EXplorer)</strong></li><li>Conduct new studies such as measuring galaxy redshifts, detecting supernovae, and monitoring the time evolution of hydrogen spectral lines</li><li>Expand collaborative research through participation in the <strong>AAVSOnet Telescope Spectroscopy Working Group</strong> and contribute to the development of a dedicated spectroscopy telescope</li></ul>"
+    },
+    {
+      "id": "ligo",
+      "title": "LIGO",
+      "date": "2026-02-12",
+      "author": "Horizon Instrumentation Team",
+      "image": "/assets/images/projects/2025/ligo.png",
+      "excerpt": "A university-scale gravitational-wave detector prototype inspired by LIGO-India, focusing on precision interferometry, vibration isolation, suspended mirrors, and advanced sensing and control systems.",
+      "tags": ["Instrumentation", "Gravitational Waves"],
+      "team": {
+        "leads": ["Aditya Kshatriya"],
+        "members": ["Mahesh", "Prithviraj", "Asim", "Rachana", "Kishlay"],
+        "image": "/assets/images/projects/2025/ligoteam.png"
+      },
+      "github": "https://github.com/horizon/ligo",
+      "content": "<h2>Overview</h2><p>The <strong>LIGO Prototype Project</strong> at Horizon is inspired by the <strong>Laser Interferometer Gravitational-Wave Observatory (LIGO)</strong>, which detects gravitational waves—tiny ripples in spacetime produced by massive accelerating objects such as merging black holes. These waves cause incredibly small distortions in space, making their detection one of the most precise experimental achievements in modern physics.</p><hr/><h2>Motivation</h2><ul><li>Understand the principles behind gravitational wave detection and interferometry</li><li>Build a university-scale prototype inspired by <strong>LIGO-India</strong></li><li>Gain practical experience in precision optics, vibration isolation, control systems, and instrumentation</li></ul><hr/><h2>Method</h2><p><strong>Interferometry:</strong> Use a Michelson interferometer where laser beams travel through perpendicular arms, reflect from mirrors, and recombine to detect minute changes in path length.</p><p><strong>Vibration Isolation:</strong> Suspend mirrors with multi-degree-of-freedom mechanical systems and electromagnetic actuators to minimize external disturbances.</p><p><strong>Precision Components:</strong> Integrate ultra-stable lasers, mechanical suspensions, PID controllers, transimpedance amplifiers, piezoelectric transducers, and <strong>Optical Sensor and Electromagnet Modules (OSEMs)</strong> for sensing and actuation.</p><p><strong>Software & Modeling:</strong> Develop optics simulations, suspension models, and electrical systems to improve signal-to-noise ratio and validate experimental performance.</p><hr/><h2>Results</h2><ul><li>Successfully developed a university-scale LIGO prototype over two years under the <strong>LIGO-India</strong> initiative</li><li>Established vibration isolation and mirror suspension systems for precision interferometry</li><li>Demonstrated integration of optical, mechanical, electronic, and software subsystems toward gravitational wave detection principles</li></ul><hr/><h2>Future Improvements</h2><ul><li>Complete the integration of all hardware and software subsystems into a fully functional prototype</li><li>Improve performance through mode locking, band-pass filtering, and modal damping techniques</li><li>Demonstrate a working interferometer capable of showcasing the core principles behind gravitational wave detection</li></ul>"
+    },
+    {
+      "id": "apteam",
+      "title": "AP Team",
+      "image": "/assets/images/astrophotography.jpeg",
+      "excerpt": "The Astrophotography Team captures and processes the night sky, combining astronomy with photography to document and showcase the wonders of the cosmos.",
+      "content": "<p>We are a team of astrophotographers and observers brought together by a shared love for the night sky. Our work goes beyond just taking photos under clear skies; during bad weather, we stay active by analyzing astronomical data, testing gear, and writing articles for the community. From long exposure sessions in the field to processing image data indoors, our goal is simple: to share the wonder of astronomy with everyone.</p><h2>Mini Projects</h2><ul><li><strong>Custom Mount Design:</strong> Researched and initiated the development phase for a custom tracking mount</li><li><strong>3D/External Galactic Reconstruction:</strong> Experimented with mapping and rendering a reconstructed view of the Milky Way galaxy as it would appear from an external, extragalactic perspective.</li><li><strong>False-Color Imaging Techniques:</strong> Mastered narrowband and custom palette mapping (e.g., Hubble Palette/SHO) to reveal physical gas structures, dynamic range, and underlying astrophysical features in deep-sky targets.</li><li><strong>Built Target Visibility Planner:</strong> Calculates real-time rise/set times, peak transit altitudes, and apparent magnitudes for any given date to optimize observation schedules before hitting the field.</li></ul>",
+      "team": {
+        "leads": ["Toshith Pudakalkatti"],
+        "members": ["Vardaan", "Avinash", "Nikhil Kanakam", "Kirtana Prakash", "Joshua", "Nantha Kumaran", "Harshitha", "Shubham"],
+        "image": "/assets/images/projects/2025/apteam-group.jpeg"
+      }
+    }
+  ],
+  "2026-27": [
+    {
+      "id": "optiqomm",
+      "title": "Optiqomm",
+      "image": "/assets/images/projects/2025/optiqomm.png",
+      "excerpt": "OptiQomm aims to develop a portable optical ground station for tracking LEO satellites and establishing optical links for quantum communication. The project combines precision satellite tracking, optics, and quantum key distribution to explore secure satellite-to-ground communication.",
+      "tags": ["Technology", "Optical Communication"],
+      "github": "https://github.com/horizon/optiqomm",
+      "content": "<h2>Optiqom</h2><p>We imaged several satellites this tenure and successfully tested our streak-detection algorithm using the actual camera system. We have also characterized the mount errors and are now ready to begin active satellite tracking.</p><p>In parallel, we developed a Kalman-filter-based tracking system using TLE data alone, achieving errors as low as a few kilometres and pushing the accuracy close to the limits of the available data.</p><p>Our next step is to combine optical feedback from the camera with TLE-based predictions using a Kalman filter, enabling more accurate and robust real-time satellite tracking.</p><p>Additionally, this tenure, we plan to implement a Weak Coherent Pulse (WCP)-based Quantum Key Distribution (QKD) system, further expanding our work into experimental quantum communication.</p>",
+      "team": {
+        "leads": [
+          { "name": "Ananya Desle" }
+        ],
+        "members": [
+          { "name": "Anoop Haridoss", "image": "/assets/images/projects/2026/optiqomm/andy.jpeg" },
+          { "name": "Ranesh Mohan", "image": "/assets/images/projects/2026/optiqomm/ranesh.jpeg" },
+          { "name": "Arjuna Sanjiv Lochan" },
+          { "name": "Anushri Mukund" },
+          { "name": "Ala Naga Mohankrishna" },
+          { "name": "Balendu Shekhar Ojha" },
+          { "name": "Suraj Ramnath", "image": "/assets/images/projects/2026/optiqomm/Suraj.jpg" },
+          { "name": "Kushagra Sahgal" }
+        ]
+      }
+    },
+    {
+      "id": "sonicphase",
+      "title": "Sonicphase",
+      "image": "/assets/images/projects/2026/sonicphase.jpeg",
+      "excerpt": "An open-source framework that models music as a nonlinear dynamical system, using pitch trajectories and phase-space analysis to uncover and classify melodic patterns.",
+      "tags": ["Technology", "Acoustics"],
+      "content": "<h2>SonicPhase</h2><p>SonicPhase is built around Takens' delay-embedding theorem \u2014 a result from nonlinear dynamics stating that the full phase-space geometry of a dynamical system can be reconstructed from a single scalar time series, using only delayed copies of itself. Given a signal x(t), the embedding vector y(t) = [x(t), x(t+\u03c4), ..., x(t+(m\u22121)\u03c4)] recovers an attractor topologically equivalent to the system's true state space, once the delay \u03c4 (via KSG mutual information) and embedding dimension m (via Cao's method) are correctly estimated.</p><p>This same machinery is used across physics to characterize turbulence, EEG signals, laser dynamics, and chaotic systems \u2014 anywhere the underlying state space isn't directly observable but a proxy signal is. SonicPhase applies it to Indian classical music, treating melodic pitch contours as the observable output of a dynamical system, and using reconstructed-attractor invariants (correlation dimension, Lyapunov exponents, recurrence measures) to classify ragas from melodic pattern dynamics \u2014 motivated by the hypothesis that these invariants generalize across performers and degrade more gracefully than conventional spectral features (MFCC, TDMS).</p><p>The same toolkit could potentially extend beyond music \u2014 possibly to characterizing quantum decoherence noise from qubit measurement time series, or detecting synchronization patterns between the Sun's hemispheres from sunspot records.</p>",
+      "team": {
+        "leads": [
+          { "name": "Nikshep", "image": "/assets/images/projects/2026/Sonicphase/Nikshep.jpeg" }
+        ],
+        "members": [
+          { "name": "Pratyush Routray", "image": "/assets/images/projects/2026/Sonicphase/pratyosh.jpeg" },
+          { "name": "Raghav Y", "image": "/assets/images/projects/2026/Sonicphase/Raghav.jpeg" },
+          { "name": "Anushri Mukund", "image": "/assets/images/projects/2026/sonicphase-anushri.jpg" },
+          { "name": "Arshad Raihaan", "image": "/assets/images/projects/2026/sonicphase-arshad.jpg" },
+          { "name": "Aarush L", "image": "/assets/images/projects/2026/sonicphase-aarush.jpg" }
+        ]
+      }
+    },
+    {
+      "id": "quantaband",
+      "title": "Quantaband",
+      "image": "/assets/images/projects/2026/quantabands.jpeg",
+      "excerpt": "Project QuantaBands aims to construct a complete computational pipeline to extract the electronic band structures of real materials using quantum computing techniques.",
+      "tags": ["Technology", "Quantum Physics", "Materials Science"],
+      "github": "https://github.com/horizon/quantaband",
+      "content": "<h2>Quantaband</h2><p>Real materials contain electrons whose quantum mechanical interactions determine all electronic properties such as conductivity, band gaps, and magnetism. While Density Functional Theory (DFT) is a standard approach, the exact solution is computationally intractable on classical computers for strongly correlated systems where DFT fails. Quantum computers offer a natural representation of fermionic quantum states; however, current Noisy Intermediate-Scale Quantum (NISQ) hardware is too noisy for large systems.</p><p>The goal of this project is to build a full pipeline; from crystal structure to quantum Hamiltonian to quantum circuit; to extract the electronic band structure for a material and test the effectiveness of Quantum Computing based methods to obtain band structures of these materials</p>",
+      "team": {
+        "leads": [
+          { "name": "Aditya Goel", "image": "/assets/images/projects/2026/quantaband/aditya.jpeg" }
+        ],
+        "members": [
+          { "name": "Nidarshana S" },
+          { "name": "Hariccharan M", "image": "/assets/images/projects/2026/quantaband/Hariccharan.jpg" },
+          { "name": "S Rajeev Yuvan", "image": "/assets/images/projects/2026/quantaband/rajeev.jpeg" },
+          { "name": "Aakanksha Shukla" },
+          { "name": "Keerthivaasan" },
+          { "name": "Prithviraj G Somwanshi" }
+        ]
+      }
+    },
+    {
+      "id": "ferrostats",
+      "title": "Ferrostats",
+      "image": "/assets/images/projects/2026/ferrostats.png",
+      "excerpt": "Ferrostats investigates pattern formation in ferrofluids under time-varying magnetic fields, using non-equilibrium statistical physics and mathematical analysis to uncover the universal principles governing emergent patterns.",
+      "tags": ["Technology", "Physics", "Materials Science"],
+      "content": "<h2>Ferrostats</h2><p>Ferrostats explores the emergence of dynamic patterns in ferrofluids subjected to time-varying magnetic fields, bringing together ideas from non-equilibrium statistical physics, ferrohydrodynamics, and mathematical physics.</p><p>When driven away from equilibrium, ferrofluids can develop rich and evolving structures arising from the interplay between magnetic forces, fluid motion, and dissipation. Rather than studying these patterns as isolated phenomena, the project seeks to understand the universal principles underlying pattern formation across different driven systems.</p><p>A central idea is universality: seemingly different physical systems can exhibit remarkably similar collective behaviour when viewed at the appropriate scales. This allows diverse phenomena to be grouped into universality classes, defined not by their microscopic details but by the fundamental mechanisms governing their large-scale behaviour.</p><p>Ferrostats aims to investigate these connections by studying the mathematical equations that govern such systems and identifying the structural features responsible for their shared behaviour. In particular, Lie point symmetry analysis and related mathematical techniques will be used to explore the symmetries and invariant structures of the underlying partial differential equations.</p><p>Ultimately, the project seeks to connect non-equilibrium physics, ferrohydrodynamics, and mathematical analysis to understand how complex patterns emerge, evolve, and fall into universal classes of behaviour.</p>",
+      "team": {
+        "leads": [
+          { "name": "Nantha Kumaran", "image": "/assets/images/projects/2026/ferrostats/nantha.jpeg" }
+        ],
+        "members": [
+          { "name": "Abhishekapriyan", "image": "/assets/images/projects/2026/ferrostats/Abhishek.jpg" }
+        ]
+      }
+    },
+    {
+      "id": "starspec",
+      "title": "StarSpec",
+      "image": "/assets/images/projects/2025/starspec.png",
+      "excerpt": "Turning starlight into rainbows — decoding the temperature, composition, and motion of the Sun, stars, and planets through spectroscopy.",
+      "tags": ["Astronomy", "Spectroscopy"],
+      "github": "https://github.com/horizon/starspec",
+      "content": "<h2>StarSpec</h2><p>StarSpec is a spectroscopy project dedicated to studying the Sun, stars, and planets by analyzing the light they emit. Spectroscopy allows astronomers to determine properties such as temperature, chemical composition, motion, and luminosity, making it one of the most powerful tools for understanding celestial objects.</p><p>In this project we use spectroscopy to uncover the physical properties of stars, planets, and the Sun. We do this by using Solar Explorer (Sol'Ex) spectrograph to observe sunspots, solar flares, and the solar atmosphere. We then do data analysis by using SpecINTI, calibrated with a neon lamp spectrum, to measure properties such as solar flare velocities through the Doppler effect. This process allows us to do stuff like successfully capturing and analyzing spectra from the Sun, bright stars, and planets.</p>",
+      "team": {
+        "leads": [
+          { "name": "Harsh Meena", "image": "/assets/images/projects/2026/starspec/harsh.jpeg" }
+        ],
+        "members": [
+          { "name": "Prachi" },
+          { "name": "S K Shreeram" },
+          { "name": "Harshita Bhamidipati" },
+          { "name": "G Sathvik", "image": "/assets/images/projects/2026/starspec/sathvik.jpeg" },
+          { "name": "Sankeerth Krishna P", "image": "/assets/images/projects/2026/starspec/sankeerth.jpeg" },
+          { "name": "J.Olive Jerusha", "image": "/assets/images/projects/2026/starspec/olive jerusha.jpeg" },
+          { "name": "Mahesh Kumar Saravanan" },
+          { "name": "Srikiran Ravanam", "image": "/assets/images/projects/2026/starspec/Srikiran.jpeg" }
+        ]
+      }
+    },
+    {
+      "id": "apteam-2627",
+      "title": "AP Team",
+      "image": "/assets/images/astrophotography.jpeg",
+      "excerpt": "The Astrophotography Team captures and processes the night sky, combining astronomy with photography to document and showcase the wonders of the cosmos.",
+      "content": "<p>We are a team of astrophotographers and observers brought together by a shared love for the night sky. Our work goes beyond just taking photos under clear skies; during bad weather, we stay active by analyzing astronomical data, testing gear, and writing articles for the community. From long exposure sessions in the field to processing image data indoors, our goal is simple: to share the wonder of astronomy with everyone.</p>",
+      "team": {
+        "leads": [
+          { "name": "Nikhil Kanakam", "image": "/assets/images/projects/2026/apteam-nikhil.jpg" }
+        ],
+        "members": [
+          { "name": "Aryan Jain", "image": "/assets/images/projects/2026/apteam-aryan.jpg" },
+          { "name": "Sanjana Kannan", "image": "/assets/images/projects/2026/apteam-sanjana.jpg" },
+          { "name": "D. Balaram Naidu", "image": "/assets/images/projects/2026/apteam-balaram.jpg" },
+          { "name": "V. Thiruselvi", "image": "/assets/images/projects/2026/apteam-thiruselvi.jpg" },
+          { "name": "K. Manohar Chowhan", "image": "/assets/images/projects/2026/apteam-manohar.jpg" },
+          { "name": "Nikitha S", "image": "/assets/images/projects/2026/apteam-nikitha.jpg" },
+          { "name": "Dhathrendra Vishwakarma", "image": "/assets/images/projects/2026/apteam-dhathrendra.jpg" },
+          { "name": "Deepam A Jain", "image": "/assets/images/projects/2026/apteam-deepam.jpg" }
+        ]
+      }
+    }
+  ]
+}

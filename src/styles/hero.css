@@ -1,0 +1,121 @@
+.hero-astro {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: #f2f0ff;
+}
+
+/* Apply the Event page typography to the homepage */
+.home-sections-wrapper {
+  --font-display: "Orbitron", sans-serif;
+  --font-body: "Exo 2", var(--font-family-base);
+  font-family: var(--font-body);
+}
+
+.home-sections-wrapper h1,
+.home-sections-wrapper h2,
+.home-sections-wrapper h3,
+.home-sections-wrapper h4,
+.home-sections-wrapper h5,
+.home-sections-wrapper h6 {
+  font-family: var(--font-display);
+}
+
+.home-sections-wrapper p,
+.home-sections-wrapper span,
+.home-sections-wrapper li,
+.home-sections-wrapper a,
+.home-sections-wrapper button {
+  font-family: var(--font-body);
+}
+
+.hero-orbit {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+
+.orbit-ring-1 {
+  width: 320px;
+  height: 320px;
+  animation: spin 22s linear infinite;
+}
+.orbit-ring-2 {
+  width: 520px;
+  height: 520px;
+  animation: spin 40s linear infinite reverse;
+}
+
+.orbit-planet {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.orbit-planet-1 {
+  top: -6px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 30% 30%, #ffd9a0, #d9822b);
+  box-shadow: 0 0 12px 2px rgba(217, 130, 43, 0.6);
+}
+
+.orbit-planet-2 {
+  bottom: -8px;
+  left: 30%;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #b9d7ff, #4d6fb0);
+  box-shadow: 0 0 14px 3px rgba(77, 111, 176, 0.6);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-astro .hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a6b0e0;
+  margin-bottom: 0.75rem;
+}
+
+.hero-astro .hero-tagline {
+  color: #c9cbe8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring {
+    animation: none;
+  }
+}

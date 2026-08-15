@@ -1,0 +1,52 @@
+[
+  {
+    "year": 2026,
+    "problems": [
+      {
+        "title": "Problem 1",
+        "description": "Placeholder description for the 2026 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      },
+      {
+        "title": "Problem 2",
+        "description": "Placeholder description for the 2026 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      },
+      {
+        "title": "Problem 3",
+        "description": "Placeholder description for the 2026 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      },
+      {
+        "title": "Problem 4",
+        "description": "Placeholder description for the 2026 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      },
+      {
+        "title": "Problem 5",
+        "description": "Placeholder description for the 2026 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "problems": [
+      {
+        "title": "Problem 1",
+        "description": "Placeholder description for the 2025 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      },
+      {
+        "title": "Problem 2",
+        "description": "Placeholder description for the 2025 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      },
+      {
+        "title": "Problem 3",
+        "description": "Placeholder description for the 2025 problem statement.",
+        "image": "/assets/images/guild/ipt.jpeg"
+      }
+    ]
+  }
+]

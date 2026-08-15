@@ -1,0 +1,432 @@
+{
+  "2025-26": {
+    "g2g": {
+      "id": "g2g",
+      "title": "Guide to Galaxy",
+      "icon": "\ud83c\udf0c",
+      "description": "A flagship lecture series conducted by the club coordinators, introducing fascinating topics across the vast landscape of physics — from the tiniest elementary particles to the most massive black holes. Designed to spark curiosity and make physics accessible to the IIT Madras student community.",
+      "image": "/assets/images/events_title_images/g2g.jpeg",
+      "subcards": [
+        {
+          "id": "g2g-1",
+          "title": "Geometry of Spacetime — Horizon X Math Club Collaboration",
+          "speaker": "Aditya Goel and Suraj (Horizon) & Sudhanvaa and Hemanth (Math Club)",
+          "description": "A deep dive into the mathematics of curved surfaces and its applications in special relativity. Topics covered include linear transformations, jacobians, metrics and metric spaces, the need for special relativity and groundbreaking experiments which confirmed its validity, Lorentz transformations, length contraction, time dilation, simultaneity, proper length, proper time, spacetime interval, and introduction to accelerating frames. Conducted by Horizon coordinators Aditya Goel and Suraj, and Math Club coordinators Sudhanvaa and Hemanth.",
+          "image": "/assets/images/events_poster/g2g_geometry.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=FifNf4TqM_8&t=1s"
+        },
+        {
+          "id": "g2g-2",
+          "title": "Introduction to General Relativity & Black Holes",
+          "speaker": "Nikshep and Avinash",
+          "description": "A journey through the fascinating world of General Relativity and Black Holes. Topics covered include the Minkowski metric and spacetime interval, the time cone and its significance, Einstein's General Relativity, black holes and their formation, the event horizon and time dilation near it, and the basics of the Penrose diagram. Perfect for beginners in astrophysics or anyone curious about the nature of space, time, and gravity.",
+          "image": "/assets/images/events_poster/g2g_gr.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=WqJ3ZFiI4Ic"
+        },
+        {
+          "id": "g2g-3",
+          "title": "Physics of Colours",
+          "speaker": "Srikiran and Harichharan",
+          "description": "We live in the world of Colours — from the glint of a Butterfly's wings to the calm blue of a flowing stream, from the colours of the rainbow to the colours of a Peacock, from the garments that decorate your wardrobe to the fireworks that decorate the sky. Colours shape our emotions as well as the perception of the world. Speakers: Hariccharan (EP24) and Srikiran (PH24).",
+          "image": "/assets/images/events_poster/g2g_phycolor.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=o-QlQoSzsMQ&t=9s"
+        },
+        {
+          "id": "g2g-4",
+          "title": "Unseen Cosmic Architecture",
+          "speaker": "Harsh and Rachana",
+          "description": "A third of the universe's ordinary matter is missing. Not dark matter — just normal atoms we can't account for. This session explores the missing baryons problem: how early-universe physics tells us exactly how many atoms should exist, and how modern observations, from the CMB to Fast Radio Bursts, are finally revealing where they're hiding. Covering Big Bang Nucleosynthesis & deuterium (D/H), CMB acoustic peaks, and the cosmic web & WHIM.",
+          "image": "/assets/images/events_poster/g2g_cosmic.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=w6y52bLr-og&t=2s"
+        },
+        {
+          "id": "g2g-5",
+          "title": "Fields to Fractals",
+          "speaker": "Asim, Abhishekpriyan and Nantha",
+          "description": "Fields to Fractals introduced participants to the foundations of Quantum Field Theory, the problem of infinities, and the role of Renormalization Group Theory in connecting quantum physics with statistical mechanics and fractals. The session provided an accessible overview of these fundamental ideas while highlighting their significance in modern theoretical physics.",
+          "image": "/assets/images/events_poster/g2g_f2f.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=mOEP356TxME"
+        },
+        {
+          "id": "g2g-6",
+          "title": "Cosmic Histories",
+          "speaker": "Kirtana and Ajeya",
+          "description": "Cosmic Histories guided participants through the evolution of the universe, from the Big Bang to the formation of galaxies and large-scale cosmic structures. The session discussed the observational evidence supporting modern cosmology and offered an engaging introduction to the history, expansion, and evolution of our universe.",
+          "image": "/assets/images/events_poster/g2g_histories.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=_h9ufmi5i_c"
+        }
+      ]
+    },
+    "q2q": {
+      "id": "q2q",
+      "title": "Quarks to Quasars",
+      "icon": "\u269b\ufe0f",
+      "description": "An expert lecture series featuring distinguished professors and researchers from IIT Madras and beyond, who share their work and expertise in cutting-edge areas of physics. It provides students with the opportunity to engage with leading scientists and contemporary research.",
+      "image": "/assets/images/events_title_images/q2q.jpeg",
+      "subcards": [
+        {
+          "id": "q2q-1",
+          "title": "Gravitational Waves & Its Career Opportunities",
+          "speaker": "Prof. Suresh Doravari — IUCAA",
+          "description": "In this session, Professor Suresh explores how we detect the tiniest ripples in space-time, the future and evolution of gravitational wave detectors, exciting career paths for engineers, physicists, and researchers, and how YOU can contribute to this groundbreaking field.",
+          "image": "/assets/images/events_poster/q2q_ligo.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=6DkDuEHLi9o&t=13s"
+        },
+        {
+          "id": "q2q-2",
+          "title": "Introduction to Nuclear Physics",
+          "speaker": "Prof. Jim Libby — Dept. of Physics, IIT Madras",
+          "description": "In this talk, aimed at a non-specialist audience, Prof. Libby takes us into the world of nuclear physics, starting from the basic constituents of the atom and building up to how nuclei are bound, how they decay, and why nuclear processes play such a central role in both laboratory experiments and astrophysical phenomena. Without assuming any prior background, he carefully develops the key ideas, highlights how experimental observations shaped our picture of the nucleus, and touches upon modern directions where nuclear physics connects to particle physics and cosmology.",
+          "image": "/assets/images/events_poster/q2q_nuclear.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=O6iPdkmg-hw&t=631s"
+        },
+        {
+          "id": "q2q-3",
+          "title": "GRAPHENE — Secrets of Atomic Scale Chicken Wire",
+          "speaker": "Prof. Manu Jaiswal — Dept. of Physics, IIT Madras",
+          "description": "Have you heard of the thinnest material in the Universe — Graphene? It is known for its remarkable conductivity and mechanical strength. Graphene is a \"table-top laboratory\" for testing experiments that would otherwise be extremely difficult to realize. Carbon atoms arranged on a chicken-wire network provide a platform for studying relativistic quantum mechanics of massless quasi-particles, along with their many paradoxes. We will discuss how graphene research has come a long way from questioning the very existence of this thinnest possible material to becoming a catalyst for futuristic technologies.",
+          "image": "/assets/images/events_poster/q2q_graphene.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=IPj-NhPxTdA&t=3s"
+        },
+        {
+          "id": "q2q-4",
+          "title": "Beyond the Shadow",
+          "speaker": "Assist. Prof. Prashant K — Chennai Mathematical Institute, India",
+          "description": "Beyond the Shadow was a special edition of Horizon's Quarks to Quasars seminar series featuring Prof. Prashant Kocherlakota from the Chennai Mathematical Institute. The session explored how black hole imaging and astrophysical observations can be used to test General Relativity, understand spacetime geometry, and uncover the physics governing some of the most extreme objects in the universe.",
+          "image": "/assets/images/events_poster/q2q_shadow.jpeg",
+          "youtube": ""
+        }
+      ]
+    },
+    "boltzmann": {
+      "id": "boltzmann",
+      "title": "Boltzmann Sessions",
+      "icon": "\ud83d\udd25",
+      "description": "A student-led seminar series where researchers and enthusiasts share insights from their ongoing projects and areas of study. These sessions offer the IIT Madras community a glimpse into real-world research and the process of scientific discovery.",
+      "image": "/assets/images/events_title_images/boltzmann.jpeg",
+      "subcards": [
+        {
+          "id": "boltzmann-1",
+          "title": "Beyond Qubits",
+          "speaker": "Sayam Chakraborty (MSc. Physics)",
+          "description": "In this session, Sayam introduced the concept of qudits — multi-level quantum systems that go beyond traditional qubits — and explored how they can enhance information storage, improve quantum algorithms, and open new directions in error correction and communication. The talk provided an accessible, non-mathematical introduction to why researchers are looking beyond qubits as a promising path toward scalable quantum technologies. This event also marked the inaugural session of the IBM Qiskit Fall Fest at IIT Madras.",
+          "image": "/assets/images/events_poster/boltz_qubits.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=EMwkkYXmfaw&t=402s"
+        },
+        {
+          "id": "boltzmann-2",
+          "title": "From Flipping Spins to Quantum Worlds",
+          "speaker": "Divyansh (MSc. Physics)",
+          "description": "In this captivating session, Divyansh took us through the elegant world of the Ising model — where a simple chain of up and down spins unfolds into a story of magnetism, order, and quantum transformation. From the emergence of collective behavior to the mysteries of criticality and quantum phase transitions, the session beautifully showcased how simplicity in physics can give rise to astonishing complexity and beauty.",
+          "image": "/assets/images/events_poster/boltz_flip.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=uZ3ultLKdmM&t=391s"
+        },
+        {
+          "id": "boltzmann-3",
+          "title": "Neural Ordinary Differential Equations for Emulating Photodissociation Regions",
+          "speaker": "Rahul (Master's in Astronomy) — Former Head of the Club (2020)",
+          "description": "This session introduces Neural Ordinary Differential Equations (NeuralODEs) and their application in modelling Photodissociation Regions (PDRs) — interstellar regions influenced by UV radiation. It covers the challenges of solving stiff ODE systems in PDRs and shows how NeuralODEs can learn continuous-time dynamics to build fast and efficient emulators. The talk also briefly touches on applications in cosmology and scientific machine learning.",
+          "image": "/assets/images/events_poster/boltz_neural.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=zZ-Wxcattyw"
+        },
+        {
+          "id": "boltzmann-4",
+          "title": "Why are you Alive?",
+          "speaker": "Kavin Chakaravarthy (BS-MS in Bio Sciences) — Former Head of the Club (2023)",
+          "description": "This talk chases one of science's most profound and still-unsolved questions: how did life begin? From the scale of the universe down to a single, impossibly improbable molecule. Along the way we'll find out why physics created life. We'll ask whether the same chemistry that built you could be running right now beneath the icy crust of Saturn's moon Enceladus — and we'll end where we began, staring at the universe, except you won't see it quite the same way again. No biology background needed. Just curiosity.",
+          "image": "/assets/images/events_poster/boltz_alive.jpeg",
+          "youtube": "https://www.youtube.com/watch?v=mQgqK43ya6c&t=661s"
+        }
+      ]
+    },
+    "observation": {
+      "id": "observation",
+      "title": "Observation Sessions",
+      "icon": "\ud83d\udd2d",
+      "description": "Horizon organizes observational sessions that provide the IIT Madras community with firsthand experiences of celestial phenomena. From eclipse observations to constellation hunts and night-sky viewing sessions, these events inspire curiosity, promote scientific exploration, and cultivate a lasting appreciation for the beauty and mysteries of the universe.",
+      "about": "Horizon has successfully conducted four observational sessions, including Freshers' Observation Night, Lunar Eclipse Observation, Solar Observation, and Night Sky Observation sessions for the institute community. These events brought together students, faculty, and campus residents, offering them a memorable opportunity to explore the cosmos through telescopic observations and experience the wonders of the night sky firsthand.",
+      "image": "/assets/images/events_title_images/obs_ses.jpeg",
+      "tiles": [
+        {
+          "id": "observation-1",
+          "title": "Observation Session 1",
+          "image": "/assets/images/events_poster/obs_ses/IMG20250727204152.jpg"
+        },
+        {
+          "id": "observation-2",
+          "title": "Observation Session 2",
+          "image": "/assets/images/events_poster/obs_ses/IMG20250727204246.jpg"
+        },
+        {
+          "id": "observation-3",
+          "title": "Observation Session 3",
+          "image": "/assets/images/events_poster/obs_ses/IMG20250727204436.jpg"
+        },
+        {
+          "id": "observation-4",
+          "title": "Observation Session 4",
+          "image": "/assets/images/events_poster/obs_ses/IMG20250727205018.jpg"
+        },
+        {
+          "id": "observation-5",
+          "title": "Observation Session 5",
+          "image": "/assets/images/events_poster/obs_ses/IMG20250727233949.jpg"
+        },
+        {
+          "id": "observation-6",
+          "title": "Observation Session 6",
+          "image": "/assets/images/events_poster/obs_ses/PXL_20250907_163335295.NIGHT.jpg"
+        },
+        {
+          "id": "observation-7",
+          "title": "Observation Session 7",
+          "image": "/assets/images/events_poster/obs_ses/PXL_20250907_163348643.NIGHT.jpg"
+        }
+      ]
+    },
+    "summer": {
+      "id": "summer",
+      "title": "Summer School Sessions",
+      "icon": "\u2600\ufe0f",
+      "description": "An online outreach initiative conducted by the club coordinators, introducing school students to the wonders of physics through engaging and accessible sessions. The program aims to inspire young minds and nurture a lasting interest in the physical sciences.",
+      "image": "/assets/images/events_title_images/ss.jpeg",
+      "subcards": [
+        {
+          "id": "summer-1",
+          "title": "Antenna Theory",
+          "description": "Explore the fascinating world of antenna theory and discover how antennas have become one of the foundational technologies of modern civilization. This session covers the history of antennas and radio astronomy, the electromagnetic principles behind their operation, and the key parameters used to analyze antenna performance. You'll also learn about various antenna designs — including dipole, loop, horn, helical, reflector, and microstrip antennas — their real-world applications, and conclude with an introduction to smart beam steering, where antennas can electronically \"look\" in different directions without any physical movement.",
+          "image": "/assets/images/events_poster/ss25/ss25_1.jpg",
+          "youtube": "https://www.youtube.com/watch?v=rdhcunW1-6o&t=1691s"
+        },
+        {
+          "id": "summer-2",
+          "title": "Introduction to Quantum Communication",
+          "description": "Step into the world of quantum communication and discover how the principles of quantum mechanics are revolutionizing secure communication. This session explores the foundations of classical and quantum cryptography, covering encryption techniques such as AES and RSA, the impact of quantum algorithms like Shor's and Grover's, and the fundamentals of quantum communication through the BB84 protocol. We'll also delve into advanced quantum key distribution protocols, including E91 and BBM92, while highlighting the latest developments that are shaping the future of quantum networks.",
+          "image": "/assets/images/events_poster/ss25/ss25_2.jpg",
+          "youtube": "https://www.youtube.com/watch?v=fkobD7EaY8g"
+        },
+        {
+          "id": "summer-3",
+          "title": "What if the Apple Never Fell on Newton's Head",
+          "description": "Journey beyond Newton's famous apple and discover the elegant principles that form the heart of classical mechanics. This session introduces the Lagrangian formulation through D'Alembert's principle, explores conservation laws and Noether's theorem, and transitions into Hamiltonian mechanics using Legendre transforms. We'll also uncover the significance of the Principle of Least Action and see how these powerful ideas extend beyond mechanics to derive fundamental results in geometrical optics.",
+          "image": "/assets/images/events_poster/ss25/ss25_3.jpg",
+          "youtube": "https://www.youtube.com/watch?v=6tH-PNDNFaM"
+        },
+        {
+          "id": "summer-4",
+          "title": "Gravitational Waves and The LIGO",
+          "description": "Embark on a journey through spacetime and explore the fascinating science of gravitational waves — ripples in the fabric of the universe predicted by Einstein over a century ago. This session introduces the fundamentals of General Relativity, the origins of gravitational waves, and the remarkable story behind their historic discovery. Learn how observatories like LIGO detect signals from black hole mergers, neutron star collisions, and potentially even the earliest moments of the universe using incredibly precise laser interferometry.",
+          "image": "/assets/images/events_poster/ss25/ss25_4.jpg",
+          "youtube": "https://www.youtube.com/watch?v=__lRiYBReUk"
+        },
+        {
+          "id": "summer-5",
+          "title": "Are we Alone?",
+          "description": "The search for intelligent life: What do we mean by 'intelligent'? How do we classify civilizations (Kardashev Scale) and address the Fermi Paradox and its possible solutions? Ongoing and upcoming missions: From Mars to Europa, how do we classify habitability, what are the key missions, and what have we found so far? Origins and development of life: What conditions make life possible? How did life emerge from inorganic matter on Earth, and could similar evolution happen elsewhere? Detecting life beyond Earth: How do scientists identify biosignatures, detect exoplanets, and use tools like telescopes and spectroscopy to find signs of life far away? This session is a collaborative effort between the Horizon and the Biotech Club of IIT Madras.",
+          "image": "/assets/images/events_poster/ss25/ss25_5.jpg",
+          "youtube": "https://www.youtube.com/live/cWs7m5pFPRo"
+        }
+      ]
+    },
+    "qiskit": {
+      "id": "qiskit",
+      "title": "Qiskit Fall Fest 2025",
+      "icon": "\u269b\ufe0f",
+      "description": "Qiskit Fall Fest is a collection of quantum computing events created and planned by university students and volunteer hosts, with support from IBM Quantum.",
+      "image": "/assets/images/events_title_images/qiskit.jpeg",
+      "subcards": [
+        {
+          "id": "qiskit-1",
+          "title": "Sessions on Quantum Computing & Quantum Key Distribution",
+          "description": "The Quantum community of IITM and Horizon — The Physics and Astronomy Club of IITM — organized the events. Various sessions were conducted on Qiskit: quantum computing and Quantum Key Distribution. Mr. Dhinakaran Vinayagamurthy from IBM gave a session on Qiskit Architecture and Quantum Computers. \u201cState of the Art: Quantum Key Distribution\u201d was presented by speaker Nilesh on November 3rd, who explained more about optic cable based QKDs and their progress in the country.",
+          "image": "/assets/images/events_poster/qiskit1.png",
+          "youtube": ""
+        },
+        {
+          "id": "qiskit-2",
+          "title": "Qiskit Fall Fest Hackathon",
+          "description": "This year, about 150 universities out of 1005 applicants from 39 different countries were selected to organize events. IIT Madras was also selected this year to organize events for the Fall Fest. The Hackathon was conducted at 9:00 AM IST on the 1st and 2nd of November. Participants formed teams and simulated the Quantum Key Distribution protocol with error correction and eavesdropper identification in Python's Qiskit module.",
+          "image": "/assets/images/events_poster/qiskit2.png",
+          "youtube": ""
+        },
+        {
+          "id": "qiskit-3",
+          "title": "Acknowledgements & Special Thanks",
+          "description": "Special Thanks to:\n\u2022 \"IBM Quantum\", for providing a wonderful opportunity to conduct Qiskit Fall Fest.\n\u2022 \"Mr. Nilesh\" and \"Dr. Dhinakaran Vinayagamurthy\" for accepting their invitation as speakers for the sessions.\n\u2022 All participants and volunteers for the wonderful Fall Fest conducted this year.",
+          "image": "/assets/images/events_poster/qiskit3.png",
+          "youtube": ""
+        }
+      ]
+    },
+    "conclave": {
+      "id": "conclave",
+      "title": "Research Conclave",
+      "icon": "\ud83d\udd2c",
+      "description": "",
+      "image": "/assets/images/events_poster/rc25/title.jpg",
+      "subcards": [
+        {
+          "id": "conclave-1",
+          "title": "Research Conclave",
+          "description": "The Research Conclave is CFI's flagship annual event that celebrates student-led research, innovation, and interdisciplinary collaboration. It brings together students, faculty, and researchers to showcase pioneering projects, exchange ideas, and foster meaningful discussions across diverse scientific and engineering domains.\n\nThe event serves as a platform for participants to present their work, gain valuable feedback from experts, and explore opportunities for collaboration. By highlighting cutting-edge research and innovation, the conclave inspires the institute community to pursue impactful ideas and contribute to the advancement of science and technology.",
+          "image": "/assets/images/events_poster/rc25/title.jpg",
+          "youtube": ""
+        },
+        {
+          "id": "conclave-gallery",
+          "title": "Scenes from Research Conclave @ Horizon",
+          "images": [
+            "/assets/images/events_poster/rc25/PXL_20251102_123437168.jpg",
+            "/assets/images/events_poster/rc25/PXL_20251102_123533733.jpg",
+            "/assets/images/events_poster/rc25/PXL_20251102_124509969.jpg",
+            "/assets/images/events_poster/rc25/IMG_20251102_134522526.jpg",
+            "/assets/images/events_poster/rc25/IMG_20251102_134900937.jpg",
+            "/assets/images/events_poster/rc25/IMG_20251102_140416841.jpg",
+            "/assets/images/events_poster/rc25/IMG_20251102_140457134.jpg",
+            "/assets/images/events_poster/rc25/IMG_20251102_142559271.jpg",
+            "/assets/images/events_poster/rc25/IMG_20251102_142603718.jpg"
+          ]
+        }
+      ]
+    },
+    "cfi": {
+      "id": "cfi",
+      "title": "CFI Delta Expo",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "description": "",
+      "image": "/assets/images/events_poster/open_house/oh_poster.jpeg",
+      "subcards": [
+        {
+          "id": "cfi-about",
+          "title": "Delta Expo 2026",
+          "description": "Delta Expo is an annual showcase of student innovation, where students present projects they have designed and developed across diverse fields of technology and engineering. The event brings together innovative ideas spanning areas such as robotics, artificial intelligence, embedded systems, sustainable technology, and more.\n\nThe 2026 edition showcased a wide range of student-built projects, highlighting the creativity, technical skills, and problem-solving abilities of students. It provided visitors with an opportunity to interact with project teams, explore their work, and experience the culture of hands-on innovation and experimentation."
+        },
+        {
+          "id": "cfi-gallery",
+          "title": "Horizon at Delta Expo 2026",
+          "images": [
+            "/assets/images/events_poster/open_house/oh1.jpg",
+            "/assets/images/events_poster/open_house/oh2.jpg",
+            "/assets/images/events_poster/open_house/oh3.jpeg",
+            "/assets/images/events_poster/open_house/oh4.jpeg",
+            "/assets/images/events_poster/open_house/oh5.jpg",
+            "/assets/images/events_poster/open_house/oh6.jpg",
+            "/assets/images/events_poster/open_house/oh7.jpg",
+            "/assets/images/events_poster/open_house/oh8.jpg",
+            "/assets/images/events_poster/open_house/oh9.jpg",
+            "/assets/images/events_poster/open_house/oh10.jpg",
+            "/assets/images/events_poster/open_house/oh11.jpg",
+            "/assets/images/events_poster/open_house/oh12.jpg"
+          ]
+        }
+      ]
+    },
+    "freshie": {
+      "id": "freshie",
+      "title": "Freshie Orientation Session",
+      "icon": "\ud83c\udf93",
+      "description": "",
+      "image": "/assets/images/events_title_images/freshie_orientation.jpeg",
+      "subcards": [
+        {
+          "id": "freshie-1",
+          "title": "Freshie Orientation Session",
+          "description": "The Freshie Roadmap session introduced incoming students to the exciting world of physics and astronomy through a journey spanning everyday phenomena, cutting-edge science, and the physics behind popular science fiction. Designed as an engaging welcome event, it encouraged freshers to look at the universe with curiosity and a scientific mindset.",
+          "image": "/assets/images/freshieorientation1 (1).png",
+          "youtube": ""
+        },
+        {
+          "id": "freshie-2",
+          "title": "Freshie Orientation Session",
+          "description": "The session combined interactive discussions, thought-provoking demonstrations, and fun challenges to create an immersive learning experience. By showcasing the diverse scope of physics and astronomy, it inspired students to explore new ideas, connect with like-minded peers, and become part of Horizon's vibrant scientific community.",
+          "image": "/assets/images/freshieorientation1 (2).png",
+          "youtube": ""
+        }
+      ]
+    },
+    "extra": {
+      "id": "extra",
+      "title": "Other Events",
+      "icon": "\ud83c\udf20",
+      "sessionCount": 2,
+      "description": "Beyond its flagship events, Horizon continually explores innovative ways to make physics and astronomy more engaging for the IIT Madras community. Through a diverse range of interactive and creative initiatives, the club aims to present the wonders of the universe in accessible, inspiring, and memorable ways.",
+      "image": "/assets/images/events_poster/extra_sessions/zeroshadow.jpeg",
+      "subcards": [
+        {
+          "id": "extra-zeroshadow",
+          "title": "Zero Shadow Day",
+          "entries": [
+            {
+              "description": "Zero Shadow Day introduced the IIT Madras community to the fascinating phenomenon of the Sun passing directly overhead, causing vertical objects to cast almost no visible shadow. Through live demonstrations and interactive activities, participants witnessed this rare astronomical event firsthand.",
+              "image": "/assets/images/events_poster/extra_sessions/zeroshadow.jpeg"
+            },
+            {
+              "description": "The session blended scientific explanation with hands-on observation, encouraging students to appreciate everyday celestial phenomena. It offered a unique opportunity to experience astronomy in action while fostering curiosity about Earth's relationship with the Sun.",
+              "image": "/assets/images/events_poster/extra_sessions/zeroshadow2.jpeg"
+            }
+          ]
+        },
+        {
+          "id": "extra-lovedynamics",
+          "title": "Love Dynamics",
+          "entries": [
+            {
+              "description": "Love Dynamics explored how mathematics can be used to model human relationships through systems of differential equations. By presenting concepts such as equilibrium, oscillations, and stability in an engaging context, the session offered a unique perspective on the intersection of mathematics and everyday life.",
+              "image": "/assets/images/events_poster/extra_sessions/lovedynamics.jpeg"
+            },
+            {
+              "description": "Blending humor with scientific reasoning, the session transformed an unconventional topic into an interactive learning experience. It demonstrated how mathematical models can provide insights into real-world phenomena while making advanced concepts accessible and entertaining.",
+              "image": "/assets/images/events_poster/extra_sessions/lovedynamics1.jpeg"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "2026-27": {
+    "summer": {
+      "id": "summer",
+      "title": "Summer School Sessions",
+      "icon": "\u2600\ufe0f",
+      "description": "An online outreach initiative conducted by the club coordinators, introducing school students to the wonders of physics through engaging and accessible sessions. The program aims to inspire young minds and nurture a lasting interest in the physical sciences.",
+      "image": "/assets/images/events_poster/ss26/ss26poster.png",
+      "subcards": [
+        {
+          "id": "summer-1",
+          "title": "The Big Bang Theory",
+          "description": "Embark on a journey through the history of the cosmos, from the Big Bang to the formation of stars, galaxies, and the large-scale structure of the Universe. Explore dark matter, cosmic evolution, and the fundamental questions surrounding our origins.",
+          "image": "/assets/images/events_poster/ss26/bigbang.png",
+          "youtube": "https://www.youtube.com/live/5GEiF_cIcmo?si=AJTnRA9bFNpfj4IG"
+        },
+        {
+          "id": "summer-2",
+          "title": "Journey through the Stellar Evolution",
+          "description": "Discover the complete life cycle of stars—from their birth in vast nebulae to their ultimate fate as white dwarfs, neutron stars, or black holes. Learn how a star's mass determines its evolution and what the future holds for our own Sun.",
+          "image": "/assets/images/events_poster/ss26/stellarevol.jpeg",
+          "youtube": "https://www.youtube.com/live/rCSqRzsYAww?si=WG_6DfnR2vMJMNbq"
+        },
+        {
+          "id": "summer-3",
+          "title": "Fusion & Fission - Stars, Oppenheimer & Clean Energy",
+          "description": "Uncover the nuclear processes that power the stars and shaped human history. This session explores the science behind fusion and fission, their role in energy production, and their impact on technology, warfare, and the future of clean energy.",
+          "image": "/assets/images/events_poster/ss26/fusion.jpeg",
+          "youtube": "https://www.youtube.com/live/Ba8pnpJiCMw?si=IHqseTdBxi0ePUTo"
+        },
+        {
+          "id": "summer-4",
+          "title": "Atmospheric Ignition & The Fate of the World",
+          "description": "Step into one of history's most pivotal scientific moments and examine the physics behind the first atomic bomb. Explore the fears, calculations, and ethical dilemmas that surrounded the Trinity Test and changed the course of humanity.",
+          "image": "/assets/images/events_poster/ss26/atmosignis.png",
+          "youtube": "https://www.youtube.com/live/OpmGUloCP5o?si=wd44S5PCnQ3USrsL"
+        },
+        {
+          "id": "summer-5",
+          "title": "Quantum Mechanics and Quantum Computing",
+          "description": "Trace the evolution of quantum computing from the foundations of quantum mechanics to modern quantum technologies. Explore concepts such as qubits, superposition, entanglement, the Bloch sphere, Bell's theorem, and the principles that make quantum computers fundamentally different from classical ones.",
+          "image": "/assets/images/events_poster/ss26/quantumcomp.png",
+          "youtube": "https://www.youtube.com/live/CJgfSlwMjOA?si=aCS8hFO62BT9Mis6"
+        }
+      ]
+    }
+  }
+}

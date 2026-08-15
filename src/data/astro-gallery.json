@@ -1,0 +1,158 @@
+[
+  {
+    "id": "messier-10",
+    "title": "Messier 10 (M10 / NGC 6254)",
+    "description": "A globular cluster of stars located in the equatorial constellation of Ophiuchus.",
+    "imageSrc": "/assets/images/astro/M10.jpeg",
+    "highResImageSrc": "/assets/images/astro/M10.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ Mount",
+      "filter": "None (Monochrome)",
+      "location": "Madhuranthakam, TN"
+    }
+  },
+  {
+    "id": "orion-nebula",
+    "title": "Orion Nebula (Messier 42)",
+    "description": "A diffuse nebula situated in the Milky Way, located south of Orion's Belt in the constellation of Orion.",
+    "imageSrc": "/assets/images/astro/Orion Nebula.jpeg",
+    "highResImageSrc": "/assets/images/astro/Orion Nebula.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ Mount",
+      "filter": "RGB Filters, ZWO Electronic Filter Wheel",
+      "location": "HSB Rooftop, IITM"
+    }
+  },
+  {
+    "id": "beehive-cluster",
+    "title": "Beehive Cluster (Messier 44 / NGC 2632)",
+    "description": "An open cluster in the constellation Cancer, one of the nearest open clusters to Earth.",
+    "imageSrc": "/assets/images/astro/Beehive Cluster.jpeg",
+    "highResImageSrc": "/assets/images/astro/Beehive Cluster.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Explore Scientific PMC8",
+      "filter": "None (Monochrome)",
+      "location": "HSB Rooftop, IITM"
+    }
+  },
+  {
+    "id": "bode-cigar-galaxy",
+    "title": "Bode's Galaxy & Cigar Galaxy (M81 & M82)",
+    "description": "A famous pair of interacting galaxies located in the constellation Ursa Major.",
+    "imageSrc": "/assets/images/astro/Bode and Cigar Galaxy.jpeg",
+    "highResImageSrc": "/assets/images/astro/Bode and Cigar Galaxy.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ",
+      "filter": "None (Monochrome)",
+      "location": "Coorg"
+    }
+  },
+  {
+    "id": "caldwell-76",
+    "title": "Caldwell 76 (NGC 6210)",
+    "description": "A bright planetary nebula in the constellation Hercules.",
+    "imageSrc": "/assets/images/astro/C76.jpeg",
+    "highResImageSrc": "/assets/images/astro/C76.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ Mount",
+      "filter": "None (Monochrome)",
+      "location": "Madhuranthakam, TN"
+    }
+  },
+  {
+    "id": "flame-nebula",
+    "title": "Flame Nebula (NGC 2024)",
+    "description": "An emission nebula in the constellation Orion, lit up by the bright star Alnitak.",
+    "imageSrc": "/assets/images/astro/Flame Nebulae.jpeg",
+    "highResImageSrc": "/assets/images/astro/Flame Nebulae.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ",
+      "filter": "RGB Filters, ZWO Electronic Filter Wheel",
+      "location": "Coorg"
+    }
+  },
+  {
+    "id": "messier-32",
+    "title": "Messier 32 (M32 / NGC 221)",
+    "description": "A compact elliptical dwarf galaxy that is a satellite galaxy of the Andromeda Galaxy (M31).",
+    "imageSrc": "/assets/images/astro/M32.jpeg",
+    "highResImageSrc": "/assets/images/astro/M32.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Explore Scientific PMC8",
+      "filter": "None (Monochrome)",
+      "location": "HSB Rooftop, IITM"
+    }
+  },
+  {
+    "id": "messier-35",
+    "title": "Messier 35 (M35 / NGC 2168)",
+    "description": "A large open star cluster located in the constellation Gemini.",
+    "imageSrc": "/assets/images/astro/M35.jpeg",
+    "highResImageSrc": "/assets/images/astro/M35.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Explore Scientific PMC8",
+      "filter": "None (Monochrome)",
+      "location": "HSB Rooftop, IITM"
+    }
+  },
+  {
+    "id": "pacman-nebula",
+    "title": "Pacman Nebula (NGC 281)",
+    "description": "An H II region emission nebula located in the constellation Cassiopeia, famous for its distinct shape shaped by dark dust lanes.",
+    "imageSrc": "/assets/images/astro/Pacman Nebula.jpeg",
+    "highResImageSrc": "/assets/images/astro/Pacman Nebula.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ",
+      "filter": "None (Monochrome)",
+      "location": "Coorg"
+    }
+  },
+  {
+    "id": "pleiades",
+    "title": "Pleiades (Messier 45 / Seven Sisters)",
+    "description": "An open star cluster containing middle-aged, hot B-type stars located in the constellation Taurus.",
+    "imageSrc": "/assets/images/astro/Pleiades.jpeg",
+    "highResImageSrc": "/assets/images/astro/Pleiades.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ Mount",
+      "filter": "RGB Filters, ZWO Electronic Filter Wheel",
+      "location": "HSB Rooftop, IITM"
+    }
+  },
+  {
+    "id": "vega",
+    "title": "Vega (Alpha Lyrae / \u03b1 Lyr)",
+    "description": "The brightest star in the northern constellation of Lyra and the fifth-brightest star in the night sky.",
+    "imageSrc": "/assets/images/astro/Vega.jpeg",
+    "highResImageSrc": "/assets/images/astro/Vega.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ Mount",
+      "filter": "None (Monochrome)",
+      "location": "HSB Rooftop, IITM"
+    }
+  },
+  {
+    "id": "whirlpool-galaxy",
+    "title": "Whirlpool Galaxy (Messier 51a / NGC 5194)",
+    "description": "A grand-design spiral galaxy located in the constellation Canes Venatici, interacting with its companion NGC 5195.",
+    "imageSrc": "/assets/images/astro/Whirlpool Galaxy.jpeg",
+    "highResImageSrc": "/assets/images/astro/Whirlpool Galaxy.jpeg",
+    "exif": {
+      "camera": "ZWO ASI183MM",
+      "mount": "Bresser EQ Mount",
+      "filter": "RGB Filters, ZWO Electronic Filter Wheel",
+      "location": "Madhuranthakam, TN"
+    }
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "inter-iit-tech-meet",
+    "name": "Inter-IIT Tech Meet",
+    "description": "India's largest inter-collegiate technical competition, where teams from all IITs compete across diverse problem statements in science, engineering, and technology.",
+    "years": ["2024"],
+    "image": "/assets/images/guild/interiit.jpeg",
+    "summary": "Template details for Horizon's Inter-IIT Tech Meet participation. This page can later hold team members, problem statements, preparation notes, photos, and result breakdowns.",
+    "highlights": [
+      "Represented IIT Madras in Observational Astronomy",
+      "Secured 3rd place in the 2024 edition",
+      "Prepared through observation planning, data analysis, and presentation drills"
+    ]
+  },
+  {
+    "id": "decoherence",
+    "name": "Decoherence",
+    "description": "A national physics research competition hosted by IISc Bengaluru, where undergraduate teams present their research projects to expert judges.",
+    "years": ["2025"],
+    "image": "/assets/images/guild/decoherence.jpeg",
+    "summary": "Template details for the Decoherence competition page. This can be expanded with project abstracts, judging criteria, participant details, and final presentation material.",
+    "highlights": [
+      "Presented undergraduate physics research at IISc Bengaluru",
+      "Secured 3rd place in the 2025 edition",
+      "Built a competition-ready research narrative and technical defense"
+    ]
+  }
+]
