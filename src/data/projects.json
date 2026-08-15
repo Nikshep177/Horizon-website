@@ -111,11 +111,11 @@
       "content": "<h2>SonicPhase</h2><p>SonicPhase is built around Takens' delay-embedding theorem \u2014 a result from nonlinear dynamics stating that the full phase-space geometry of a dynamical system can be reconstructed from a single scalar time series, using only delayed copies of itself. Given a signal x(t), the embedding vector y(t) = [x(t), x(t+\u03c4), ..., x(t+(m\u22121)\u03c4)] recovers an attractor topologically equivalent to the system's true state space, once the delay \u03c4 (via KSG mutual information) and embedding dimension m (via Cao's method) are correctly estimated.</p><p>This same machinery is used across physics to characterize turbulence, EEG signals, laser dynamics, and chaotic systems \u2014 anywhere the underlying state space isn't directly observable but a proxy signal is. SonicPhase applies it to Indian classical music, treating melodic pitch contours as the observable output of a dynamical system, and using reconstructed-attractor invariants (correlation dimension, Lyapunov exponents, recurrence measures) to classify ragas from melodic pattern dynamics \u2014 motivated by the hypothesis that these invariants generalize across performers and degrade more gracefully than conventional spectral features (MFCC, TDMS).</p><p>The same toolkit could potentially extend beyond music \u2014 possibly to characterizing quantum decoherence noise from qubit measurement time series, or detecting synchronization patterns between the Sun's hemispheres from sunspot records.</p>",
       "team": {
         "leads": [
-          { "name": "Nikshep", "image": "/assets/images/projects/2026/Sonicphase/Nikshep.jpeg" }
+          { "name": "Nikshep", "image": "/assets/Projects 2026-27/Sonicphase/Nikshep.jpeg" }
         ],
         "members": [
-          { "name": "Pratyush Routray", "image": "/assets/images/projects/2026/Sonicphase/pratyosh.jpeg" },
-          { "name": "Raghav Y", "image": "/assets/images/projects/2026/Sonicphase/Raghav.jpeg" },
+          { "name": "Pratyush Routray", "image": "/assets/Projects 2026-27/Sonicphase/pratyosh.jpeg" },
+          { "name": "Raghav Y", "image": "/assets/Projects 2026-27/Sonicphase/Raghav.jpeg" },
           { "name": "Anushri Mukund", "image": "/assets/images/projects/2026/sonicphase-anushri.jpg" },
           { "name": "Arshad Raihaan", "image": "/assets/images/projects/2026/sonicphase-arshad.jpg" },
           { "name": "Aarush L", "image": "/assets/images/projects/2026/sonicphase-aarush.jpg" }
