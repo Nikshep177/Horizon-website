@@ -1060,7 +1060,7 @@
   z-index: 0;
   overflow: hidden;
   background-color: #05070f;
-  background-image: url('/Horizon-website/assets/images/background.jpg');
+  background-image: url('/assets/images/background.jpg');
   background-size: cover;
   background-position: center;
   animation: space-bg-zoom 45s ease-in-out infinite alternate;
