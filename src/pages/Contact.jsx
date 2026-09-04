@@ -1,4 +1,5 @@
 import SpaceBackground from '../components/SpaceBackground'
+import PageHeader from '../components/PageHeader'
 import '../styles/events.css'
 
 export default function Contact() {
@@ -6,9 +7,7 @@ export default function Contact() {
     <article className="page events-page contact-page">
       <SpaceBackground />
       <div className="events-container">
-        <header className="events-header">
-          <h1 className="events-title">Contact Us</h1>
-        </header>
+        <PageHeader title="Contact Us" />
         <div className="page-content">
           <h2>Get in Touch</h2>
           <p>We'd love to hear from you! Whether you're interested in joining the club, have questions about our events, or want to collaborate, feel free to reach out.</p>

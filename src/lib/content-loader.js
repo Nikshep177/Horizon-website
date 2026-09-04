@@ -1,5 +1,6 @@
 import { normalizeAssetPaths, normalizeMarkdownAssetUrls } from './image-path'
 import { eventsData, projects } from './site-data'
+import { compareDatesDesc } from './format-date'
 
 const files = import.meta.glob('/src/content/**/*.md', {
   query: '?raw',
@@ -37,6 +38,18 @@ function parseFrontmatter(raw) {
 const articles = []
 const events = []
 const iptProblems = []
+const unpublishedArticleIds = new Set([
+  'getting-started-with-open-source',
+  'project-radian',
+  'project-starspec',
+  'project-optiqomm',
+  'project-sonicphase',
+  'project-ferrostats',
+  'project-quantaband',
+  'project-ligo',
+  'project-apteam',
+  'project-apteam-2627',
+])
 
 for (const [filePath, raw] of Object.entries(files)) {
   const { data, content } = parseFrontmatter(raw)
@@ -47,7 +60,7 @@ for (const [filePath, raw] of Object.entries(files)) {
   const entry = { id, ...data, content }
 
   if (category === 'articles') {
-    articles.push(entry)
+    articles.push({ ...entry, published: !unpublishedArticleIds.has(id) })
   } else if (category === 'events') {
     events.push(entry)
   } else if (category === 'ipt') {
@@ -66,6 +79,7 @@ for (const [tenure, tenureProjects] of Object.entries(projects)) {
       author: project.author,
       category: 'Project',
       tenure,
+      published: !unpublishedArticleIds.has(`project-${project.id}`),
     })
   }
 }
@@ -80,16 +94,18 @@ for (const [tenure, tenureData] of Object.entries(eventsData)) {
   }
 }
 
-articles.sort((a, b) => new Date(b.date) - new Date(a.date))
-events.sort((a, b) => new Date(b.date) - new Date(a.date))
+articles.sort((a, b) => compareDatesDesc(a.date, b.date))
+events.sort((a, b) => compareDatesDesc(a.date, b.date))
 iptProblems.sort((a, b) => b.year - a.year)
 
+const publishedArticles = articles.filter(article => article.published !== false)
+
 export function getArticles() {
-  return articles
+  return publishedArticles
 }
 
 export function getArticle(id) {
-  return articles.find(a => a.id === id) || null
+  return publishedArticles.find(a => a.id === id) || null
 }
 
 export function getEvents() {

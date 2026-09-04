@@ -3,6 +3,7 @@ import { imagePath } from '../lib/image-path'
 import { getIPTProblems } from '../lib/content-loader'
 import { competitions } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
+import InvalidState from '../components/InvalidState'
 import '../styles/events.css'
 
 const achievements = [
@@ -42,10 +43,28 @@ const guildNav = [
 export default function Guild() {
   const [searchParams, setSearchParams] = useSearchParams()
   const requestedSection = searchParams.get('section')
+  const invalidSection = requestedSection && !guildNav.some(item => item.id === requestedSection)
   const activeSection = guildNav.some(item => item.id === requestedSection)
     ? requestedSection
     : 'achievements'
   const problems = getIPTProblems()
+
+  if (invalidSection) {
+    return (
+      <article className="guild-page">
+        <SpaceBackground />
+        <div className="guild-page__content">
+          <div className="container">
+            <InvalidState
+              message={`No Guild section matches "${requestedSection}".`}
+              backTo="/guild"
+              backLabel="View Guild"
+            />
+          </div>
+        </div>
+      </article>
+    )
+  }
 
   return (
     <article className="guild-page">
@@ -147,7 +166,7 @@ export default function Guild() {
                     className="guild-competition-card"
                   >
                     <div className="guild-competition-card__image">
-                      <img src={imagePath(comp.image)} alt={comp.name} />
+                      <img src={imagePath(comp.image)} alt={comp.name} loading="lazy" decoding="async" />
                     </div>
                     <div className="guild-competition-card__body">
                       <h3 className="guild-competition-card__title">{comp.name}</h3>

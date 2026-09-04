@@ -2,42 +2,31 @@ import { Link } from 'react-router-dom'
 import { getArticles } from '../lib/content-loader'
 import { formatDate } from '../lib/format-date'
 import { imagePath } from '../lib/image-path'
-// MagicBento removed — using projects-style grid for articles
 import SpaceBackground from '../components/SpaceBackground'
+import EmptyState from '../components/EmptyState'
+import PageHeader from '../components/PageHeader'
 import '../styles/events.css'
 
 export default function Articles() {
   const articles = getArticles()
-  const hiddenArticleIds = new Set([
-    'getting-started-with-open-source',
-    'project-radian',
-    'project-starspec',
-    'project-optiqomm',
-    'project-sonicphase',
-    'project-ferrostats',
-    'project-quantaband',
-    'project-ligo',
-    'project-apteam',
-    'project-apteam-2627',
-  ])
-  const visibleArticles = articles.filter(article => !hiddenArticleIds.has(article.id))
 
   return (
     <article className="page events-page">
       <SpaceBackground />
 
       <div className="events-container">
-        <header className="events-header articles-header">
-          <h1 className="events-title">Articles</h1>
-          <p className="events-subtitle">Our articles explore a wide range of topics in physics, from fundamental concepts and historical developments to recent research and scientific breakthroughs. They aim to present complex ideas in a clear and engaging manner, encouraging readers to learn, question, and explore further.</p>
-        </header>
+        <PageHeader
+          title="Articles"
+          className="articles-header"
+          subtitle="Our articles explore a wide range of topics in physics, from fundamental concepts and historical developments to recent research and scientific breakthroughs. They aim to present complex ideas in a clear and engaging manner, encouraging readers to learn, question, and explore further."
+        />
 
         <div className="articles-list">
-          {visibleArticles.map(article => (
+          {articles.map(article => (
             <article key={article.id} className="article-card">
               <Link to={`/articles/${article.id}`} className="card-visual">
                 {article.image ? (
-                  <img src={imagePath(article.image)} alt={article.title} />
+                  <img src={imagePath(article.image)} alt={article.title} loading="lazy" decoding="async" />
                 ) : (
                   <div className="pattern-bg" />
                 )}
@@ -63,10 +52,8 @@ export default function Articles() {
           ))}
         </div>
 
-        {visibleArticles.length === 0 && (
-          <div className="empty-state">
-            <p>No articles yet. Check back soon!</p>
-          </div>
+        {articles.length === 0 && (
+          <EmptyState message="No articles yet. Check back soon!" />
         )}
       </div>
     </article>

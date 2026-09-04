@@ -2,6 +2,9 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
 import { eventsData } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
+import SelectionPills from '../components/SelectionPills'
+import EmptyState from '../components/EmptyState'
+import InvalidState from '../components/InvalidState'
 import { eventCategoryThemes } from '../data/visualThemes'
 import '../styles/events.css'
 
@@ -9,7 +12,23 @@ const years = Object.keys(eventsData).sort().reverse()
 export default function Events() {
   const [searchParams, setSearchParams] = useSearchParams()
   const requestedYear = searchParams.get('year')
+  const invalidYear = requestedYear && !years.includes(requestedYear)
   const activeYear = years.includes(requestedYear) ? requestedYear : years[0]
+
+  if (invalidYear) {
+    return (
+      <article className="events-page">
+        <SpaceBackground />
+        <div className="events-container">
+          <InvalidState
+            message={`No events year matches "${requestedYear}".`}
+            backTo="/events"
+            backLabel="View Events"
+          />
+        </div>
+      </article>
+    )
+  }
 
   const yearData = eventsData[activeYear] || {}
   const categories = Object.values(yearData)
@@ -51,18 +70,12 @@ export default function Events() {
           </p>
         </header>
 
-        <nav className="year-pills" aria-label="Select year">
-          {years.map(year => (
-            <button
-              key={year}
-              className={`year-pill${activeYear === year ? ' year-pill--active' : ''}`}
-              onClick={() => setSearchParams({ year }, { replace: true })}
-            >
-              {activeYear === year && <span className="year-pill__comet" />}
-              <span className="year-pill__label">{year}</span>
-            </button>
-          ))}
-        </nav>
+        <SelectionPills
+          items={years}
+          activeItem={activeYear}
+          onSelect={year => setSearchParams({ year }, { replace: true })}
+          ariaLabel="Select year"
+        />
 
         <div className="category-grid">
           {categories.map((cat, index) => {
@@ -81,7 +94,7 @@ export default function Events() {
               <div className="category-card__shooting-star" />
 
               <div className="category-card__image">
-                <img src={imagePath(cat.image)} alt={cat.title} />
+                <img src={imagePath(cat.image)} alt={cat.title} loading="lazy" decoding="async" />
                 <div className="category-card__image-overlay" />
               </div>
 
@@ -104,6 +117,9 @@ export default function Events() {
             )
           })}
         </div>
+        {categories.length === 0 && (
+          <EmptyState message="No events are available for this year." />
+        )}
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { useRef, useEffect, useCallback, useState } from 'react'
 import { gsap } from 'gsap'
+import useReducedMotion from '../../lib/use-reduced-motion'
 import './MagicBento.css'
 
 const DEFAULT_PARTICLE_COUNT = 12
@@ -405,7 +406,8 @@ export default function MagicBento({
 }) {
   const gridRef = useRef(null)
   const isMobile = useMobileDetection()
-  const shouldDisableAnimations = disableAnimations || isMobile
+  const prefersReducedMotion = useReducedMotion()
+  const shouldDisableAnimations = disableAnimations || isMobile || prefersReducedMotion
 
   return (
     <>

@@ -7,6 +7,7 @@ import Particles from '../components/Particles/Particles'
 import Masonry from '../components/Masonry/Masonry'
 import ImageModal from '../components/ImageModal/ImageModal'
 import EquipmentInventory from '../components/EquipmentInventory'
+import EmptyState from '../components/EmptyState'
 import '../styles/events.css'
 import './Astrophotography.css'
 
@@ -49,17 +50,21 @@ export default function Astrophotography() {
           <div className="astro-gallery-content">
             <div className="astro-gallery-container">
               <h2 className="event-category__title astro-gallery-title">The Cosmic Gallery</h2>
-              <Masonry
-                items={formattedAstroItems}
-                ease="power3.out"
-                duration={0.6}
-                stagger={0.05}
-                animateFrom="bottom"
-                scaleOnHover={true}
-                hoverScale={0.97}
-                blurToFocus={true}
-                onItemClick={item => setSelectedImage(item)}
-              />
+              {formattedAstroItems.length > 0 ? (
+                <Masonry
+                  items={formattedAstroItems}
+                  ease="power3.out"
+                  duration={0.6}
+                  stagger={0.05}
+                  animateFrom="bottom"
+                  scaleOnHover={true}
+                  hoverScale={0.97}
+                  blurToFocus={true}
+                  onItemClick={item => setSelectedImage(item)}
+                />
+              ) : (
+                <EmptyState message="No astrophotography images are available yet." />
+              )}
             </div>
 
             <EquipmentInventory />

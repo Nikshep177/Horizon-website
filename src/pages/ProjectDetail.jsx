@@ -2,6 +2,7 @@ import { useParams, Link, useSearchParams, useLocation } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
 import { projects } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
+import InvalidState from '../components/InvalidState'
 import { projectThemes } from '../data/visualThemes'
 import { formatDate } from '../lib/format-date'
 import '../styles/events.css'
@@ -14,11 +15,27 @@ const fallbackImages = {
 }
 
 export default function ProjectDetail() {
-  const { id } = useParams()
+  const { id, tenure: routeTenure } = useParams()
   const [searchParams] = useSearchParams()
   const location = useLocation()
 
-  const tenureParam = searchParams.get('tenure') || searchParams.get('year') || location.state?.tenure || location.state?.year
+  const tenureParam = routeTenure || searchParams.get('tenure') || searchParams.get('year') || location.state?.tenure || location.state?.year
+  const invalidTenure = tenureParam && !projects[tenureParam]
+
+  if (invalidTenure) {
+    return (
+      <div className="events-page project-detail-page">
+        <SpaceBackground />
+        <div className="events-container">
+          <InvalidState
+            message={`No projects tenure matches "${tenureParam}".`}
+            backTo="/projects"
+            backLabel="View Projects"
+          />
+        </div>
+      </div>
+    )
+  }
 
   let project = null
   let activeTenure = tenureParam

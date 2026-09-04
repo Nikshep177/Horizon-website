@@ -20,6 +20,7 @@ Create and preview the production build with:
 ```sh
 npm run build
 npm run preview
+npm run validate:data
 ```
 
 Production assets are configured for GitHub Pages under `/Horizon-website/`. The site uses `HashRouter`, so deployed routes use the `/#/` form and do not require server-side fallback configuration.

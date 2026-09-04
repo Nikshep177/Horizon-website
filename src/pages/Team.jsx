@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import SpaceBackground from '../components/SpaceBackground'
 import GalleryRow from '../components/GalleryRow'
+import SelectionPills from '../components/SelectionPills'
+import EmptyState from '../components/EmptyState'
+import InvalidState from '../components/InvalidState'
+import PageHeader from '../components/PageHeader'
 import { imagePath, normalizeAssetPaths } from '../lib/image-path'
 import { teamData } from '../lib/site-data'
 import '../styles/events.css'
@@ -169,12 +173,33 @@ const galleryGroups = normalizeAssetPaths({
   ],
 })
 
+const galleryGroupOrder = [
+  'Open house',
+  'Research conclave',
+  'Observation session',
+  'Zero shadow day',
+  'Star party',
+  'Trip 2025-26',
+]
+
+const galleryGroupRank = title => {
+  const index = galleryGroupOrder.indexOf(title)
+  return index === -1 ? galleryGroupOrder.length : index
+}
+
+const orderedGalleryGroups = groups => [...groups].sort((a, b) => (
+  galleryGroupRank(a.title) - galleryGroupRank(b.title)
+))
+
 export default function Team() {
   const [searchParams, setSearchParams] = useSearchParams()
   const requestedTenure = searchParams.get('tenure')
   const requestedGalleryTenure = searchParams.get('gallery')
+  const invalidTenure = requestedTenure && !tenures.includes(requestedTenure)
+  const invalidGalleryTenure = requestedGalleryTenure && !tenures.includes(requestedGalleryTenure)
   const activeTenure = tenures.includes(requestedTenure) ? requestedTenure : '2026-27'
   const activeGalleryTenure = tenures.includes(requestedGalleryTenure) ? requestedGalleryTenure : '2025-26'
+  const teamPageRef = useRef(null)
   const observerRef = useRef(null)
   const [failedImages, setFailedImages] = useState(new Set())
 
@@ -192,13 +217,14 @@ export default function Team() {
     if (!grouped[m.section]) grouped[m.section] = []
     grouped[m.section].push(m)
   }
+  const hasMembers = Object.values(grouped).some(section => section.length > 0)
 
   const handleImageError = (name) => {
     setFailedImages(prev => new Set(prev).add(name))
   }
 
   useEffect(() => {
-    const sections = document.querySelectorAll('.team-section')
+    const sections = teamPageRef.current?.querySelectorAll('.team-section') || []
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -214,26 +240,33 @@ export default function Team() {
     return () => obs.disconnect()
   }, [activeTenure])
 
+  if (invalidTenure || invalidGalleryTenure) {
+    const invalidValue = invalidTenure ? requestedTenure : requestedGalleryTenure
+    return (
+      <article className="page events-page team-page">
+        <SpaceBackground />
+        <div className="events-container">
+          <InvalidState
+            message={`No team tenure matches "${invalidValue}".`}
+            backTo="/team"
+            backLabel="View Team"
+          />
+        </div>
+      </article>
+    )
+  }
+
   return (
-    <article className="page events-page team-page">
+    <article ref={teamPageRef} className="page events-page team-page">
       <SpaceBackground />
       <div className="events-container">
-        <header className="events-header">
-          <h1 className="events-title">Our Team</h1>
-          <p className="events-subtitle">Meet the people who make Horizon possible.</p>
-        </header>
-        <nav className="year-pills" aria-label="Select tenure">
-          {tenures.map(t => (
-            <button
-              key={t}
-              className={`year-pill${activeTenure === t ? ' year-pill--active' : ''}`}
-              onClick={() => updateSelection({ tenure: t })}
-            >
-              {activeTenure === t && <span className="year-pill__comet" />}
-              <span className="year-pill__label">{t}</span>
-            </button>
-          ))}
-        </nav>
+        <PageHeader title="Our Team" subtitle="Meet the people who make Horizon possible." />
+        <SelectionPills
+          items={tenures}
+          activeItem={activeTenure}
+          onSelect={tenure => updateSelection({ tenure })}
+          ariaLabel="Select tenure"
+        />
         <div className="team-content">
             {['core', 'coordinator'].map(section => (
               grouped[section]?.length > 0 && (
@@ -252,6 +285,7 @@ export default function Team() {
                                 src={imagePath(imageSrc)}
                                 alt={m.name}
                                 loading="lazy"
+                                decoding="async"
                                 style={getMemberStyle(m.name)}
                                 onError={() => handleImageError(m.name)}
                               />
@@ -270,6 +304,9 @@ export default function Team() {
                 </section>
               )
             ))}
+            {!hasMembers && (
+              <EmptyState message="No team members are available for this tenure." />
+            )}
 
             <div id="gallery" className="team-section team-gallery-section">
               <div className="project-divider team-gallery-divider" />
@@ -277,24 +314,22 @@ export default function Team() {
                 <h2 className="events-title">Gallery &mdash; {activeGalleryTenure}</h2>
                 <p className="events-subtitle">From star parties and observation sessions to events and moments behind the scenes — a glimpse into our journey at Horizon</p>
               </div>
-              <nav className="year-pills team-gallery-tenure" aria-label="Select gallery tenure">
-                {tenures.map(t => (
-                  <button
-                    key={t}
-                    className={`year-pill${activeGalleryTenure === t ? ' year-pill--active' : ''}`}
-                    onClick={() => updateSelection({ gallery: t })}
-                  >
-                    {activeGalleryTenure === t && <span className="year-pill__comet" />}
-                    <span className="year-pill__label">{t}</span>
-                  </button>
-                ))}
-              </nav>
+              <SelectionPills
+                items={tenures}
+                activeItem={activeGalleryTenure}
+                onSelect={gallery => updateSelection({ gallery })}
+                ariaLabel="Select gallery tenure"
+                className="team-gallery-tenure"
+              />
               {activeGalleryTenure === '2025-26' && (
                 <div className="gallery-sections">
-                  {galleryGroups['2025-26'].map((group) => (
+                  {orderedGalleryGroups(galleryGroups['2025-26']).map((group) => (
                     <GalleryRow key={group.title} title={group.title} images={group.images} />
                   ))}
                 </div>
+              )}
+              {activeGalleryTenure !== '2025-26' && (
+                <EmptyState message="No gallery is available for this tenure yet." />
               )}
             </div>
           </div>
