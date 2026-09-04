@@ -5,6 +5,7 @@ import { imagePath } from '../lib/image-path'
 import SpaceBackground from '../components/SpaceBackground'
 import EmptyState from '../components/EmptyState'
 import PageHeader from '../components/PageHeader'
+import CardGrid from '../components/CardGrid'
 import '../styles/events.css'
 
 export default function Articles() {
@@ -21,7 +22,7 @@ export default function Articles() {
           subtitle="Our articles explore a wide range of topics in physics, from fundamental concepts and historical developments to recent research and scientific breakthroughs. They aim to present complex ideas in a clear and engaging manner, encouraging readers to learn, question, and explore further."
         />
 
-        <div className="articles-list">
+        <CardGrid className="articles-list">
           {articles.map(article => (
             <article key={article.id} className="article-card">
               <Link to={`/articles/${article.id}`} className="card-visual">
@@ -50,7 +51,7 @@ export default function Articles() {
               </div>
             </article>
           ))}
-        </div>
+        </CardGrid>
 
         {articles.length === 0 && (
           <EmptyState message="No articles yet. Check back soon!" />

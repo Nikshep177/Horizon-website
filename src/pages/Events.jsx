@@ -5,7 +5,7 @@ import SpaceBackground from '../components/SpaceBackground'
 import SelectionPills from '../components/SelectionPills'
 import EmptyState from '../components/EmptyState'
 import InvalidState from '../components/InvalidState'
-import { eventCategoryThemes } from '../data/visualThemes'
+import { getEventTheme } from '../data/visualThemes'
 import '../styles/events.css'
 
 const years = Object.keys(eventsData).sort().reverse()
@@ -79,6 +79,7 @@ export default function Events() {
 
         <div className="category-grid">
           {categories.map((cat, index) => {
+            const colors = getEventTheme(cat.id)
             const sessionCount = cat.sessionCount ?? (cat.tiles ? cat.tiles.length : cat.subcards.length)
             const noCount = ['qiskit', 'conclave', 'cfi', 'freshie', 'observation'].includes(cat.id)
             return (
@@ -87,8 +88,8 @@ export default function Events() {
               to={`/events/${cat.id}?year=${encodeURIComponent(activeYear)}`}
               className={`category-card${index % 2 === 1 ? ' category-card--reverse' : ''}${cat.id === 'observation' ? ' category-card--observation' : ''}`}
               style={{
-                '--cat-bg': eventCategoryThemes[cat.id]?.bg || '#1a1a2e',
-                '--cat-accent': eventCategoryThemes[cat.id]?.accent || '#6366f1',
+                '--cat-bg': colors.bg,
+                '--cat-accent': colors.accent,
               }}
             >
               <div className="category-card__shooting-star" />

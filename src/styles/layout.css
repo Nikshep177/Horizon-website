@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   max-width: var(--container-max-width);
+  min-width: 0;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
 }
@@ -14,6 +15,33 @@
   min-height: calc(100vh - var(--header-height) - 200px);
   min-width: 0;
   padding-top: var(--header-height);
+}
+
+.layout-safe {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.media-fluid {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.grid-stretch {
+  min-width: 0;
+  align-items: stretch;
+}
+
+.grid-stretch > *,
+.card-grid > * {
+  min-width: 0;
+}
+
+.grid-stretch > * {
+  height: 100%;
 }
 
 .skip-link {
@@ -108,14 +136,26 @@
   width: 100%;
   height: 100%;
   z-index: 0;
+  pointer-events: none;
   opacity: 0.6; /* Adjust opacity for subtlety */
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
+}
+
+@media (max-width: 700px) {
+  .site-footer {
+    padding-top: var(--spacing-xl);
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
 }
 
 .footer-section h3 {
@@ -138,6 +178,7 @@
 .footer-section ul a {
   color: var(--color-text-light);
   text-decoration: none;
+  overflow-wrap: anywhere;
   transition: color 0.3s ease;
 }
 .footer-section ul a:hover {

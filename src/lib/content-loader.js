@@ -8,6 +8,44 @@ const files = import.meta.glob('/src/content/**/*.md', {
   eager: true,
 })
 
+function splitInlineList(value) {
+  const items = []
+  let current = ''
+  let quote = null
+
+  for (const character of value) {
+    if ((character === '"' || character === "'") && (!quote || quote === character)) {
+      quote = quote ? null : character
+    }
+
+    if (character === ',' && !quote) {
+      items.push(current.trim())
+      current = ''
+    } else {
+      current += character
+    }
+  }
+
+  if (current.trim()) items.push(current.trim())
+  return items
+}
+
+function parseScalar(value) {
+  if (value.startsWith('[') && value.endsWith(']')) {
+    return splitInlineList(value.slice(1, -1)).map(parseScalar)
+  }
+
+  if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+    return value.slice(1, -1)
+  }
+
+  if (value === 'true') return true
+  if (value === 'false') return false
+  if (value === 'null' || value === '~') return null
+  if (value !== '' && Number.isFinite(Number(value))) return Number(value)
+  return value
+}
+
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
   if (!match) return { data: {}, content: normalizeMarkdownAssetUrls(raw) }
@@ -17,16 +55,7 @@ function parseFrontmatter(raw) {
     const colon = line.indexOf(':')
     if (colon === -1) continue
     const key = line.slice(0, colon).trim()
-    let value = line.slice(colon + 1).trim()
-
-    if (value.startsWith('[') && value.endsWith(']')) {
-      value = value.slice(1, -1).split(',').map(s =>
-        s.trim().replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1')
-      )
-    } else {
-      value = value.replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1')
-    }
-    data[key] = value
+    data[key] = parseScalar(line.slice(colon + 1).trim())
   }
 
   return {

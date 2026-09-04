@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate:data && vite build",
+    "build": "npm run validate:data && vite build && npm run check:bundle",
     "lint": "eslint .",
     "preview": "vite preview",
-    "validate:data": "node scripts/validate-data.mjs"
+    "validate:data": "node scripts/validate-data.mjs",
+    "check:bundle": "node scripts/check-bundle-size.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

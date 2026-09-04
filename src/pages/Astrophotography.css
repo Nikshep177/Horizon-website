@@ -47,7 +47,8 @@
   align-items: center;
   justify-content: center;
   padding: 10px 28px;
-  border-radius: 9999px;
+  min-height: 44px;
+  border-radius: var(--border-radius-pill);
   border: 2px solid var(--color-border);
   background: var(--color-background-alt);
   color: var(--color-text);
@@ -60,7 +61,7 @@
   overflow: hidden;
   text-decoration: none;
   height: auto;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .astro-page .inventory-nav-link:hover {

@@ -5,7 +5,7 @@ import { eventsData } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
 import InvalidState from '../components/InvalidState'
 import ExternalLink from '../components/ExternalLink'
-import { eventCategoryThemes } from '../data/visualThemes'
+import { getEventTheme } from '../data/visualThemes'
 import '../styles/events.css'
 
 export default function EventCategory() {
@@ -19,7 +19,7 @@ export default function EventCategory() {
 
   const yearData = eventsData[year] || {}
   const cat = yearData[category]
-  const colors = eventCategoryThemes[category] || eventCategoryThemes.g2g
+  const colors = getEventTheme(category)
 
   useEffect(() => {
     const list = listRef.current

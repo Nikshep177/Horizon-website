@@ -109,14 +109,20 @@ const Particles = ({
     const container = containerRef.current;
     if (!container) return;
     const animate = !prefersReducedMotion;
+    const effectivePixelRatio = Math.min(pixelRatio, window.innerWidth < 768 ? 1.5 : 2);
+    const effectiveParticleCount = Math.min(
+      particleCount,
+      window.innerWidth < 768 ? 120 : particleCount
+    );
 
     const renderer = new Renderer({
-      dpr: pixelRatio,
+      dpr: effectivePixelRatio,
       depth: false,
       alpha: true
     });
     const gl = renderer.gl;
     container.appendChild(gl.canvas);
+    gl.canvas.setAttribute('aria-hidden', 'true');
     gl.clearColor(0, 0, 0, 0);
 
     const camera = new Camera(gl, { fov: 15 });
@@ -146,7 +152,7 @@ const Particles = ({
       document.addEventListener('mousemove', handleMouseMove);
     }
 
-    const count = particleCount;
+    const count = effectiveParticleCount;
     const positions = new Float32Array(count * 3);
     const randoms = new Float32Array(count * 4);
     const colors = new Float32Array(count * 3);
@@ -179,7 +185,7 @@ const Particles = ({
       uniforms: {
         uTime: { value: 0 },
         uSpread: { value: particleSpread },
-        uBaseSize: { value: particleBaseSize * pixelRatio },
+        uBaseSize: { value: particleBaseSize * effectivePixelRatio },
         uSizeRandomness: { value: sizeRandomness },
         uAlphaParticles: { value: alphaParticles ? 1 : 0 }
       },

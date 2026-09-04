@@ -201,7 +201,12 @@ export default function Galaxy({
     if (!ctnDom.current) return;
     const ctn = ctnDom.current;
     const animate = !disableAnimation && !prefersReducedMotion;
-    const renderer = new Renderer({ alpha: transparent, premultipliedAlpha: false });
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.5 : 2);
+    const renderer = new Renderer({
+      alpha: transparent,
+      premultipliedAlpha: false,
+      dpr: pixelRatio
+    });
     const gl = renderer.gl;
 
     if (transparent) {
@@ -280,6 +285,7 @@ export default function Galaxy({
       renderer.render({ scene: mesh });
     }
     ctn.appendChild(gl.canvas);
+    gl.canvas.setAttribute('aria-hidden', 'true');
     if (animate) animateId = requestAnimationFrame(update);
     else renderer.render({ scene: mesh });
 

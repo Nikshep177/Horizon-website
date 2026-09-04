@@ -28,4 +28,4 @@ The JSON files in this directory are application data, not presentation markup. 
 
 ## Markdown Frontmatter
 
-Articles require `title`, `author`, `date`, and `image`. Event posts require `title`, `date`, `poster`, and `category`. IPT problem posts require `title`, `year`, `slug`, `image`, and `description`. Markdown body images are resolved through the shared asset-path utility.
+Articles require `title`, `author`, `date`, and `image`. Event posts require `title`, `date`, `poster`, and `category`. IPT problem posts require `title`, `year`, `slug`, `image`, and `description`. The local parser supports scalar strings, quoted strings, numbers, booleans, null values, and inline lists. Markdown body images are resolved through the shared asset-path utility.

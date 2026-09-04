@@ -6,6 +6,7 @@ import SelectionPills from '../components/SelectionPills'
 import EmptyState from '../components/EmptyState'
 import InvalidState from '../components/InvalidState'
 import PageHeader from '../components/PageHeader'
+import CardGrid from '../components/CardGrid'
 import { imagePath, normalizeAssetPaths } from '../lib/image-path'
 import { teamData } from '../lib/site-data'
 import '../styles/events.css'
@@ -272,7 +273,7 @@ export default function Team() {
               grouped[section]?.length > 0 && (
                 <section key={section} className="team-section">
                   <h2 className="team-section-title">{sectionLabel[section]} &mdash; {activeTenure}</h2>
-                  <div className="team-grid">
+                  <CardGrid className="team-grid">
                     {grouped[section].map((m, i) => {
                       const imageSrc = imageMap[m.name]
                       const hasImage = !!imageSrc && !failedImages.has(m.name)
@@ -300,7 +301,7 @@ export default function Team() {
                         </div>
                       )
                     })}
-                  </div>
+                  </CardGrid>
                 </section>
               )
             ))}

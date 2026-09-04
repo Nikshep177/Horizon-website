@@ -22,3 +22,11 @@ export const projectThemes = [
   { bg: '#083344', accent: '#2dd4bf', glow: 'rgba(45, 212, 191, 0.35)' },
   { bg: '#1e293b', accent: '#fb923c', glow: 'rgba(251, 146, 60, 0.35)' },
 ]
+
+export function getEventTheme(category) {
+  return eventCategoryThemes[category] || eventCategoryThemes.other
+}
+
+export function getProjectTheme(index) {
+  return projectThemes[index % projectThemes.length]
+}

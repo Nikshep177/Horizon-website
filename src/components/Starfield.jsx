@@ -5,6 +5,7 @@ function Starfield() {
 
   useEffect(() => {
     const canvas = canvasRef.current
+    if (!canvas) return undefined
     const ctx = canvas.getContext('2d')
     let animationId
     let width, height
@@ -13,8 +14,9 @@ function Starfield() {
     let constellations = []
 
     function resize() {
-      width = canvas.width = canvas.offsetWidth * window.devicePixelRatio
-      height = canvas.height = canvas.offsetHeight * window.devicePixelRatio
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+      width = canvas.width = canvas.offsetWidth * pixelRatio
+      height = canvas.height = canvas.offsetHeight * pixelRatio
 
       stars = Array.from({ length: 260 }, () => ({
         x: Math.random() * width,

@@ -5,6 +5,7 @@ function Aurora({ colorStops = ['#3A29FF', '#FF94B9', '#FFD89C'], speed = 0.5 })
 
   useEffect(() => {
     const canvas = canvasRef.current
+    if (!canvas) return undefined
     const ctx = canvas.getContext('2d')
     let animationId
     let width, height
@@ -18,8 +19,9 @@ function Aurora({ colorStops = ['#3A29FF', '#FF94B9', '#FFD89C'], speed = 0.5 })
     const rgbStops = colorStops.map(hexToRgb)
 
     function resize() {
-      width = canvas.width = canvas.offsetWidth * window.devicePixelRatio
-      height = canvas.height = canvas.offsetHeight * window.devicePixelRatio
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+      width = canvas.width = canvas.offsetWidth * pixelRatio
+      height = canvas.height = canvas.offsetHeight * pixelRatio
 
       bands = Array.from({ length: 4 }, (_, i) => ({
         y: height * (0.15 + i * 0.18),

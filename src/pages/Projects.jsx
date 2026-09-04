@@ -6,7 +6,8 @@ import SelectionPills from '../components/SelectionPills'
 import EmptyState from '../components/EmptyState'
 import InvalidState from '../components/InvalidState'
 import PageHeader from '../components/PageHeader'
-import { projectThemes } from '../data/visualThemes'
+import CardGrid from '../components/CardGrid'
+import { getProjectTheme } from '../data/visualThemes'
 import '../styles/events.css'
 
 const tenures = Object.keys(projects).sort()
@@ -66,9 +67,9 @@ export default function Projects() {
           ariaLabel="Select year"
         />
 
-        <div className={`projects-grid projects-grid--${filteredProjects.length}`}>
+        <CardGrid className={`projects-grid projects-grid--${filteredProjects.length}`}>
           {filteredProjects.map((project, index) => {
-            const colors = projectThemes[index % projectThemes.length]
+            const colors = getProjectTheme(index)
             const image = project.image || fallbackImages[project.id] || fallbackImages.placeholder
 
             return (
@@ -113,7 +114,7 @@ export default function Projects() {
               </Link>
             )
           })}
-        </div>
+        </CardGrid>
         {filteredProjects.length === 0 && (
           <EmptyState message="No projects are available for this tenure." />
         )}

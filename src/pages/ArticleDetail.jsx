@@ -7,6 +7,7 @@ import 'katex/dist/katex.min.css'
 import { getArticle } from '../lib/content-loader'
 import { formatDate } from '../lib/format-date'
 import MarkdownLink from '../components/MarkdownLink'
+import BackLink from '../components/BackLink'
 
 export default function ArticleDetail() {
   const { id } = useParams()
@@ -48,7 +49,7 @@ export default function ArticleDetail() {
         </div>
 
         <footer className="post-footer">
-          <Link to="/articles" className="back-link">← Back to Articles</Link>
+          <BackLink to="/articles">← Back to Articles</BackLink>
         </footer>
       </div>
     </article>

@@ -3,7 +3,7 @@ import { imagePath } from '../lib/image-path'
 import { projects } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
 import InvalidState from '../components/InvalidState'
-import { projectThemes } from '../data/visualThemes'
+import { getProjectTheme } from '../data/visualThemes'
 import { formatDate } from '../lib/format-date'
 import '../styles/events.css'
 const fallbackImages = {
@@ -70,7 +70,7 @@ export default function ProjectDetail() {
   }
 
   const backUrl = activeTenure ? `/projects?tenure=${activeTenure}` : '/projects'
-  const colors = projectThemes[allProjects.indexOf(project) % projectThemes.length]
+  const colors = getProjectTheme(allProjects.indexOf(project))
   const image = project.image || fallbackImages[project.id] || fallbackImages.placeholder
   const dateLabel = formatDate(project.date, { year: 'numeric', month: 'long' }) || null
 
