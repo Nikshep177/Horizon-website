@@ -228,7 +228,7 @@ const Masonry = ({
   return (
     <div
       ref={containerRef}
-      className="list"
+      className="masonry-list"
       style={{ minHeight: maxHeight > 0 ? `${maxHeight}px` : undefined }}
     >
       {grid.map(item => {
@@ -236,13 +236,13 @@ const Masonry = ({
           <div
             key={item.id}
             data-key={item.id}
-            className="item-wrapper"
+              className="masonry-item-wrapper"
             onClick={() => onItemClick?.(item)}
             onMouseEnter={e => handleMouseEnter(e, item)}
             onMouseLeave={e => handleMouseLeave(e, item)}
           >
             <div
-              className="item-img"
+              className="masonry-item-img"
               style={{ backgroundImage: `url("${item.img}")` }}
             >
               {colorShiftOnHover && (
@@ -262,7 +262,7 @@ const Masonry = ({
                 />
               )}
               {item.title && (
-                <div className="item-overlay">
+                <div className="masonry-item-overlay">
                   <h3>{item.title}</h3>
                 </div>
               )}

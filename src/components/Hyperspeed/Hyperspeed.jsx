@@ -1177,7 +1177,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
     };
   }, [effectOptions]);
 
-  return <div id="lights" ref={hyperspeed}></div>;
+  return <div className="hyperspeed-container" ref={hyperspeed}></div>;
 };
 
 export default Hyperspeed;

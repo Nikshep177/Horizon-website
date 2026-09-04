@@ -1,20 +1,10 @@
 import { useParams, Link, useSearchParams, useLocation } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
-import projects from '../data/projects.json'
+import { projects } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
+import { projectThemes } from '../data/visualThemes'
+import { formatDate } from '../lib/format-date'
 import '../styles/events.css'
-
-const projectPalette = [
-  { bg: '#1e1b4b', accent: '#818cf8', glow: 'rgba(129, 140, 248, 0.35)' },
-  { bg: '#4a1942', accent: '#f472b6', glow: 'rgba(244, 114, 182, 0.35)' },
-  { bg: '#022c22', accent: '#34d399', glow: 'rgba(52, 211, 153, 0.35)' },
-  { bg: '#451a03', accent: '#fbbf24', glow: 'rgba(251, 191, 36, 0.35)' },
-  { bg: '#2e1065', accent: '#a78bfa', glow: 'rgba(167, 139, 250, 0.35)' },
-  { bg: '#431407', accent: '#f87171', glow: 'rgba(248, 113, 113, 0.35)' },
-  { bg: '#083344', accent: '#2dd4bf', glow: 'rgba(45, 212, 191, 0.35)' },
-  { bg: '#1e293b', accent: '#fb923c', glow: 'rgba(251, 146, 60, 0.35)' },
-]
-
 const fallbackImages = {
   optiqomm: '/assets/images/projects/2025/optiqomm.png',
   radian: '/assets/images/projects/2025/radian.png',
@@ -63,9 +53,9 @@ export default function ProjectDetail() {
   }
 
   const backUrl = activeTenure ? `/projects?tenure=${activeTenure}` : '/projects'
-  const colors = projectPalette[allProjects.indexOf(project) % projectPalette.length]
+  const colors = projectThemes[allProjects.indexOf(project) % projectThemes.length]
   const image = project.image || fallbackImages[project.id] || fallbackImages.placeholder
-  const dateLabel = project.date ? new Date(project.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }) : null
+  const dateLabel = formatDate(project.date, { year: 'numeric', month: 'long' }) || null
 
   return (
     <div className="events-page project-detail-page">

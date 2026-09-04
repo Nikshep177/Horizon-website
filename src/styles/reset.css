@@ -17,8 +17,19 @@ body {
   line-height: var(--line-height-base);
   color: var(--color-text);
   background-color: var(--color-background);
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -70,6 +81,16 @@ img {
   display: block;
 }
 
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+
+a {
+  overflow-wrap: anywhere;
+}
+
 code {
   font-family: var(--font-family-mono);
   font-size: 0.875em;
@@ -82,6 +103,7 @@ pre {
   margin-bottom: var(--spacing-md);
   padding: var(--spacing-md);
   background-color: var(--color-background-alt);
+  max-width: 100%;
   border-radius: var(--border-radius);
   overflow-x: auto;
 }
@@ -106,8 +128,17 @@ hr {
 
 table {
   width: 100%;
+  max-width: 100%;
   margin-bottom: var(--spacing-md);
   border-collapse: collapse;
+}
+
+.post-content table,
+.project-content table,
+.problem-detail-body table,
+.competition-detail-body table {
+  display: block;
+  overflow-x: auto;
 }
 table th, table td {
   padding: var(--spacing-sm);

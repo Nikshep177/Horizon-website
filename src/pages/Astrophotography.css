@@ -156,6 +156,15 @@
   text-align: center;
 }
 
+.astro-gallery-title {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.astro-articles-title {
+  margin-bottom: var(--spacing-xl);
+}
+
 /* Modal EXIF header - match display font */
 .astro-page .image-modal-exif-header {
   font-family: var(--font-display);

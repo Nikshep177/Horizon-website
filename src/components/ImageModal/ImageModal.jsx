@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import { imagePath } from '../../lib/image-path'
 import './ImageModal.css'
 
@@ -13,11 +13,17 @@ const exifFields = [
 ]
 
 export default function ImageModal({ image, onClose }) {
+  const closeButtonRef = useRef(null)
+
   const handleClose = useCallback(() => {
     onClose()
   }, [onClose])
 
   useEffect(() => {
+    if (!image) return undefined
+
+    const previousActiveElement = document.activeElement
+    const previousOverflow = document.body.style.overflow
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
         handleClose()
@@ -26,19 +32,33 @@ export default function ImageModal({ image, onClose }) {
 
     document.addEventListener('keydown', handleEscape)
     document.body.style.overflow = 'hidden'
+    closeButtonRef.current?.focus()
 
     return () => {
       document.removeEventListener('keydown', handleEscape)
-      document.body.style.overflow = ''
+      document.body.style.overflow = previousOverflow
+      previousActiveElement?.focus?.()
     }
-  }, [handleClose])
+  }, [handleClose, image])
 
   if (!image) return null
 
   return (
-    <div className="image-modal-overlay" onClick={handleClose}>
+    <div
+      className="image-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="image-modal-title"
+      onClick={handleClose}
+    >
       <div className="image-modal-container" onClick={(e) => e.stopPropagation()}>
-        <button className="image-modal-close" onClick={handleClose}>
+        <button
+          ref={closeButtonRef}
+          type="button"
+          className="image-modal-close"
+          onClick={handleClose}
+          aria-label="Close image details"
+        >
           ✕
         </button>
 
@@ -49,7 +69,7 @@ export default function ImageModal({ image, onClose }) {
               alt={image.title}
               className="image-modal-image"
             />
-            <h2 className="image-modal-title">{image.title}</h2>
+            <h2 id="image-modal-title" className="image-modal-title">{image.title}</h2>
             <p className="image-modal-description">{image.description}</p>
           </div>
 

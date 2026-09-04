@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
-import competitions from '../data/competitions.json'
+import { competitions } from '../lib/site-data'
 
 export default function CompetitionDetail() {
   const { id } = useParams()

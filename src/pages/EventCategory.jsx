@@ -1,33 +1,20 @@
 import { useEffect, useRef } from 'react'
-import { useParams, Link, useLocation } from 'react-router-dom'
+import { useParams, Link, useSearchParams } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
-import eventsData from '../data/events.json'
+import { eventsData } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
+import { eventCategoryThemes } from '../data/visualThemes'
 import '../styles/events.css'
-
-const categoryColors = {
-  g2g: { bg: '#2d1b69', accent: '#7c3aed', glow: 'rgba(124, 58, 237, 0.3)' },
-  q2q: { bg: '#0c2d48', accent: '#06b6d4', glow: 'rgba(6, 182, 212, 0.3)' },
-  boltzmann: { bg: '#451a03', accent: '#f59e0b', glow: 'rgba(245, 158, 11, 0.3)' },
-  observation: { bg: '#022c22', accent: '#10b981', glow: 'rgba(16, 185, 129, 0.3)' },
-  summer: { bg: '#4a1942', accent: '#ec4899', glow: 'rgba(236, 72, 153, 0.3)' },
-  qiskit: { bg: '#2e1065', accent: '#a78bfa', glow: 'rgba(167, 139, 250, 0.3)' },
-  conclave: { bg: '#431407', accent: '#fb923c', glow: 'rgba(251, 146, 60, 0.3)' },
-  cfi: { bg: '#020617', accent: '#38bdf8', glow: 'rgba(56, 189, 248, 0.3)' },
-  freshie: { bg: '#3b0764', accent: '#e879f9', glow: 'rgba(232, 121, 249, 0.3)' },
-  extra: { bg: '#1e1b4b', accent: '#a5b4fc', glow: 'rgba(165, 180, 252, 0.3)' },
-  other: { bg: '#1e293b', accent: '#94a3b8', glow: 'rgba(148, 163, 184, 0.3)' },
-}
 
 export default function EventCategory() {
   const { category } = useParams()
-  const { state } = useLocation()
-  const year = state?.year || '2025-26'
+  const [searchParams] = useSearchParams()
+  const year = searchParams.get('year') || '2025-26'
   const listRef = useRef(null)
 
   const yearData = eventsData[year] || {}
   const cat = yearData[category]
-  const colors = categoryColors[category] || categoryColors.g2g
+  const colors = eventCategoryThemes[category] || eventCategoryThemes.g2g
 
   useEffect(() => {
     const list = listRef.current
@@ -66,7 +53,7 @@ export default function EventCategory() {
       <SpaceBackground />
 
       <div className="events-container">
-        <Link to="/events" state={{ year }} className="event-category__back">
+        <Link to={`/events?year=${encodeURIComponent(year)}`} className="event-category__back">
           {'\u2190'} All Events
         </Link>
 

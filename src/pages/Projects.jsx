@@ -1,22 +1,11 @@
 import { Link, useSearchParams, useLocation } from 'react-router-dom'
-import { imagePath, normalizeAssetPaths } from '../lib/image-path'
-import rawProjects from '../data/projects.json'
+import { imagePath } from '../lib/image-path'
+import { projects } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
+import { projectThemes } from '../data/visualThemes'
 import '../styles/events.css'
 
-const projects = normalizeAssetPaths(rawProjects)
 const tenures = Object.keys(projects).sort()
-
-const projectPalette = [
-  { bg: '#1e1b4b', accent: '#818cf8', glow: 'rgba(129, 140, 248, 0.35)' },
-  { bg: '#4a1942', accent: '#f472b6', glow: 'rgba(244, 114, 182, 0.35)' },
-  { bg: '#022c22', accent: '#34d399', glow: 'rgba(52, 211, 153, 0.35)' },
-  { bg: '#451a03', accent: '#fbbf24', glow: 'rgba(251, 191, 36, 0.35)' },
-  { bg: '#2e1065', accent: '#a78bfa', glow: 'rgba(167, 139, 250, 0.35)' },
-  { bg: '#431407', accent: '#f87171', glow: 'rgba(248, 113, 113, 0.35)' },
-  { bg: '#083344', accent: '#2dd4bf', glow: 'rgba(45, 212, 191, 0.35)' },
-  { bg: '#1e293b', accent: '#fb923c', glow: 'rgba(251, 146, 60, 0.35)' },
-]
 
 const fallbackImages = {
   optiqomm: '/assets/images/projects/2025/optiqomm.png',
@@ -65,7 +54,7 @@ export default function Projects() {
 
         <div className={`projects-grid projects-grid--${filteredProjects.length}`}>
           {filteredProjects.map((project, index) => {
-            const colors = projectPalette[index % projectPalette.length]
+            const colors = projectThemes[index % projectThemes.length]
             const image = project.image || fallbackImages[project.id] || fallbackImages.placeholder
 
             return (

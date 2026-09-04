@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getArticles } from '../lib/content-loader'
-import rawGallery from '../data/astro-gallery.json'
-import { normalizeAssetPaths } from '../lib/image-path'
+import { astroGallery as gallery } from '../lib/site-data'
+import { formatDate } from '../lib/format-date'
 import Particles from '../components/Particles/Particles'
 import Masonry from '../components/Masonry/Masonry'
 import ImageModal from '../components/ImageModal/ImageModal'
 import EquipmentInventory from '../components/EquipmentInventory'
 import '../styles/events.css'
 import './Astrophotography.css'
-
-const gallery = normalizeAssetPaths(rawGallery)
 
 const masonryHeights = [380, 320, 420, 300, 360, 400, 340, 300, 420, 360, 320, 400]
 
@@ -50,7 +48,7 @@ export default function Astrophotography() {
         <section className="astro-gallery-section">
           <div className="astro-gallery-content">
             <div className="astro-gallery-container">
-              <h2 className="event-category__title" style={{ marginTop: 'var(--spacing-lg)', marginBottom: 'var(--spacing-2xl)', textAlign: 'center' }}>The Cosmic Gallery</h2>
+              <h2 className="event-category__title astro-gallery-title">The Cosmic Gallery</h2>
               <Masonry
                 items={formattedAstroItems}
                 ease="power3.out"
@@ -76,14 +74,14 @@ export default function Astrophotography() {
             {astroPosts.length > 0 && (
               <div className="astro-articles">
                 <div className="container">
-                  <h2 className="event-category__title" style={{ textAlign: 'center', marginBottom: 'var(--spacing-xl)' }}>Articles</h2>
+                  <h2 className="event-category__title astro-articles-title">Articles</h2>
                   <div className="articles-list">
                     {astroPosts.map(post => (
                       <article key={post.id} className="article-card">
                         <div className="card-body">
                           <div className="card-meta">
                             <span>{post.author}</span>
-                            <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                            <span>{formatDate(post.date)}</span>
                           </div>
                           <h3 className="card-title">
                             <Link to={`/articles/${post.id}`}>{post.title}</Link>
