@@ -39,6 +39,8 @@ Production assets are configured for GitHub Pages under `/Horizon-website/`. The
 
 Markdown content is discovered automatically through the content loader. New articles, events, and IPT problems should follow the existing frontmatter and filename conventions.
 
+External links in the application open in a new tab with `noopener noreferrer`. Internal routes use React Router links. Markdown links follow the same external-link policy.
+
 ## Supported Routes
 
 - `/`

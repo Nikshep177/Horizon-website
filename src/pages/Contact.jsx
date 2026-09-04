@@ -1,5 +1,6 @@
 import SpaceBackground from '../components/SpaceBackground'
 import PageHeader from '../components/PageHeader'
+import ExternalLink from '../components/ExternalLink'
 import '../styles/events.css'
 
 export default function Contact() {
@@ -21,9 +22,9 @@ export default function Contact() {
           <h3>Social Media</h3>
           <p>Stay updated with our latest events, articles, and announcements:</p>
           <ul>
-            <li><strong>Instagram</strong>: <a href="https://www.instagram.com/horizoniitm/">@HorizonIITM</a></li>
-            <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/company/horizon-cfi-iitm/">Horizon CFI IITM</a></li>
-            <li><strong>YouTube</strong>: <a href="https://www.youtube.com/@HorizonIITM">@HorizonIITM</a></li>
+            <li><strong>Instagram</strong>: <ExternalLink href="https://www.instagram.com/horizoniitm/">@HorizonIITM</ExternalLink></li>
+            <li><strong>LinkedIn</strong>: <ExternalLink href="https://www.linkedin.com/company/horizon-cfi-iitm/">Horizon CFI IITM</ExternalLink></li>
+            <li><strong>YouTube</strong>: <ExternalLink href="https://www.youtube.com/@HorizonIITM">@HorizonIITM</ExternalLink></li>
           </ul>
 
           <h3>Address</h3>
