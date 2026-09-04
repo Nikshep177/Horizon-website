@@ -1,4 +1,5 @@
 import { normalizeAssetPaths, normalizeMarkdownAssetUrls } from './image-path'
+import { eventsData, projects } from './site-data'
 
 const files = import.meta.glob('/src/content/**/*.md', {
   query: '?raw',
@@ -54,41 +55,28 @@ for (const [filePath, raw] of Object.entries(files)) {
   }
 }
 
-const dataFiles = import.meta.glob('/src/data/**/*.json', {
-  import: 'default',
-  eager: true,
-})
-
-for (const [filePath, jsonData] of Object.entries(dataFiles)) {
-  const normalizedJsonData = normalizeAssetPaths(jsonData)
-
-  if (filePath.includes('projects.json')) {
-    for (const [tenure, projects] of Object.entries(normalizedJsonData)) {
-      for (const project of projects) {
-        articles.push({
-          id: `project-${project.id}`,
-          title: project.title,
-          date: project.date,
-          content: project.content,
-          image: project.image,
-          author: project.author,
-          category: 'Project',
-          tenure,
-        })
-      }
-    }
+for (const [tenure, tenureProjects] of Object.entries(projects)) {
+  for (const project of tenureProjects) {
+    articles.push({
+      id: `project-${project.id}`,
+      title: project.title,
+      date: project.date,
+      content: project.content,
+      image: project.image,
+      author: project.author,
+      category: 'Project',
+      tenure,
+    })
   }
+}
 
-  if (filePath.includes('events.json')) {
-    for (const [tenure, tenureData] of Object.entries(normalizedJsonData)) {
-      const tenureEvents = Array.isArray(tenureData)
-        ? tenureData
-        : Object.values(tenureData)
+for (const [tenure, tenureData] of Object.entries(eventsData)) {
+  const tenureEvents = Array.isArray(tenureData)
+    ? tenureData
+    : Object.values(tenureData)
 
-      for (const event of tenureEvents) {
-        events.push({ ...event, tenure })
-      }
-    }
+  for (const event of tenureEvents) {
+    events.push({ ...event, tenure })
   }
 }
 

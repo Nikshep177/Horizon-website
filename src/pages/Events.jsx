@@ -1,29 +1,15 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { imagePath, normalizeAssetPaths } from '../lib/image-path'
-import rawEventsData from '../data/events.json'
+import { Link, useSearchParams } from 'react-router-dom'
+import { imagePath } from '../lib/image-path'
+import { eventsData } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
+import { eventCategoryThemes } from '../data/visualThemes'
 import '../styles/events.css'
 
-const eventsData = normalizeAssetPaths(rawEventsData)
 const years = Object.keys(eventsData).sort().reverse()
-const categoryColors = {
-  g2g: { bg: '#2d1b69', accent: '#7c3aed' },
-  q2q: { bg: '#0c2d48', accent: '#06b6d4' },
-  boltzmann: { bg: '#451a03', accent: '#f59e0b' },
-  observation: { bg: '#022c22', accent: '#10b981' },
-  summer: { bg: '#4a1942', accent: '#ec4899' },
-  qiskit: { bg: '#2e1065', accent: '#a78bfa' },
-  conclave: { bg: '#431407', accent: '#fb923c' },
-  cfi: { bg: '#020617', accent: '#38bdf8' },
-  freshie: { bg: '#3b0764', accent: '#e879f9' },
-  extra: { bg: '#1e1b4b', accent: '#a5b4fc' },
-  other: { bg: '#1e293b', accent: '#94a3b8' },
-}
-
 export default function Events() {
-  const { state } = useLocation()
-  const [activeYear, setActiveYear] = useState(state?.year || years[0])
+  const [searchParams, setSearchParams] = useSearchParams()
+  const requestedYear = searchParams.get('year')
+  const activeYear = years.includes(requestedYear) ? requestedYear : years[0]
 
   const yearData = eventsData[activeYear] || {}
   const categories = Object.values(yearData)
@@ -70,7 +56,7 @@ export default function Events() {
             <button
               key={year}
               className={`year-pill${activeYear === year ? ' year-pill--active' : ''}`}
-              onClick={() => setActiveYear(year)}
+              onClick={() => setSearchParams({ year }, { replace: true })}
             >
               {activeYear === year && <span className="year-pill__comet" />}
               <span className="year-pill__label">{year}</span>
@@ -85,12 +71,11 @@ export default function Events() {
             return (
             <Link
               key={cat.id}
-              to={`/events/${cat.id}`}
-              state={{ year: activeYear }}
+              to={`/events/${cat.id}?year=${encodeURIComponent(activeYear)}`}
               className={`category-card${index % 2 === 1 ? ' category-card--reverse' : ''}${cat.id === 'observation' ? ' category-card--observation' : ''}`}
               style={{
-                '--cat-bg': categoryColors[cat.id]?.bg || '#1a1a2e',
-                '--cat-accent': categoryColors[cat.id]?.accent || '#6366f1',
+                '--cat-bg': eventCategoryThemes[cat.id]?.bg || '#1a1a2e',
+                '--cat-accent': eventCategoryThemes[cat.id]?.accent || '#6366f1',
               }}
             >
               <div className="category-card__shooting-star" />

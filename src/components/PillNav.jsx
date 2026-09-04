@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import './PillNav.css';
@@ -156,7 +156,7 @@ const PillNav = ({
     });
   };
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = useCallback(() => {
     const newState = !isMobileMenuOpen;
     setIsMobileMenuOpen(newState);
 
@@ -205,7 +205,36 @@ const PillNav = ({
     }
 
     onMobileMenuClick?.();
-  };
+  }, [ease, isMobileMenuOpen, onMobileMenuClick]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return undefined
+
+    const menu = mobileMenuRef.current
+    const firstLink = menu?.querySelector('.mobile-menu-link')
+    firstLink?.focus()
+
+    const handlePointerDown = event => {
+      if (!menu?.contains(event.target) && !hamburgerRef.current?.contains(event.target)) {
+        toggleMobileMenu()
+      }
+    }
+
+    const handleKeyDown = event => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        toggleMobileMenu()
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMobileMenuOpen, toggleMobileMenu])
 
   const isExternalLink = href =>
     href.startsWith('http://') ||
@@ -235,7 +264,6 @@ const PillNav = ({
               to={items[0].href}
               aria-label="Home"
               onMouseEnter={handleLogoEnter}
-              role="menuitem"
               ref={el => { logoRef.current = el; }}
             >
               <img src={imagePath(logo)} alt={logoAlt} ref={logoImgRef} />
@@ -254,12 +282,11 @@ const PillNav = ({
         )}
 
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>
-          <ul className="pill-list" role="menubar">
+          <ul className="pill-list">
             {items.map((item, i) => (
-              <li key={item.href || `item-${i}`} role="none">
+              <li key={item.href || `item-${i}`}>
                 {isRouterLink(item.href) ? (
                   <Link
-                    role="menuitem"
                     to={item.href}
                     className={`pill${activeHref === item.href ? ' is-active' : ''}`}
                     aria-label={item.ariaLabel || item.label}
@@ -280,7 +307,6 @@ const PillNav = ({
                   </Link>
                 ) : (
                   <a
-                    role="menuitem"
                     href={item.href}
                     className={`pill${activeHref === item.href ? ' is-active' : ''}`}
                     aria-label={item.ariaLabel || item.label}
@@ -308,7 +334,10 @@ const PillNav = ({
         <button
           className="mobile-menu-button mobile-only"
           onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-site-menu"
+          type="button"
           ref={hamburgerRef}
         >
           <span className="hamburger-line" />
@@ -316,7 +345,12 @@ const PillNav = ({
         </button>
       </nav>
 
-      <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef}>
+      <div
+        id="mobile-site-menu"
+        className="mobile-menu-popover mobile-only"
+        ref={mobileMenuRef}
+        aria-hidden={!isMobileMenuOpen}
+      >
         <ul className="mobile-menu-list">
           {items.map((item, i) => (
             <li key={item.href || `mobile-item-${i}`}>
@@ -324,7 +358,9 @@ const PillNav = ({
                 <Link
                   to={item.href}
                   className={`mobile-menu-link${activeHref === item.href ? ' is-active' : ''}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    if (isMobileMenuOpen) toggleMobileMenu()
+                  }}
                 >
                   {item.label}
                 </Link>
@@ -332,7 +368,9 @@ const PillNav = ({
                 <a
                   href={item.href}
                   className={`mobile-menu-link${activeHref === item.href ? ' is-active' : ''}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    if (isMobileMenuOpen) toggleMobileMenu()
+                  }}
                 >
                   {item.label}
                 </a>

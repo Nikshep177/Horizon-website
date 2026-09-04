@@ -5,6 +5,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 import { getArticle } from '../lib/content-loader'
+import { formatDate } from '../lib/format-date'
 
 export default function ArticleDetail() {
   const { id } = useParams()
@@ -28,7 +29,7 @@ export default function ArticleDetail() {
           <h1>{article.title}</h1>
           <div className="post-meta">
             <span className="author">By {article.author}</span>
-            <span className="date">{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span className="date">{formatDate(article.date)}</span>
           </div>
           {article.tags && (
             <div className="post-tags">

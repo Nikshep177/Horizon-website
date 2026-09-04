@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { getArticles } from '../lib/content-loader'
+import { formatDate } from '../lib/format-date'
 import { imagePath } from '../lib/image-path'
 // MagicBento removed — using projects-style grid for articles
 import SpaceBackground from '../components/SpaceBackground'
@@ -26,12 +27,12 @@ export default function Articles() {
       <SpaceBackground />
 
       <div className="events-container">
-        <header className="events-header" style={{ marginTop: '-4.5rem' }}>
+        <header className="events-header articles-header">
           <h1 className="events-title">Articles</h1>
           <p className="events-subtitle">Our articles explore a wide range of topics in physics, from fundamental concepts and historical developments to recent research and scientific breakthroughs. They aim to present complex ideas in a clear and engaging manner, encouraging readers to learn, question, and explore further.</p>
         </header>
 
-        <div className="articles-list" style={{ marginTop: '5rem' }}>
+        <div className="articles-list">
           {visibleArticles.map(article => (
             <article key={article.id} className="article-card">
               <Link to={`/articles/${article.id}`} className="card-visual">
@@ -45,13 +46,13 @@ export default function Articles() {
                 {article.date && (
                   <div className="card-meta">
                     {article.author && <span>{article.author}</span>}
-                    <span>{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    <span>{formatDate(article.date)}</span>
                   </div>
                 )}
                 <h3 className="card-title">
                   <Link to={`/articles/${article.id}`}>{article.title}</Link>
                 </h3>
-                <p style={{ color: 'var(--color-text-light)', fontSize: '0.925rem', lineHeight: '1.6', marginBottom: '1.25rem', flex: 1 }}>
+                <p className="article-card__excerpt">
                   {article.excerpt || article.summary || ''}
                 </p>
                 <Link to={`/articles/${article.id}`} className="read-link">

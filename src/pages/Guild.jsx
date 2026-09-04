@@ -1,12 +1,9 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { imagePath, normalizeAssetPaths } from '../lib/image-path'
+import { Link, useSearchParams } from 'react-router-dom'
+import { imagePath } from '../lib/image-path'
 import { getIPTProblems } from '../lib/content-loader'
-import rawCompetitions from '../data/competitions.json'
+import { competitions } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
 import '../styles/events.css'
-
-const competitions = normalizeAssetPaths(rawCompetitions)
 
 const achievements = [
   {
@@ -43,7 +40,11 @@ const guildNav = [
 ]
 
 export default function Guild() {
-  const [activeSection, setActiveSection] = useState('achievements')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const requestedSection = searchParams.get('section')
+  const activeSection = guildNav.some(item => item.id === requestedSection)
+    ? requestedSection
+    : 'achievements'
   const problems = getIPTProblems()
 
   return (
@@ -65,7 +66,7 @@ export default function Guild() {
                   key={item.id}
                   type="button"
                   className={`guild-nav__pill${activeSection === item.id ? ' guild-nav__pill--active' : ''}`}
-                  onClick={() => setActiveSection(item.id)}
+                  onClick={() => setSearchParams({ section: item.id }, { replace: true })}
                 >
                   {item.label}
                 </button>

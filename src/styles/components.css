@@ -175,16 +175,17 @@
 }
 
 .project-card {
-  /* Use event-box visual style while preserving size/layout */
+  position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--cat-bg, #1a1a2e); /* event-like background */
+  background: linear-gradient(135deg, rgba(20, 20, 35, 0.9), rgba(30, 30, 50, 0.8));
+  backdrop-filter: blur(10px);
   border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--project-color, #6366f1);
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .project-card:hover {
@@ -251,13 +252,6 @@
   transform: scaleX(1);
 }
 
-.project-card {
-  background: linear-gradient(135deg, rgba(20, 20, 35, 0.9), rgba(30, 30, 50, 0.8));
-  backdrop-filter: blur(10px);
-  border: 2px solid var(--project-color, #6366f1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
 .project-card::before {
   content: '';
   position: absolute;
@@ -268,11 +262,6 @@
   background: linear-gradient(90deg, var(--project-color, #6366f1), #8b5cf6, var(--project-color, #6366f1));
   border-radius: inherit;
   opacity: 0.7;
-}
-
-.project-card {
-  position: relative;
-  overflow: hidden;
 }
 
 .project-card::after {
@@ -348,7 +337,6 @@
     transform: translateY(0);
   }
 }
-.projects-grid--5 .project-card:nth-child(5) { --project-color-rgb: 236, 72, 153; }
 .project-card__content h3 {
   margin-bottom: var(--spacing-sm);
   font-size: 1.25rem; /* keep original size */
@@ -776,6 +764,8 @@
   inset: 0;
   display: none;
   z-index: 1000;
+  overflow-y: auto;
+  padding: 1rem;
 }
 .event-modal.is-visible {
   display: block;
@@ -798,16 +788,44 @@
   position: relative;
   background: var(--color-background);
   max-width: 600px;
-  margin: 10vh auto;
+  max-height: calc(100vh - 2rem);
+  margin: 1rem auto;
   padding: 2rem;
   border-radius: 12px;
+  overflow-y: auto;
 }
 
 .event-modal__box.g2g-modal {
   max-width: 85vw;
   width: 900px;
   padding: 1.25rem;
-  margin: 5vh auto;
+  margin: 1rem auto;
+}
+
+@media (max-width: 768px) {
+  .event-modal {
+    padding: 0.75rem;
+  }
+
+  .event-modal__box,
+  .event-modal__box.g2g-modal {
+    width: 100%;
+    max-width: none;
+    max-height: calc(100vh - 1.5rem);
+    margin: 0.75rem auto;
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .g2g-session-card {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .g2g-session-card__image {
+    flex: none;
+    width: 100%;
+    min-height: 180px;
+  }
 }
 
 .event-modal__box h2 {
@@ -1094,9 +1112,13 @@
 /* KaTeX math rendering support for light and dark modes */
 .katex, .katex-display {
   color: inherit;
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
 }
 .katex-display > .katex {
   white-space: normal;
+}
+.katex-display {
+  display: block;
 }

@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
-import teamData from '../data/team.json'
+import { useSearchParams } from 'react-router-dom'
 import SpaceBackground from '../components/SpaceBackground'
 import GalleryRow from '../components/GalleryRow'
 import { imagePath, normalizeAssetPaths } from '../lib/image-path'
+import { teamData } from '../lib/site-data'
 import '../styles/events.css'
 
-const normalizedTeamData = normalizeAssetPaths(teamData)
+const normalizedTeamData = teamData
 const tenures = Object.keys(normalizedTeamData).sort()
 const sectionLabel = { core: 'Core Team', coordinator: 'Coordinators' }
 
@@ -169,10 +170,20 @@ const galleryGroups = normalizeAssetPaths({
 })
 
 export default function Team() {
-  const [activeTenure, setActiveTenure] = useState('2026-27')
-  const [activeGalleryTenure, setActiveGalleryTenure] = useState('2025-26')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const requestedTenure = searchParams.get('tenure')
+  const requestedGalleryTenure = searchParams.get('gallery')
+  const activeTenure = tenures.includes(requestedTenure) ? requestedTenure : '2026-27'
+  const activeGalleryTenure = tenures.includes(requestedGalleryTenure) ? requestedGalleryTenure : '2025-26'
   const observerRef = useRef(null)
   const [failedImages, setFailedImages] = useState(new Set())
+
+  const updateSelection = values => {
+    setSearchParams({
+      tenure: values.tenure ?? activeTenure,
+      gallery: values.gallery ?? activeGalleryTenure,
+    }, { replace: true })
+  }
 
   const members = normalizedTeamData[activeTenure]
 
@@ -216,7 +227,7 @@ export default function Team() {
             <button
               key={t}
               className={`year-pill${activeTenure === t ? ' year-pill--active' : ''}`}
-              onClick={() => setActiveTenure(t)}
+              onClick={() => updateSelection({ tenure: t })}
             >
               {activeTenure === t && <span className="year-pill__comet" />}
               <span className="year-pill__label">{t}</span>
@@ -234,7 +245,7 @@ export default function Team() {
                       const hasImage = !!imageSrc && !failedImages.has(m.name)
                       const initials = m.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
                       return (
-                        <div key={m.name} className="team-card" style={{ '--reveal-delay': `${i * 0.06}s` }}>
+                          <div key={m.name} className="team-card" style={{ '--reveal-delay': `${i * 0.06}s` }}>
                           <div className={`team-card__image${!hasImage ? ' team-card__image--placeholder' : ''}`}>
                             {hasImage ? (
                               <img
@@ -260,18 +271,18 @@ export default function Team() {
               )
             ))}
 
-            <div id="gallery" className="team-section" style={{ marginTop: 'calc(var(--spacing-2xl) * 1.5)' }}>
-              <div className="project-divider" style={{ marginBottom: 'var(--spacing-2xl)' }} />
-              <div className="events-header" style={{ marginBottom: 'var(--spacing-md)' }}>
+            <div id="gallery" className="team-section team-gallery-section">
+              <div className="project-divider team-gallery-divider" />
+              <div className="events-header team-gallery-header">
                 <h2 className="events-title">Gallery &mdash; {activeGalleryTenure}</h2>
                 <p className="events-subtitle">From star parties and observation sessions to events and moments behind the scenes — a glimpse into our journey at Horizon</p>
               </div>
-              <nav className="year-pills" aria-label="Select gallery tenure" style={{ marginBottom: 'var(--spacing-lg)' }}>
+              <nav className="year-pills team-gallery-tenure" aria-label="Select gallery tenure">
                 {tenures.map(t => (
                   <button
                     key={t}
                     className={`year-pill${activeGalleryTenure === t ? ' year-pill--active' : ''}`}
-                    onClick={() => setActiveGalleryTenure(t)}
+                    onClick={() => updateSelection({ gallery: t })}
                   >
                     {activeGalleryTenure === t && <span className="year-pill__comet" />}
                     <span className="year-pill__label">{t}</span>

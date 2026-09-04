@@ -14,7 +14,9 @@
 .image-modal-container {
   position: relative;
   max-width: 56rem;
+  max-height: calc(100vh - 2rem);
   width: 100%;
+  overflow-y: auto;
   background-color: #0f1117;
   border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 0.75rem;
@@ -39,6 +41,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  z-index: 1;
 }
 
 .image-modal-close:hover {
@@ -55,6 +58,30 @@
 @media (min-width: 768px) {
   .image-modal-body {
     grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .image-modal-overlay {
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+
+  .image-modal-container {
+    max-height: calc(100vh - 1.5rem);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+  }
+
+  .image-modal-body {
+    gap: 1.25rem;
+  }
+
+  .image-modal-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 }
 
