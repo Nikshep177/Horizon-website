@@ -194,10 +194,11 @@ const Ferrofluid = ({
     const container = containerRef.current;
     if (!container) return;
 
-    const renderer = new Renderer({ dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1), alpha: true, antialias: true });
+    const renderer = new Renderer({ dpr: Math.min(dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1), 2), alpha: true, antialias: true });
     rendererRef.current = renderer;
     const gl = renderer.gl;
     const canvas = gl.canvas;
+    canvas.setAttribute('aria-hidden', 'true');
     gl.clearColor(0, 0, 0, 0);
     canvas.style.width = '100%';
     canvas.style.height = '100%';

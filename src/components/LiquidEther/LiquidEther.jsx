@@ -82,6 +82,7 @@ export default function LiquidEther({
         this.renderer.domElement.style.width = '100%';
         this.renderer.domElement.style.height = '100%';
         this.renderer.domElement.style.display = 'block';
+        this.renderer.domElement.setAttribute('aria-hidden', 'true');
         this.clock = new THREE.Clock();
         this.clock.start();
       }

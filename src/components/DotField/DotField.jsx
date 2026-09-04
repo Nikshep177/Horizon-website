@@ -248,6 +248,7 @@ const DotField = memo(({
     <div ref={containerRef} className="dot-field-container" {...rest}>
       <canvas
         ref={canvasRef}
+        aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,

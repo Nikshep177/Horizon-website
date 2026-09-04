@@ -8,16 +8,29 @@
   --color-text-light: #dbe2ee;
   --color-background: #161a22;
   --color-background-alt: #1f232d;
+  --color-surface: #202633;
+  --color-surface-raised: #283140;
   --color-border: #2e3440;
+  --color-border-strong: #465064;
+  --color-focus: #7dd3fc;
+  --color-overlay: rgba(0, 0, 0, 0.7);
+  --color-glow-primary: rgba(59, 130, 246, 0.4);
+  --color-glow-accent: rgba(56, 189, 248, 0.35);
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
-  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-family-base: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'Orbitron', 'Exo 2', sans-serif;
+  --font-display: var(--font-family-display);
+  --font-body: var(--font-family-base);
   --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   --font-size-base: 16px;
+  --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
   --line-height-base: 1.5;
   --line-height-heading: 1.2;
   --font-weight-normal: 400;
@@ -31,6 +44,7 @@
   --spacing-lg: 32px;
   --spacing-xl: 48px;
   --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
   --container-max-width: 1200px;
   --header-height: 70px;
   --breakpoint-sm: 576px;
@@ -41,6 +55,7 @@
   --border-radius: 8px;
   --border-radius-md: 10px;
   --border-radius-lg: 12px;
+  --border-radius-pill: 9999px;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -48,4 +63,9 @@
   --transition-fast: 150ms ease-in-out;
   --transition-base: 250ms ease-in-out;
   --transition-slow: 350ms ease-in-out;
+  --z-background: 0;
+  --z-content: 1;
+  --z-header: 1000;
+  --z-overlay: 1100;
+  --z-modal: 1200;
 }

@@ -1,5 +1,6 @@
-import { useEffect, useCallback, useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { imagePath } from '../../lib/image-path'
+import useDialog from '../../lib/use-dialog'
 import './ImageModal.css'
 
 const exifFields = [
@@ -13,42 +14,30 @@ const exifFields = [
 ]
 
 export default function ImageModal({ image, onClose }) {
+  const dialogRef = useRef(null)
   const closeButtonRef = useRef(null)
 
   const handleClose = useCallback(() => {
     onClose()
   }, [onClose])
 
-  useEffect(() => {
-    if (!image) return undefined
-
-    const previousActiveElement = document.activeElement
-    const previousOverflow = document.body.style.overflow
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') {
-        handleClose()
-      }
-    }
-
-    document.addEventListener('keydown', handleEscape)
-    document.body.style.overflow = 'hidden'
-    closeButtonRef.current?.focus()
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape)
-      document.body.style.overflow = previousOverflow
-      previousActiveElement?.focus?.()
-    }
-  }, [handleClose, image])
+  useDialog({
+    open: Boolean(image),
+    onClose: handleClose,
+    dialogRef,
+    initialFocusRef: closeButtonRef,
+  })
 
   if (!image) return null
 
   return (
     <div
       className="image-modal-overlay"
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-labelledby="image-modal-title"
+      tabIndex="-1"
       onClick={handleClose}
     >
       <div className="image-modal-container" onClick={(e) => e.stopPropagation()}>

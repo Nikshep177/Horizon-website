@@ -1,19 +1,24 @@
 import { useEffect, useRef } from 'react';
+import useReducedMotion from '../lib/use-reduced-motion';
 
 function ShootingStars() {
   const canvasRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return undefined;
     const ctx = canvas.getContext('2d');
     let animationId;
     let width, height;
+    const timeouts = [];
     const shootingStars = [];
     const maxStars = 5;
 
     function resize() {
-      width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      width = canvas.width = canvas.offsetWidth * pixelRatio;
+      height = canvas.height = canvas.offsetHeight * pixelRatio;
     }
 
     class ShootingStar {
@@ -72,9 +77,10 @@ function ShootingStars() {
 
     function initShootingStars() {
       for (let i = 0; i < maxStars; i++) {
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           shootingStars.push(new ShootingStar());
         }, i * 2000); // Stagger initial appearance
+        timeouts.push(timeoutId);
       }
     }
 
@@ -92,14 +98,17 @@ function ShootingStars() {
 
     resize();
     window.addEventListener('resize', resize);
-    initShootingStars();
-    animate();
+    if (!prefersReducedMotion) {
+      initShootingStars();
+      animate();
+    }
 
     return () => {
       cancelAnimationFrame(animationId);
+      timeouts.forEach(timeoutId => clearTimeout(timeoutId));
       window.removeEventListener('resize', resize);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return <canvas ref={canvasRef} className="shooting-stars-canvas" aria-hidden="true" />;
 }

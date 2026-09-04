@@ -1,6 +1,7 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
 import { competitions } from '../lib/site-data'
+import BackLink from '../components/BackLink'
 
 export default function CompetitionDetail() {
   const { id } = useParams()
@@ -11,7 +12,7 @@ export default function CompetitionDetail() {
       <article className="competition-detail-page">
         <div className="container">
           <p>Competition not found.</p>
-          <Link to="/guild" className="back-link">Back to Guild</Link>
+          <BackLink to="/guild">Back to Guild</BackLink>
         </div>
       </article>
     )
@@ -22,7 +23,7 @@ export default function CompetitionDetail() {
       <header className="competition-detail-hero">
         <div className="container competition-detail-layout">
           <div className="competition-detail-copy">
-            <Link to="/guild" className="back-link">Back to Guild</Link>
+            <BackLink to="/guild">Back to Guild</BackLink>
             <span className="year-tag">{competition.years.join(', ')}</span>
             <h1>{competition.name}</h1>
             <p>{competition.description}</p>

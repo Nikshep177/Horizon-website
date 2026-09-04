@@ -85,6 +85,17 @@
   }
 }
 
+@media (max-height: 600px) and (orientation: landscape) {
+  .image-modal-overlay {
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .image-modal-container {
+    max-height: calc(100vh - 1rem);
+  }
+}
+
 .image-modal-left-column {
   display: flex;
   flex-direction: column;

@@ -6,6 +6,7 @@ import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 import { getIPTProblemBySlug } from '../lib/content-loader'
 import { imagePath } from '../lib/image-path'
+import MarkdownLink from '../components/MarkdownLink'
 
 const placeholderImage = '/assets/images/guild/ipt.jpeg'
 
@@ -40,7 +41,7 @@ export default function ProblemDetail() {
         </div>
 
         <div className="problem-detail-body">
-          <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
+          <ReactMarkdown components={{ a: MarkdownLink }} remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
             {problem.content}
           </ReactMarkdown>
         </div>

@@ -1,5 +1,6 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
+import useReducedMotion from '../../lib/use-reduced-motion';
 import './Galaxy.css';
 
 const vertexShader = `
@@ -189,6 +190,7 @@ export default function Galaxy({
   transparent = true,
   ...rest
 }) {
+  const prefersReducedMotion = useReducedMotion();
   const ctnDom = useRef(null);
   const targetMousePos = useRef({ x: 0.5, y: 0.5 });
   const smoothMousePos = useRef({ x: 0.5, y: 0.5 });
@@ -198,7 +200,13 @@ export default function Galaxy({
   useEffect(() => {
     if (!ctnDom.current) return;
     const ctn = ctnDom.current;
-    const renderer = new Renderer({ alpha: transparent, premultipliedAlpha: false });
+    const animate = !disableAnimation && !prefersReducedMotion;
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.5 : 2);
+    const renderer = new Renderer({
+      alpha: transparent,
+      premultipliedAlpha: false,
+      dpr: pixelRatio
+    });
     const gl = renderer.gl;
 
     if (transparent) {
@@ -259,7 +267,7 @@ export default function Galaxy({
 
     function update(t) {
       animateId = requestAnimationFrame(update);
-      if (!disableAnimation) {
+      if (animate) {
         program.uniforms.uTime.value = t * 0.001;
         program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0;
       }
@@ -276,8 +284,10 @@ export default function Galaxy({
 
       renderer.render({ scene: mesh });
     }
-    animateId = requestAnimationFrame(update);
     ctn.appendChild(gl.canvas);
+    gl.canvas.setAttribute('aria-hidden', 'true');
+    if (animate) animateId = requestAnimationFrame(update);
+    else renderer.render({ scene: mesh });
 
     function handleMouseMove(e) {
       const rect = ctn.getBoundingClientRect();
@@ -291,7 +301,7 @@ export default function Galaxy({
       targetMouseActive.current = 0.0;
     }
 
-    if (mouseInteraction) {
+    if (mouseInteraction && animate) {
       ctn.addEventListener('mousemove', handleMouseMove);
       ctn.addEventListener('mouseleave', handleMouseLeave);
     }
@@ -299,7 +309,7 @@ export default function Galaxy({
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
-      if (mouseInteraction) {
+      if (mouseInteraction && animate) {
         ctn.removeEventListener('mousemove', handleMouseMove);
         ctn.removeEventListener('mouseleave', handleMouseLeave);
       }
@@ -322,7 +332,8 @@ export default function Galaxy({
     rotationSpeed,
     repulsionStrength,
     autoCenterRepulsion,
-    transparent
+    transparent,
+    prefersReducedMotion
   ]);
 
   return <div ref={ctnDom} className="galaxy-container" {...rest} />;

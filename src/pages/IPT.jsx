@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getIPTProblems, getIPTYears } from '../lib/content-loader'
 import { imagePath } from '../lib/image-path'
+import EmptyState from '../components/EmptyState'
 
 const placeholderImage = '/assets/images/guild/ipt.jpeg'
 
@@ -27,6 +28,9 @@ export default function IPT() {
 
       <section className="ipt-problems">
         <div className="container">
+          {years.length === 0 && (
+            <EmptyState message="No IPT problems are available yet." />
+          )}
           {years.map(year => (
             <div key={year} className="ipt-year-section">
               <h2 className="ipt-year-title">{year}</h2>
@@ -38,7 +42,7 @@ export default function IPT() {
                     className="project-card"
                   >
                     <div className="project-card__image">
-                      <img src={imagePath(placeholderImage)} alt={problem.title} />
+                      <img src={imagePath(placeholderImage)} alt={problem.title} loading="lazy" decoding="async" />
                     </div>
                     <div className="project-card__content">
                       <h3 className="project-card__title">{problem.title}</h3>

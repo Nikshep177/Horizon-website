@@ -1,4 +1,6 @@
 import SpaceBackground from '../components/SpaceBackground'
+import PageHeader from '../components/PageHeader'
+import ExternalLink from '../components/ExternalLink'
 import '../styles/events.css'
 
 export default function Contact() {
@@ -6,9 +8,7 @@ export default function Contact() {
     <article className="page events-page contact-page">
       <SpaceBackground />
       <div className="events-container">
-        <header className="events-header">
-          <h1 className="events-title">Contact Us</h1>
-        </header>
+        <PageHeader title="Contact Us" />
         <div className="page-content">
           <h2>Get in Touch</h2>
           <p>We'd love to hear from you! Whether you're interested in joining the club, have questions about our events, or want to collaborate, feel free to reach out.</p>
@@ -22,9 +22,9 @@ export default function Contact() {
           <h3>Social Media</h3>
           <p>Stay updated with our latest events, articles, and announcements:</p>
           <ul>
-            <li><strong>Instagram</strong>: <a href="https://www.instagram.com/horizoniitm/">@HorizonIITM</a></li>
-            <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/company/horizon-cfi-iitm/">Horizon CFI IITM</a></li>
-            <li><strong>YouTube</strong>: <a href="https://www.youtube.com/@HorizonIITM">@HorizonIITM</a></li>
+            <li><strong>Instagram</strong>: <ExternalLink href="https://www.instagram.com/horizoniitm/">@HorizonIITM</ExternalLink></li>
+            <li><strong>LinkedIn</strong>: <ExternalLink href="https://www.linkedin.com/company/horizon-cfi-iitm/">Horizon CFI IITM</ExternalLink></li>
+            <li><strong>YouTube</strong>: <ExternalLink href="https://www.youtube.com/@HorizonIITM">@HorizonIITM</ExternalLink></li>
           </ul>
 
           <h3>Address</h3>

@@ -2,7 +2,12 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
 import { projects } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
-import { projectThemes } from '../data/visualThemes'
+import SelectionPills from '../components/SelectionPills'
+import EmptyState from '../components/EmptyState'
+import InvalidState from '../components/InvalidState'
+import PageHeader from '../components/PageHeader'
+import CardGrid from '../components/CardGrid'
+import { getProjectTheme } from '../data/visualThemes'
 import '../styles/events.css'
 
 const tenures = Object.keys(projects).sort()
@@ -21,11 +26,27 @@ export default function Projects() {
 
   const yearParam = searchParams.get('tenure') || searchParams.get('year')
   const stateTenure = location.state?.tenure || location.state?.year
+  const invalidTenure = yearParam && !tenures.includes(yearParam)
   const activeTenure = (yearParam && tenures.includes(yearParam))
     ? yearParam
     : (stateTenure && tenures.includes(stateTenure))
       ? stateTenure
       : tenures[0]
+
+  if (invalidTenure) {
+    return (
+      <article className="events-page projects-page">
+        <SpaceBackground />
+        <div className="events-container">
+          <InvalidState
+            message={`No projects tenure matches "${yearParam}".`}
+            backTo="/projects"
+            backLabel="View Projects"
+          />
+        </div>
+      </article>
+    )
+  }
 
   const filteredProjects = projects[activeTenure] || []
 
@@ -34,27 +55,21 @@ export default function Projects() {
       <SpaceBackground />
 
       <div className="events-container">
-        <header className="events-header">
-          <h1 className="events-title">Projects</h1>
-          <p className="events-subtitle">Explore our research projects across different time periods.</p>
-        </header>
+        <PageHeader
+          title="Projects"
+          subtitle="Explore our research projects across different time periods."
+        />
 
-        <nav className="year-pills" aria-label="Select year">
-          {tenures.map(year => (
-            <button
-              key={year}
-              className={`year-pill${activeTenure === year ? ' year-pill--active' : ''}`}
-              onClick={() => setSearchParams({ tenure: year }, { replace: true })}
-            >
-              {activeTenure === year && <span className="year-pill__comet" />}
-              <span className="year-pill__label">{year}</span>
-            </button>
-          ))}
-        </nav>
+        <SelectionPills
+          items={tenures}
+          activeItem={activeTenure}
+          onSelect={tenure => setSearchParams({ tenure }, { replace: true })}
+          ariaLabel="Select year"
+        />
 
-        <div className={`projects-grid projects-grid--${filteredProjects.length}`}>
+        <CardGrid className={`projects-grid projects-grid--${filteredProjects.length}`}>
           {filteredProjects.map((project, index) => {
-            const colors = projectThemes[index % projectThemes.length]
+            const colors = getProjectTheme(index)
             const image = project.image || fallbackImages[project.id] || fallbackImages.placeholder
 
             return (
@@ -72,7 +87,7 @@ export default function Projects() {
                 <div className="project-card__shooting-star" />
 
                 <div className="project-card__image">
-                  <img src={imagePath(image)} alt={project.title} />
+                  <img src={imagePath(image)} alt={project.title} loading="lazy" decoding="async" />
                   <div className="project-card__image-overlay" />
                 </div>
 
@@ -99,7 +114,10 @@ export default function Projects() {
               </Link>
             )
           })}
-        </div>
+        </CardGrid>
+        {filteredProjects.length === 0 && (
+          <EmptyState message="No projects are available for this tenure." />
+        )}
       </div>
     </article>
   )

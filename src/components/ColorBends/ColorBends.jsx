@@ -183,6 +183,7 @@ export default function ColorBends({
     renderer.domElement.style.height = '100%'
     renderer.domElement.style.objectFit = 'cover'
     renderer.domElement.style.display = 'block'
+    renderer.domElement.setAttribute('aria-hidden', 'true')
     container.appendChild(renderer.domElement)
 
     const clock = new THREE.Clock()

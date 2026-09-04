@@ -3,18 +3,23 @@ import { useParams, Link, useSearchParams } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
 import { eventsData } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
-import { eventCategoryThemes } from '../data/visualThemes'
+import InvalidState from '../components/InvalidState'
+import ExternalLink from '../components/ExternalLink'
+import { getEventTheme } from '../data/visualThemes'
 import '../styles/events.css'
 
 export default function EventCategory() {
   const { category } = useParams()
   const [searchParams] = useSearchParams()
-  const year = searchParams.get('year') || '2025-26'
+  const requestedYear = searchParams.get('year')
+  const availableYears = Object.keys(eventsData)
+  const invalidYear = requestedYear && !availableYears.includes(requestedYear)
+  const year = requestedYear || '2025-26'
   const listRef = useRef(null)
 
   const yearData = eventsData[year] || {}
   const cat = yearData[category]
-  const colors = eventCategoryThemes[category] || eventCategoryThemes.g2g
+  const colors = getEventTheme(category)
 
   useEffect(() => {
     const list = listRef.current
@@ -34,13 +39,31 @@ export default function EventCategory() {
     return () => obs.disconnect()
   }, [category, year])
 
+  if (invalidYear) {
+    return (
+      <div className="events-page">
+        <SpaceBackground />
+        <div className="events-container">
+          <InvalidState
+            message={`No events year matches "${requestedYear}".`}
+            backTo="/events"
+            backLabel="View Events"
+          />
+        </div>
+      </div>
+    )
+  }
+
   if (!cat) {
     return (
       <div className="events-page">
         <SpaceBackground />
         <div className="events-container">
-          <p>Category not found.</p>
-          <Link to="/events">{'\u2190'} Back to Events</Link>
+          <InvalidState
+            message={`No event category matches "${category}".`}
+            backTo={`/events?year=${encodeURIComponent(year)}`}
+            backLabel="View Events"
+          />
         </div>
       </div>
     )
@@ -91,7 +114,7 @@ export default function EventCategory() {
                     style={{ '--reveal-delay': `${index * 0.08}s` }}
                   >
                     <div className="observation-tile__media">
-                      <img src={imagePath(tile.image)} alt={tile.title} />
+                        <img src={imagePath(tile.image)} alt={tile.title} loading="lazy" decoding="async" />
                     </div>
                   </figure>
                 ))}
@@ -122,7 +145,7 @@ export default function EventCategory() {
                       {sub.entries.map((entry, entryIdx) => (
                         <div key={entryIdx} className="subcard__merged-entry">
                           <div className="subcard__merged-entry-media">
-                            <img src={imagePath(entry.image)} alt={sub.title} />
+                            <img src={imagePath(entry.image)} alt={sub.title} loading="lazy" decoding="async" />
                           </div>
                           <div className="subcard__merged-entry-body">
                             <p className="subcard__description">{entry.description}</p>
@@ -157,7 +180,7 @@ export default function EventCategory() {
                     <div className="subcard__gallery-grid">
                       {sub.images.map((imgSrc, imgIdx) => (
                         <div key={imgIdx} className="subcard__gallery-item">
-                          <img src={imagePath(imgSrc)} alt={`${sub.title} ${imgIdx + 1}`} />
+                          <img src={imagePath(imgSrc)} alt={`${sub.title} ${imgIdx + 1}`} loading="lazy" decoding="async" />
                         </div>
                       ))}
                     </div>
@@ -180,7 +203,7 @@ export default function EventCategory() {
 
                   {sub.image && (
                     <div className="subcard__image">
-                      <img src={imagePath(sub.image)} alt={sub.title} />
+                      <img src={imagePath(sub.image)} alt={sub.title} loading="lazy" decoding="async" />
                       <div className="subcard__image-overlay" />
                     </div>
                   )}
@@ -193,17 +216,15 @@ export default function EventCategory() {
                     )}
                     <p className="subcard__description">{sub.description}</p>
                     {sub.youtube && (
-                      <a
+                      <ExternalLink
                         href={sub.youtube}
                         className="subcard__youtube"
-                        target="_blank"
-                        rel="noopener noreferrer"
                       >
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
                           <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5V8.5L15.8 12l-6.2 3.5Z" />
                         </svg>
                         Watch the Session Here!
-                      </a>
+                      </ExternalLink>
                     )}
                   </div>
                 </div>

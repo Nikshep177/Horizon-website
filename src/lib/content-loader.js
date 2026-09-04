@@ -1,11 +1,50 @@
 import { normalizeAssetPaths, normalizeMarkdownAssetUrls } from './image-path'
 import { eventsData, projects } from './site-data'
+import { compareDatesDesc } from './format-date'
 
 const files = import.meta.glob('/src/content/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 })
+
+function splitInlineList(value) {
+  const items = []
+  let current = ''
+  let quote = null
+
+  for (const character of value) {
+    if ((character === '"' || character === "'") && (!quote || quote === character)) {
+      quote = quote ? null : character
+    }
+
+    if (character === ',' && !quote) {
+      items.push(current.trim())
+      current = ''
+    } else {
+      current += character
+    }
+  }
+
+  if (current.trim()) items.push(current.trim())
+  return items
+}
+
+function parseScalar(value) {
+  if (value.startsWith('[') && value.endsWith(']')) {
+    return splitInlineList(value.slice(1, -1)).map(parseScalar)
+  }
+
+  if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+    return value.slice(1, -1)
+  }
+
+  if (value === 'true') return true
+  if (value === 'false') return false
+  if (value === 'null' || value === '~') return null
+  if (value !== '' && Number.isFinite(Number(value))) return Number(value)
+  return value
+}
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
@@ -16,16 +55,7 @@ function parseFrontmatter(raw) {
     const colon = line.indexOf(':')
     if (colon === -1) continue
     const key = line.slice(0, colon).trim()
-    let value = line.slice(colon + 1).trim()
-
-    if (value.startsWith('[') && value.endsWith(']')) {
-      value = value.slice(1, -1).split(',').map(s =>
-        s.trim().replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1')
-      )
-    } else {
-      value = value.replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1')
-    }
-    data[key] = value
+    data[key] = parseScalar(line.slice(colon + 1).trim())
   }
 
   return {
@@ -37,6 +67,18 @@ function parseFrontmatter(raw) {
 const articles = []
 const events = []
 const iptProblems = []
+const unpublishedArticleIds = new Set([
+  'getting-started-with-open-source',
+  'project-radian',
+  'project-starspec',
+  'project-optiqomm',
+  'project-sonicphase',
+  'project-ferrostats',
+  'project-quantaband',
+  'project-ligo',
+  'project-apteam',
+  'project-apteam-2627',
+])
 
 for (const [filePath, raw] of Object.entries(files)) {
   const { data, content } = parseFrontmatter(raw)
@@ -47,7 +89,7 @@ for (const [filePath, raw] of Object.entries(files)) {
   const entry = { id, ...data, content }
 
   if (category === 'articles') {
-    articles.push(entry)
+    articles.push({ ...entry, published: !unpublishedArticleIds.has(id) })
   } else if (category === 'events') {
     events.push(entry)
   } else if (category === 'ipt') {
@@ -66,6 +108,7 @@ for (const [tenure, tenureProjects] of Object.entries(projects)) {
       author: project.author,
       category: 'Project',
       tenure,
+      published: !unpublishedArticleIds.has(`project-${project.id}`),
     })
   }
 }
@@ -80,16 +123,18 @@ for (const [tenure, tenureData] of Object.entries(eventsData)) {
   }
 }
 
-articles.sort((a, b) => new Date(b.date) - new Date(a.date))
-events.sort((a, b) => new Date(b.date) - new Date(a.date))
+articles.sort((a, b) => compareDatesDesc(a.date, b.date))
+events.sort((a, b) => compareDatesDesc(a.date, b.date))
 iptProblems.sort((a, b) => b.year - a.year)
 
+const publishedArticles = articles.filter(article => article.published !== false)
+
 export function getArticles() {
-  return articles
+  return publishedArticles
 }
 
 export function getArticle(id) {
-  return articles.find(a => a.id === id) || null
+  return publishedArticles.find(a => a.id === id) || null
 }
 
 export function getEvents() {

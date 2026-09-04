@@ -53,13 +53,14 @@ const GradientBlinds = ({
     if (!container) return;
 
     const renderer = new Renderer({
-      dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
+      dpr: Math.min(dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1), 2),
       alpha: true,
       antialias: true
     });
     rendererRef.current = renderer;
     const gl = renderer.gl;
     const canvas = gl.canvas;
+    canvas.setAttribute('aria-hidden', 'true');
 
     canvas.style.width = '100%';
     canvas.style.height = '100%';

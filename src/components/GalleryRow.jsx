@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { imagePath } from '../lib/image-path'
+import useDialog from '../lib/use-dialog'
 import '../styles/gallery.css'
 
 export default function GalleryRow({ title, images = [] }) {
@@ -8,6 +9,8 @@ export default function GalleryRow({ title, images = [] }) {
   const dragState = useRef({ isDown: false, startX: 0, startScroll: 0, moved: false })
   const [scrollState, setScrollState] = useState({ atStart: true, atEnd: true })
   const [lightboxIndex, setLightboxIndex] = useState(null)
+  const lightboxRef = useRef(null)
+  const lightboxCloseRef = useRef(null)
 
   const updateFocus = useCallback(() => {
     const track = trackRef.current
@@ -69,20 +72,22 @@ export default function GalleryRow({ title, images = [] }) {
     setLightboxIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length))
   }, [images.length])
 
+  useDialog({
+    open: lightboxIndex !== null,
+    onClose: closeLightbox,
+    dialogRef: lightboxRef,
+    initialFocusRef: lightboxCloseRef,
+  })
+
   useEffect(() => {
-    if (lightboxIndex === null) return
-    const handleKey = (e) => {
-      if (e.key === 'Escape') closeLightbox()
-      else if (e.key === 'ArrowRight') nextImage()
-      else if (e.key === 'ArrowLeft') prevImage()
+    if (lightboxIndex === null) return undefined
+    const handleKey = (event) => {
+      if (event.key === 'ArrowRight') nextImage()
+      else if (event.key === 'ArrowLeft') prevImage()
     }
     document.addEventListener('keydown', handleKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', handleKey)
-      document.body.style.overflow = ''
-    }
-  }, [lightboxIndex, closeLightbox, nextImage, prevImage])
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [lightboxIndex, nextImage, prevImage])
 
   const handlePointerDown = (e) => {
     if (e.pointerType !== 'mouse') return
@@ -181,13 +186,16 @@ export default function GalleryRow({ title, images = [] }) {
       {lightboxIndex !== null && (
         <div
           className="gallery-lightbox"
+          ref={lightboxRef}
           role="dialog"
           aria-modal="true"
           aria-label={`${title} gallery lightbox`}
+          tabIndex="-1"
           onClick={closeLightbox}
         >
           <button
             type="button"
+            ref={lightboxCloseRef}
             className="gallery-lightbox__close"
             onClick={closeLightbox}
             aria-label="Close lightbox"

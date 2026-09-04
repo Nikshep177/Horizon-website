@@ -258,5 +258,5 @@ export default function NodeFriends() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="node-friends-canvas" />
+  return <canvas ref={canvasRef} className="node-friends-canvas" aria-hidden="true" />
 }

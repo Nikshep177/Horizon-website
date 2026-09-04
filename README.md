@@ -20,6 +20,7 @@ Create and preview the production build with:
 ```sh
 npm run build
 npm run preview
+npm run validate:data
 ```
 
 Production assets are configured for GitHub Pages under `/Horizon-website/`. The site uses `HashRouter`, so deployed routes use the `/#/` form and do not require server-side fallback configuration.
@@ -37,6 +38,12 @@ Production assets are configured for GitHub Pages under `/Horizon-website/`. The
 - `src/styles/` contains shared and page-specific CSS.
 
 Markdown content is discovered automatically through the content loader. New articles, events, and IPT problems should follow the existing frontmatter and filename conventions.
+
+Markdown and JSON data are currently loaded eagerly because the site has a small, static content set and this keeps collection filtering deterministic. If the content volume grows materially, move collections to route-level or build-time chunks before the initial payload becomes a concern.
+
+External links in the application open in a new tab with `noopener noreferrer`. Internal routes use React Router links. Markdown links follow the same external-link policy.
+
+Typography intentionally uses the Orbitron and Exo 2 families from Google Fonts, loaded once from `src/index.css` with the system font stack as a fallback. The unused VariableProximity demo keeps its own optional font import isolated to that component.
 
 ## Supported Routes
 
@@ -59,3 +66,5 @@ Run the project checks before submitting changes:
 npm run lint
 npm run build
 ```
+
+The production build also runs `validate:data` and `check:bundle`. The current JavaScript budget is 2 MiB total and 500 KiB for any single chunk; image budgets are tracked separately because the current image backlog is human-owned.

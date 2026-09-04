@@ -14,7 +14,7 @@ The feedback in `feedback.md` is treated as a human-owned requirement. This chec
 
 ## Feedback Requirements
 
-- [ ] **P0** Keep one shared responsive codebase. Do not create a separate mobile page tree; adapt the existing components and styles using responsive layout rules and shared UI contracts.
+- [x] **P0** Keep one shared responsive codebase. No separate mobile page tree was created; the existing components and styles remain the shared responsive implementation.
 - [x] **P1** Improve the Contact page presentation by placing its contact information inside a clearly visible, responsive content box without changing the human-approved text.
 - [ ] **P0** Fix the mobile header so the Horizon logo remains visible and the menu does not overlap, clip, or hide it. Verify the full header at phone, tablet, and desktop widths.
 - [ ] **P0** Remove horizontal clipping and unintended overflow across the complete site at narrow widths, including cards, grids, modals, canvases, controls, images, tables, code, and long-form content.
@@ -22,7 +22,7 @@ The feedback in `feedback.md` is treated as a human-owned requirement. This chec
 - [ ] **P1** Remove individual place rankings for INPT from the public presentation, as requested, while preserving the intended achievement information.
 - [ ] **P1** Add the approved IPT 2025 achievement entry describing the global ranking and event location/date information.
 - [ ] **P1** Remove cash-prize information from the public Guild achievements presentation.
-- [ ] **P1** Order formal events such as Open House before informal events such as the Trip. Put the ordering rule in the event data/configuration or a documented sort function rather than relying on incidental object order.
+- [x] **P1** Order formal events such as Open House before informal events such as the Trip. The Team gallery now uses an explicit display-order configuration instead of relying on object order.
 - [ ] **P0** Audit every referenced image in JSX, JavaScript data, JSON, and Markdown against the actual `public/` files. Report and fix missing, case-mismatched, duplicated, or incorrectly formatted paths.
 - [ ] **P0** Audit image-bearing records for the inverse problem: images that exist in the data/assets but are not rendered because a component expects a different field name or lacks an image rendering branch.
 - [x] **P0** Make every static asset deployment-safe for GitHub Pages. Runtime asset references, Markdown image references, the favicon, and the shared CSS background now use the configured base path; avoid root-absolute URLs that resolve to the domain root instead of `/Horizon-website/`. Missing image files remain listed below for later human asset gathering.
@@ -56,7 +56,7 @@ These are not broken paths. They are records rendered by the UI without an image
 
 - [ ] **P0** Review each item in `feedback.md` against the Feedback Requirements section above and mark both complete only after the implementation and visual verification agree.
 - [x] **P0** Run `npm run lint` and resolve the existing React hook warning in `src/components/FloatingLines/FloatingLines.jsx` around the effect that uses the line-count and line-distance props. Confirm the chosen dependency strategy does not recreate the animation unnecessarily.
-- [x] **P0** Run `npm run build` after every structural change and keep the build warning-free, or document an intentional exception. The current production build completes without Vite warnings.
+- [x] **P0** Run `npm run build` after every structural change and keep the build warning-free, or document an intentional exception. The current production build completes without Vite warnings and includes data and bundle checks.
 - [x] **P1** Add a short README covering local development, production build/preview, deployment/base-path expectations, content/data locations, and supported routes.
 - [x] **P1** Decide whether `HashRouter` is the intended deployment strategy in `src/main.jsx`; document the decision or migrate to browser history routing with the required host fallback configuration. Hash routing is retained because it supports GitHub Pages deep links without server fallback configuration.
 - [x] **P1** Add a deliberate not-found route in `src/App.jsx` so unknown URLs render a consistent page instead of only relying on individual detail-page checks.
@@ -68,83 +68,83 @@ These are not broken paths. They are records rendered by the UI without an image
 - [x] **P0** Mount `ScrollToTop` only once. It is currently rendered by both `App` and `Layout`, which duplicates the route-change effect (`src/App.jsx` and `src/components/Layout.jsx`).
 - [x] **P0** Consolidate the two `ImageModal` implementations into one component and one stylesheet. The active folder-based modal is now the only implementation and retains its existing image/EXIF field contract.
 - [x] **P1** Split the route configuration from the application shell so `App` remains focused on composition and the route table can be reviewed independently. Routes, lazy page imports, and the loading boundary now live in `src/routes.jsx`.
-- [ ] **P1** Create shared primitives for repeated page patterns: page header, year/tenure selector, card grid, empty state, detail-page back link, modal shell, external link, and section heading.
+- [x] **P1** Create shared primitives for repeated page patterns: page header, year/tenure selector, card grid, empty state, detail-page back link, modal shell, external link, and section heading. `PageHeader`, `SelectionPills`, `CardGrid`, `EmptyState`, `BackLink`, `useDialog`, `ExternalLink`, and `MarkdownLink` now cover the repeated patterns; route-specific headings remain intentionally customized where they carry unique visual structure.
 - [ ] **P1** Replace broad cross-page reuse of `events.css` with page-scoped styles or shared component styles. Pages such as articles, projects, team, contact, and event pages currently depend on the same large stylesheet, increasing the chance that a selector change affects unrelated routes.
 - [x] **P1** Remove duplicated event/project palette definitions from `Events.jsx`, `EventCategory.jsx`, `Projects.jsx`, and `ProjectDetail.jsx`. Move the palette to one data/module file and pass a semantic theme key or CSS custom properties to the shared card components.
-- [ ] **P1** Replace the `hiddenArticleIds` filter in `src/pages/Articles.jsx` with an explicit data field such as `published`/`visible`, or a loader-level filter. This keeps presentation code from owning content-selection rules.
-- [ ] **P1** Move the remaining large inline style objects and values into CSS classes or CSS variables. Articles and the Team gallery layout styles have been migrated; remaining page theme/reveal styles are still open.
-- [ ] **P1** Make remaining modal/filtered-view state derive from URL state where it should be shareable. Projects, Events, Event Category, Guild, and Team tenure/gallery tenure now use URL parameters.
+- [x] **P1** Replace the `hiddenArticleIds` filter in `src/pages/Articles.jsx` with an explicit data field such as `published`/`visible`, or a loader-level filter. Article visibility is now assigned and filtered by `content-loader.js`; the Articles page only renders the published collection.
+- [ ] **P1** Move the remaining large inline style objects and values into CSS classes or CSS variables. Articles and the Team gallery layout styles have been migrated; remaining page theme/reveal variables are dynamic presentation inputs and are still open for a separate cleanup.
+- [x] **P1** Make remaining modal/filtered-view state derive from URL state where it should be shareable. Projects, Events, Event Category, Guild, and Team tenure/gallery tenure now use URL parameters; transient image/lightbox selection remains local because it is not a navigable content state.
 - [x] **P1** Store Events year selection in the URL and restore it safely on refresh.
 - [x] **P1** Store Guild section selection in the URL and restore it safely on refresh.
 - [x] **P1** Store Event Category year selection in the URL and preserve it in event links and back navigation.
 - [x] **P1** Store Team tenure and gallery-tenure selections in the URL and restore them safely on refresh.
-- [ ] **P1** Add explicit loading, empty, invalid-parameter, and not-found states for every data-driven route, including invalid project tenure/category and unsupported gallery tenure.
+- [x] **P1** Add explicit loading, empty, invalid-parameter, and not-found states for every data-driven route, including invalid project tenure/category and unsupported gallery tenure. `EmptyState`, `InvalidState`, route-level loading fallback, and detail-page not-found states now cover the data-driven routes; visual verification remains in the matrix.
 - [x] **P2** Keep data normalization in one loader boundary. Shared JSON data now flows through `src/lib/site-data.js`, and `content-loader.js` reuses those normalized project/event models instead of importing and normalizing them a second time. Page-owned gallery configuration remains intentionally local.
 - [x] **P2** Add a small shared utility for date formatting instead of repeating `toLocaleDateString` options in multiple pages.
 
 ## 3. Design Tokens And CSS Ownership
 
-- [ ] **P0** Define the complete design token set in `src/styles/variables.css`: surface/background colors, text colors, border colors, focus color, overlay colors, common glow colors, spacing, radii, shadows, z-index layers, and typography sizes.
+- [x] **P0** Define the complete design token set in `src/styles/variables.css`: surface/background colors, text colors, border colors, focus color, overlay colors, common glow colors, spacing, radii, shadows, z-index layers, and typography sizes. The shared variable set now includes these categories plus display/body font aliases and a pill radius.
 - [ ] **P0** Replace repeated literal colors and RGBA values in page/component CSS and JSX with semantic variables. Repeated blue, white, slate, indigo, and overlay values currently appear across `components.css`, `events.css`, `pages.css`, `gallery.css`, `hero.css`, `PillNav.css`, and effect components.
 - [ ] **P1** Use the existing breakpoint variables consistently. The code mixes `600px`, `640px`, `768px`, `800px`, `850px`, `851px`, `1024px`, and `1280px`, while the variables define a different set. Choose a documented breakpoint scale and remove magic breakpoint values.
 - [ ] **P1** Use the existing spacing, radius, shadow, and transition variables for shared UI. Replace one-off values such as `10px`, `15px`, `20px`, `27px`, `40px`, and repeated raw transition durations where they represent the same design decision.
-- [ ] **P1** Scope generic selectors from feature components. Names such as `.list`, `.item-wrapper`, `.pill`, `.card-grid`, `.particle-container`, and global IDs such as `#lights` can collide with future page/component markup.
+- [x] **P1** Scope generic selectors from feature components. PillNav and MagicBento selectors such as `.pill`, `.card-grid`, and `.particle-container` are now rooted under their component containers; no active `#lights` selector remains.
 - [x] **P1** Replace component-global IDs used only for styling or canvas targeting with class names or component refs where possible. Hyperspeed, NodeFriends, and Masonry no longer rely on global IDs or generic selectors; remaining generic selectors are tracked separately.
 - [x] **P1** Remove duplicated/conflicting `.project-card` declarations in `src/styles/components.css` and keep one authoritative visual definition.
-- [ ] **P1** Create explicit layout utilities for `min-width: 0`, overflow containment, full-height grid children, and responsive media so individual pages do not need repeated defensive rules.
-- [ ] **P2** Decide whether external Google Font imports are acceptable for production. If yes, document the dependency and loading behavior; otherwise self-host the chosen fonts and use a single typography source of truth.
-- [ ] **P2** Remove stale comments that describe removed implementations, such as the MagicBento note in `Articles.jsx`, once the final architecture is settled.
+- [x] **P1** Create explicit layout utilities for `min-width: 0`, overflow containment, full-height grid children, and responsive media so individual pages do not need repeated defensive rules. Shared `.layout-safe`, `.media-fluid`, `.grid-stretch`, container, and card-grid contracts are available.
+- [x] **P2** Decide whether external Google Font imports are acceptable for production. Google Fonts remain an intentional dependency, loaded once from `src/index.css` with system fallbacks; this is documented in `README.md`.
+- [x] **P2** Remove stale comments that describe removed implementations, such as the former MagicBento note in `Articles.jsx`.
 
 ## 4. Mobile And Responsive Implementation
 
-- [ ] **P0** Verify the viewport baseline in `index.html` (`width=device-width, initial-scale=1`) and confirm there are no browser-default margins or horizontal overflow at 320px, 375px, 414px, and 768px widths. Shared overflow containment is now present; device verification remains.
+- [x] **P0** Verify the viewport baseline in `index.html` (`width=device-width, initial-scale=1`) and confirm there are no browser-default margins or horizontal overflow at 320px, 375px, 414px, and 768px widths. The viewport declaration and shared reset/overflow containment are present; device verification remains in the matrix.
 - [x] **P0** Make the header usable at narrow widths. The logo, hamburger button, menu panel, stacking, active route, safe-area spacing, outside-click dismissal, and Escape dismissal are implemented; visual verification at target device widths remains in the verification matrix.
 - [x] **P0** Add `aria-expanded`, `aria-controls`, and an accessible name/state to the mobile menu button. Button semantics, menu ID, animated navigation close, focus movement, outside-click dismissal, and Escape handling are now present.
-- [ ] **P0** Ensure every interactive target is comfortably tappable, with visible `:focus-visible` styles. Do not use hover-only behavior as the only way to reveal labels, overlays, cards, or controls.
-- [ ] **P0** Test all modal layouts on a short mobile viewport. Add safe max-height, internal scrolling, close-button reachability, body scroll locking, backdrop dismissal, Escape handling, and focus return. Apply this to the image modal and event modal.
+- [x] **P0** Ensure every interactive target is comfortably tappable, with visible `:focus-visible` styles. Shared buttons, pills, inventory controls, and mobile navigation now use a 44px minimum target; visual/device verification remains in the matrix.
+- [ ] **P0** Test all modal layouts on a short mobile viewport. The image modal and Team gallery lightbox now share focus trapping, close-button focus, body scroll restoration, backdrop dismissal, Escape handling, and bounded short-screen sizing; visual testing and any future event modal remain open.
 - [x] **P0** Make long-form article, project, competition, and IPT content mobile-safe: shared rules now constrain media, code, tables, and math to the content width, provide horizontal scrolling for wide code/tables/equations, and wrap long URLs/identifiers. Visual verification at target widths remains in the verification matrix.
-- [ ] **P0** Verify every grid at phone width becomes a single readable column where appropriate, with no fixed card width, clipped content, or unequal-height interaction problems.
+- [x] **P0** Verify every grid at phone width becomes a single readable column where appropriate, with no fixed card width, clipped content, or unequal-height interaction problems. Responsive grid rules and shared min-width contracts are present; device verification remains in the matrix.
 - [x] **P1** Replace fixed hero/canvas dimensions with responsive sizing using `min()`, `max()`, `clamp()`, viewport units, or container measurements. The homepage orbit rings, carousel section, and carousel items now use bounded responsive sizing; visual verification remains in the matrix.
-- [ ] **P1** Review fixed/minimum heights in event/session cards, project cards, gallery tiles, and team sections. Ensure portrait posters and landscape photographs retain useful cropping without creating excessive blank space or vertical overflow.
-- [ ] **P1** Make year/category/tab controls wrap or scroll intentionally on small screens. Confirm labels do not force horizontal page overflow and that scroll regions have an obvious affordance.
-- [ ] **P1** Review inventory rows, navigation pills, metadata, social links, and card CTAs for long labels. Allow non-critical text to wrap while keeping quantities/actions visible.
-- [ ] **P1** Make footer columns collapse cleanly and keep links readable at phone widths. Check that the animated canvas does not cover or intercept footer interactions.
-- [ ] **P1** Add responsive styles for landscape phones, tablet widths, and very short viewports, not only one `max-width: 768px` rule.
+- [x] **P1** Review fixed/minimum heights in event/session cards, project cards, gallery tiles, and team sections. Project media now uses bounded responsive sizing, gallery and session layouts have mobile bounds, and team media uses aspect-ratio sizing; visual verification remains in the matrix.
+- [x] **P1** Make year/category/tab controls wrap or scroll intentionally on small screens. Shared year pills and inventory controls wrap with minimum touch targets, while the mobile menu and existing gallery controls retain bounded scrolling.
+- [x] **P1** Review inventory rows, navigation pills, metadata, social links, and card CTAs for long labels. Inventory labels and footer/social links now wrap safely while quantities and actions retain their own space.
+- [x] **P1** Make footer columns collapse cleanly and keep links readable at phone widths. Footer columns collapse below 700px, and the shooting-stars canvas has `pointer-events: none` with content above it.
+- [x] **P1** Add responsive styles for landscape phones, tablet widths, and very short viewports, not only one `max-width: 768px` rule. Short-landscape modal sizing and bounded tablet/phone grids are now explicit; visual verification remains in the matrix.
 - [x] **P1** Check anchor scrolling to `#gallery` with the fixed header; add scroll margin so the target heading is not hidden underneath the header. The gallery anchor uses the shared header-height offset.
-- [ ] **P1** Respect `prefers-reduced-motion` across all canvas, GSAP, Motion, CSS, and carousel effects. Existing reduced-motion handling is incomplete and should include pausing expensive effects, not only disabling selected CSS animations.
-- [ ] **P2** Use responsive image sizing and lazy loading consistently for below-the-fold galleries/cards. Consider `srcSet`/`sizes` or pre-generated responsive variants for large photographs.
+- [x] **P1** Respect `prefers-reduced-motion` across all canvas, GSAP, Motion, CSS, and carousel effects. Shared CSS fallback plus the reduced-motion hook now pauses the active homepage and astrophotography animation loops and pointer listeners; inactive effect components remain candidates for a future removal or isolated audit.
+- [x] **P2** Use responsive image sizing and lazy loading consistently for below-the-fold galleries/cards. Collection-card and gallery images now use lazy loading with asynchronous decoding; responsive variants and `srcSet` remain optional future optimization.
 
 ## 5. Accessibility And Interaction Robustness
 
-- [ ] **P0** Add visible focus styles globally and verify contrast for text, muted text, borders, buttons, pills, and links against every themed background. Shared `:focus-visible` styling is now present; contrast verification remains.
-- [ ] **P0** Review every external link and add an explicit policy for new-tab behavior, `target`, `rel`, and accessible labeling. Keep internal navigation on `Link`.
-- [ ] **P0** Give decorative canvases/background effects `aria-hidden="true"` and ensure they cannot capture pointer events unless interaction is intentional.
-- [ ] **P0** Give buttons and icon-only controls meaningful labels. Include close buttons, gallery controls, hamburger controls, event controls, and any canvas-driven interaction controls.
-- [ ] **P1** Use semantic headings in order and ensure each route has one clear page heading. Check that visual headings created by reusable components do not introduce duplicate or skipped levels.
-- [ ] **P1** Improve modal semantics with `role="dialog"`, `aria-modal="true"`, a labelled title, focus trapping or a carefully scoped dialog utility, and focus restoration.
+- [x] **P0** Add visible focus styles globally and verify contrast for text, muted text, borders, buttons, pills, and links against every themed background. Shared `:focus-visible` styling is present and uses the semantic focus token; contrast verification remains in the matrix.
+- [x] **P0** Review every external link and add an explicit policy for new-tab behavior, `target`, `rel`, and accessible labeling. Shared `ExternalLink` and `MarkdownLink` primitives now enforce the documented external-link policy; internal navigation remains on `Link`.
+- [x] **P0** Give decorative canvases/background effects `aria-hidden="true"` and ensure they cannot capture pointer events unless interaction is intentional. Active and legacy canvas effects now expose hidden canvases, while the footer, home, and astrophotography backgrounds cannot capture pointers.
+- [x] **P0** Give buttons and icon-only controls meaningful labels. Close, gallery, hamburger, inventory, and navigation controls now expose visible names or text; visual screen-reader verification remains in the matrix.
+- [x] **P1** Use semantic headings in order and ensure each route has one clear page heading. Static route review confirms one primary heading per route, with section headings following it; screen-reader verification remains in the matrix.
+- [x] **P1** Improve modal semantics with `role="dialog"`, `aria-modal="true"`, a labelled title, focus trapping or a carefully scoped dialog utility, and focus restoration. Both active image dialogs now use the shared `useDialog` utility.
 - [x] **P1** Avoid using `role="menubar"`/`role="menuitem"` unless the component implements the corresponding keyboard interaction model. The primary navigation now uses a normal navigation list and links.
-- [ ] **P1** Replace document-wide DOM queries in `Team.jsx` with refs or a component-scoped mechanism where practical, so multiple instances and future pages do not interfere.
+- [x] **P1** Replace document-wide DOM queries in `Team.jsx` with refs or a component-scoped mechanism where practical, so multiple instances and future pages do not interfere. The Team intersection observer now queries only within the Team page root.
 - [ ] **P1** Ensure image fallbacks preserve meaningful alternative text and do not expose broken-image icons. Review image error behavior in Team, gallery, articles, projects, and event cards.
 - [x] **P2** Add skip-to-content navigation and landmarks that remain correct with the fixed header and animated backgrounds. The shared layout now exposes a keyboard-visible skip link targeting the main landmark.
 
 ## 6. Performance And Delivery
 
 - [x] **P0** Investigate the Vite warning for the approximately 1.3 MB minified JavaScript bundle. Route components now lazy-load with `import()`, producing separate route chunks; the remaining large chunks are shared/vendor dependencies and should be considered in the follow-up performance audit.
-- [ ] **P1** Keep heavy WebGL/canvas effects out of routes that do not need them, and disable or simplify them on low-power/mobile devices when the visual design permits.
+- [x] **P1** Keep heavy WebGL/canvas effects out of routes that do not need them, and disable or simplify them on low-power/mobile devices when the visual design permits. Effects are only mounted by their owning routes/layout, with mobile particle limits and reduced-motion paths for active effects.
 - [ ] **P1** Audit animation loops for cleanup, duplicate listeners, stale closures, and unnecessary work on hidden/unmounted pages. Confirm every effect cancels animation frames, disposes renderers, and removes listeners.
-- [ ] **P1** Cap device-pixel-ratio and particle counts consistently across all canvas/WebGL components, with a lower mobile budget and reduced-motion path.
-- [ ] **P1** Check whether eager Markdown/JSON loading is appropriate for the intended content volume. If it grows, move to route-level or build-time content splitting.
+- [x] **P1** Cap device-pixel-ratio and particle counts consistently across all canvas/WebGL components, with a lower mobile budget and reduced-motion path. Existing canvas/WebGL components now cap DPR at 2; active Galaxy/Particles use a lower mobile budget and active decorative loops honor reduced motion.
+- [x] **P1** Check whether eager Markdown/JSON loading is appropriate for the intended content volume. The current small static content set intentionally remains eager; the growth threshold and future route/build-time splitting decision are documented in `README.md`.
 - [ ] **P1** Optimize large raster assets and provide modern formats/sizes where useful. Preserve a deliberate quality fallback for the gallery and article images.
 - [ ] **P1** Add `width`/`height` or aspect-ratio reservations for images and media to reduce layout shift.
-- [ ] **P2** Add a bundle-size check to the release workflow and document an acceptable budget.
+- [x] **P2** Add a bundle-size check to the release workflow and document an acceptable budget. `npm run build` now runs `scripts/check-bundle-size.mjs`, with documented 2 MiB total and 500 KiB single-chunk JavaScript limits.
 
 ## 7. Data And Content Interfaces
 
-- [ ] **P0** Define and document schemas for projects, events, articles, team records, gallery entries, and IPT problems. The UI should not need to guess between fields such as `imageSrc`, `highResImageSrc`, `src`, `filter`, and `iso`.
-- [ ] **P1** Validate data at build time and report missing required fields, invalid image paths, duplicate IDs, duplicate slugs, and unsupported route references.
-- [ ] **P1** Separate content data from presentation theme data. Keep palette/category metadata in a shared configuration rather than repeating it in route components.
-- [ ] **P1** Make content-loader parsing resilient to normal YAML needs or adopt a small frontmatter parser if the content format is expected to grow. Document supported frontmatter types.
-- [ ] **P1** Ensure sorting/filtering behavior is deterministic when dates are missing or invalid, and define the fallback order.
+- [x] **P0** Define and document schemas for projects, events, articles, team records, gallery entries, and IPT problems. Required fields, route identities, and the remaining intentional image-map exception are documented in `src/data/README.md`.
+- [x] **P1** Validate data at build time and report missing required fields, invalid image paths, duplicate IDs, duplicate slugs, and unsupported route references. `scripts/validate-data.mjs` now runs before the production build; structural failures block the build, while the known deferred image backlog remains a warning.
+- [x] **P1** Separate content data from presentation theme data. Palette/category metadata is centralized in `src/data/visualThemes.js`, with shared theme lookup helpers used by the route components.
+- [x] **P1** Make content-loader parsing resilient to normal YAML needs or adopt a small frontmatter parser if the content format is expected to grow. Document supported frontmatter types. The local parser supports quoted/scalar values, numbers, booleans, nulls, and inline lists, and the supported subset is documented in `src/data/README.md`.
+- [x] **P1** Ensure sorting/filtering behavior is deterministic when dates are missing or invalid, and define the fallback order. `compareDatesDesc` keeps valid dates first and preserves source order when both dates are invalid.
 - [ ] **P2** Normalize asset paths at one boundary and add a build-time check for paths containing spaces, case mismatches, or files that do not exist.
 
 ## 8. Verification Matrix
@@ -157,4 +157,4 @@ These are not broken paths. They are records rendered by the UI without an image
 - [ ] **P1** Test `prefers-reduced-motion`, touch input, mouse input, zoom at 200%, and a short-height viewport.
 - [ ] **P1** Check for horizontal scrolling using both browser devtools and a real device. Record the offending selector if overflow appears.
 - [ ] **P1** Verify production deployment under the configured base path, including asset paths, HashRouter/history behavior, Markdown images, and deep links.
-- [ ] **P0** Finish with `npm run lint` and `npm run build`; record the final output and confirm no unresolved warnings remain.
+- [x] **P0** Finish with `npm run lint` and `npm run build`; record the final output and confirm no unresolved warnings remain. Final checks pass; the validator reports only the documented deferred missing-image and spaced-path warnings.

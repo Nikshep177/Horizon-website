@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
+import useReducedMotion from '../../lib/use-reduced-motion';
 
 import './Particles.css';
 
@@ -100,20 +101,28 @@ const Particles = ({
   pixelRatio = 1,
   className
 }) => {
+  const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef(null);
   const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    const animate = !prefersReducedMotion;
+    const effectivePixelRatio = Math.min(pixelRatio, window.innerWidth < 768 ? 1.5 : 2);
+    const effectiveParticleCount = Math.min(
+      particleCount,
+      window.innerWidth < 768 ? 120 : particleCount
+    );
 
     const renderer = new Renderer({
-      dpr: pixelRatio,
+      dpr: effectivePixelRatio,
       depth: false,
       alpha: true
     });
     const gl = renderer.gl;
     container.appendChild(gl.canvas);
+    gl.canvas.setAttribute('aria-hidden', 'true');
     gl.clearColor(0, 0, 0, 0);
 
     const camera = new Camera(gl, { fov: 15 });
@@ -139,11 +148,11 @@ const Particles = ({
       mouseRef.current = { x, y };
     };
 
-    if (moveParticlesOnHover) {
+    if (moveParticlesOnHover && animate) {
       document.addEventListener('mousemove', handleMouseMove);
     }
 
-    const count = particleCount;
+    const count = effectiveParticleCount;
     const positions = new Float32Array(count * 3);
     const randoms = new Float32Array(count * 4);
     const colors = new Float32Array(count * 3);
@@ -176,7 +185,7 @@ const Particles = ({
       uniforms: {
         uTime: { value: 0 },
         uSpread: { value: particleSpread },
-        uBaseSize: { value: particleBaseSize * pixelRatio },
+        uBaseSize: { value: particleBaseSize * effectivePixelRatio },
         uSizeRandomness: { value: sizeRandomness },
         uAlphaParticles: { value: alphaParticles ? 1 : 0 }
       },
@@ -198,7 +207,7 @@ const Particles = ({
 
       program.uniforms.uTime.value = elapsed * 0.001;
 
-      if (moveParticlesOnHover) {
+      if (moveParticlesOnHover && animate) {
         particles.position.x = -mouseRef.current.x * particleHoverFactor;
         particles.position.y = -mouseRef.current.y * particleHoverFactor;
       } else {
@@ -206,7 +215,7 @@ const Particles = ({
         particles.position.y = 0;
       }
 
-      if (!disableRotation) {
+      if (!disableRotation && animate) {
         particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.1;
         particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.15;
         particles.rotation.z += 0.01 * speed;
@@ -215,12 +224,16 @@ const Particles = ({
       renderer.render({ scene: particles, camera });
     };
 
-    animationFrameId = requestAnimationFrame(update);
+    if (animate) {
+      animationFrameId = requestAnimationFrame(update);
+    } else {
+      renderer.render({ scene: particles, camera });
+    }
 
     return () => {
       window.removeEventListener('resize', resize);
       ro.disconnect();
-      if (moveParticlesOnHover) {
+      if (moveParticlesOnHover && animate) {
         document.removeEventListener('mousemove', handleMouseMove);
       }
       cancelAnimationFrame(animationFrameId);
@@ -240,7 +253,8 @@ const Particles = ({
     sizeRandomness,
     cameraDistance,
     disableRotation,
-    pixelRatio
+    pixelRatio,
+    prefersReducedMotion
   ]);
 
   return <div ref={containerRef} className={`particles-container ${className}`} />;
