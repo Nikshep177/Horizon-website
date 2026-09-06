@@ -1,6 +1,5 @@
 import { Link, useSearchParams } from 'react-router-dom'
 import { imagePath } from '../lib/image-path'
-import { getIPTProblems } from '../lib/content-loader'
 import { competitions } from '../lib/site-data'
 import SpaceBackground from '../components/SpaceBackground'
 import InvalidState from '../components/InvalidState'
@@ -12,7 +11,7 @@ const achievements = [
     year: '2024',
     competition: "Indian National Physicists' Tournament (INPT)",
     result: '1st & 2nd Place',
-    detail: '₹35,000 prizes',
+    detail: null,
   },
   {
     year: '2025',
@@ -41,6 +40,19 @@ const guildNav = [
   { id: 'problems', label: 'Problems' },
 ]
 
+const problemSets = [
+  {
+    id: 'problem-1',
+    title: 'Problem Set 1',
+    file: '/assets/images/guild page problem set/Problem 1.pdf',
+  },
+  {
+    id: 'problem-2',
+    title: 'Problem Set 2',
+    file: '/assets/images/guild page problem set/Problem 2.pdf',
+  },
+]
+
 export default function Guild() {
   const [searchParams, setSearchParams] = useSearchParams()
   const requestedSection = searchParams.get('section')
@@ -48,7 +60,6 @@ export default function Guild() {
   const activeSection = guildNav.some(item => item.id === requestedSection)
     ? requestedSection
     : 'achievements'
-  const problems = getIPTProblems()
 
   if (invalidSection) {
     return (
@@ -128,7 +139,6 @@ export default function Guild() {
                     and representing Team India.
                   </p>
                   <div className="guild-ipt-actions">
-                    <Link to="/ipt" className="btn btn-primary">Explore IPT</Link>
                     <ExternalLink
                       href="https://www.instagram.com/iptindia_iitm"
                       className="btn btn-outline"
@@ -186,18 +196,25 @@ export default function Guild() {
             <div className="container">
               <h2 className="guild-section__title">Problems</h2>
               <div className="guild-problems-grid">
-                {problems.map(problem => (
-                  <Link
+                {problemSets.map((problem, i) => (
+                  <a
                     key={problem.id}
-                    to={`/ipt/${problem.year}/${problem.slug}`}
+                    href={imagePath(problem.file)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="guild-problem-card"
                   >
-                    <span className="guild-problem-card__year">{problem.year}</span>
+                    <span className="guild-problem-card__year">Problem Set {i + 1}</span>
                     <h3 className="guild-problem-card__title">{problem.title}</h3>
-                    <p className="guild-problem-card__description">{problem.description}</p>
-                  </Link>
+                    <p className="guild-problem-card__description">
+                      Click to open the problem set.
+                    </p>
+                  </a>
                 ))}
               </div>
+              <p className="guild-problems-note">
+                More problem sets will be updated soon.
+              </p>
             </div>
           </section>
         )}

@@ -1,0 +1,587 @@
+/* =============================================
+   Qiskit Fallfest Page — site-matching design
+   ============================================= */
+
+.qiskit-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.qiskit-page__content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ---------- Hero ---------- */
+
+.qiskit-hero {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  text-align: left;
+  padding: 1rem 0 2.5rem;
+  margin-bottom: 2rem;
+  background: transparent;
+  border: none;
+}
+
+.qiskit-hero__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.qiskit-hero__logo {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  margin-top: 0.25rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(120, 200, 255, 0.35));
+}
+
+.qiskit-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #fb923c;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.qiskit-hero__title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+}
+
+.qiskit-hero__brand {
+  color: #f97316;
+}
+
+.qiskit-hero__subtitle {
+  font-family: var(--font-body);
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0;
+}
+
+/* ---------- Navigation pills ---------- */
+
+.qiskit-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.qiskit-nav__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-pill);
+  border: 2px solid var(--color-border);
+  background: rgba(9, 12, 24, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.qiskit-nav__pill:hover {
+  border-color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.14);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.qiskit-nav__pill:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.qiskit-nav__pill--active {
+  background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(59, 130, 246, 0.45);
+}
+
+.qiskit-nav__pill--active:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark), #7c3aed);
+  color: #ffffff;
+}
+
+/* ---------- Sections ---------- */
+
+.qiskit-section {
+  margin-bottom: var(--spacing-xl);
+  animation: qiskitFadeIn 0.4s ease-out both;
+}
+
+@keyframes qiskitFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.qiskit-section__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0 0 var(--spacing-sm);
+}
+
+.qiskit-section__title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-primary), #f97316);
+  margin-top: var(--spacing-sm);
+}
+
+.qiskit-section__note {
+  color: var(--color-text-light);
+  opacity: 0.75;
+  margin: 0 0 var(--spacing-lg);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ---------- Panels / boxes ---------- */
+
+.qiskit-panel {
+  background: rgba(13, 18, 33, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.qiskit-panel--accent {
+  border-left: 3px solid var(--color-primary);
+}
+
+.qiskit-panel--highlight {
+  text-align: left;
+}
+
+.qiskit-body {
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+.qiskit-body strong {
+  color: #ffffff;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Highlight list */
+
+.qiskit-highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.qiskit-highlight-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.qiskit-highlight-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), #f97316);
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
+}
+
+/* ---------- Buttons ---------- */
+
+.qiskit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.qiskit-btn--primary {
+  background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+  color: #ffffff;
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+}
+
+.qiskit-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.55);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.qiskit-btn--disabled {
+  background: rgba(51, 65, 85, 0.6);
+  color: #94a3b8;
+  cursor: not-allowed;
+  border: none;
+}
+
+/* ---------- Calendar ---------- */
+
+.qiskit-calendar__list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.qiskit-calendar__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(13, 18, 33, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.qiskit-calendar__item:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  border-left-color: #f97316;
+  transform: translateX(4px);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.qiskit-calendar__title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.qiskit-calendar__date {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.375rem;
+  font-family: var(--font-family-mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ---------- Leaderboard ---------- */
+
+.qiskit-uploader {
+  background: rgba(13, 18, 33, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.qiskit-uploader label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.qiskit-uploader input[type='file'] {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.qiskit-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.qiskit-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(13, 18, 33, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.qiskit-table thead tr {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.2));
+}
+
+.qiskit-table th {
+  padding: 0.9rem 1rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: left;
+}
+
+.qiskit-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.qiskit-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.qiskit-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.qiskit-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(13, 18, 33, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  color: var(--color-text-light);
+}
+
+/* ---------- Speaker / organizer cards ---------- */
+
+.qiskit-speakers-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.qiskit-speaker-card {
+  background: rgba(13, 18, 33, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.qiskit-speaker-card:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.qiskit-speaker-card__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-secondary);
+  margin: 0 0 0.25rem;
+}
+
+.qiskit-speaker-card__title {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  opacity: 0.8;
+}
+
+.qiskit-speaker-card__bio {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+.qiskit-organizers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.qiskit-organizer-chip {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-medium);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.qiskit-organizer-chip:hover {
+  border-color: #f97316;
+  background: rgba(249, 115, 22, 0.18);
+  transform: translateY(-2px);
+}
+
+/* ---------- Info boxes (hackathon dates) ---------- */
+
+.qiskit-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.qiskit-info-card {
+  background: rgba(13, 18, 33, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.qiskit-info-card strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fb923c;
+  margin-bottom: 0.5rem;
+}
+
+.qiskit-info-card span {
+  font-family: var(--font-family-mono);
+  color: var(--color-text);
+  font-size: 1.05rem;
+}
+
+/* ---------- Blockquote ---------- */
+
+.qiskit-quote {
+  border-left: 4px solid #f97316;
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--color-text-light);
+  margin: var(--spacing-lg) 0 0;
+}
+
+.qiskit-quote cite {
+  display: block;
+  font-size: 0.875rem;
+  font-style: normal;
+  opacity: 0.8;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .qiskit-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .qiskit-hero__subtitle {
+    margin: 0 auto;
+  }
+
+  .qiskit-hero__title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .qiskit-calendar__item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .qiskit-info-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function QiskitSpeakers() {
   const speakers = [
     {
@@ -25,46 +23,26 @@ export default function QiskitSpeakers() {
     'Harsh Meena',
     'Aditya Goel',
     'Ananya Desale',
+    'Nikshep DC',
   ];
 
-
   return (
-    <section>
-      <h2 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1.25rem' }}>Speakers</h2>
-      <div style={{ display: 'grid', gap: '1.25rem', marginBottom: '2.5rem' }}>
+    <section className="qiskit-section">
+      <h2 className="qiskit-section__title">Speakers</h2>
+      <div className="qiskit-speakers-grid">
         {speakers.map((speaker, index) => (
-          <div
-            key={index}
-            style={{
-              backgroundColor: '#1e293b',
-              padding: '1.25rem',
-              borderRadius: '0.5rem',
-              border: '1px solid #334155'
-            }}
-          >
-            <h3 style={{ margin: '0 0 0.25rem 0', fontSize: '1.2rem', color: '#60a5fa' }}>{speaker.name}</h3>
-            <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.875rem', fontWeight: 'bold', color: '#94a3b8' }}>
-              {speaker.title}
-            </p>
-            <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.6', color: '#cbd5e1' }}>{speaker.bio}</p>
-          </div>
+          <article key={index} className="qiskit-speaker-card">
+            <h3 className="qiskit-speaker-card__name">{speaker.name}</h3>
+            <p className="qiskit-speaker-card__title">{speaker.title}</p>
+            <p className="qiskit-speaker-card__bio">{speaker.bio}</p>
+          </article>
         ))}
       </div>
 
-      <h2 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1rem' }}>Organizers</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <h2 className="qiskit-section__title">Organizers</h2>
+      <div className="qiskit-organizers">
         {organizers.map((org, index) => (
-          <span
-            key={index}
-            style={{
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
-              color: '#f8fafc',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.375rem',
-              fontSize: '0.95rem',
-            }}
-          >
+          <span key={index} className="qiskit-organizer-chip">
             {org}
           </span>
         ))}

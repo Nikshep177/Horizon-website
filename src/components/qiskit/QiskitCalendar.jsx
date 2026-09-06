@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function QiskitCalendar() {
   const calendarEvents = [
     { date: '25 / 09 / 2026', title: 'Opening of registration' },
@@ -17,30 +15,15 @@ export default function QiskitCalendar() {
   ];
 
   return (
-    <section>
-      <h2 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#fff' }}>Session Calendar</h2>
-      <p style={{ color: '#94a3b8', marginBottom: '1.5rem', fontSize: '0.9rem', fontStyle: 'italic' }}>
-        * Timings are yet to be updated
-      </p>
+    <section className="qiskit-section">
+      <h2 className="qiskit-section__title">Session Calendar</h2>
+      <p className="qiskit-section__note">* Timings are yet to be updated</p>
 
-      <div style={{ display: 'grid', gap: '0.75rem' }}>
+      <div className="qiskit-calendar__list">
         {calendarEvents.map((event, index) => (
-          <div
-            key={index}
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              backgroundColor: '#1e293b',
-              padding: '1rem 1.25rem',
-              borderRadius: '0.5rem',
-              borderLeft: '4px solid #3b82f6',
-            }}
-          >
-            <span style={{ fontWeight: '500', color: '#f8fafc' }}>{event.title}</span>
-            <span style={{ fontSize: '0.85rem', color: '#60a5fa', backgroundColor: '#0f172a', padding: '0.25rem 0.6rem', borderRadius: '0.25rem' }}>
-              {event.date}
-            </span>
+          <div key={index} className="qiskit-calendar__item">
+            <span className="qiskit-calendar__title">{event.title}</span>
+            <span className="qiskit-calendar__date">{event.date}</span>
           </div>
         ))}
       </div>
