@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { imagePath } from '../lib/image-path';
 import QiskitBackground from '../components/qiskit/QiskitBackground';
 import QiskitIntro from '../components/qiskit/QiskitIntro';
 import QiskitCalendar from '../components/qiskit/QiskitCalendar';
@@ -39,7 +40,7 @@ export default function Qiskit() {
           </div>
           <img
             className="qiskit-hero__logo"
-            src="/qiskit_white.png"
+            src={imagePath('/assets/images/qiskit/qiskit_white.png')}
             alt="Qiskit Logo"
           />
         </header>
