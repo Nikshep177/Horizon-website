@@ -304,7 +304,7 @@
 .qiskit-calendar__item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding: 1rem 1.25rem;
   background: rgba(13, 18, 33, 0.6);
@@ -326,11 +326,25 @@
   background: rgba(15, 23, 42, 0.8);
 }
 
+.qiskit-calendar__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
 .qiskit-calendar__title {
   font-family: var(--font-body);
   font-weight: 600;
   color: var(--color-text);
   line-height: 1.5;
+}
+
+.qiskit-calendar__description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-light);
+  opacity: 0.85;
 }
 
 .qiskit-calendar__date {
@@ -441,10 +455,23 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius-lg);
   padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
   transition:
     border-color 0.25s ease,
     transform 0.25s ease,
     box-shadow 0.25s ease;
+}
+
+.qiskit-speaker-card__image {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .qiskit-speaker-card:hover {
@@ -545,16 +572,20 @@
 .qiskit-quote {
   border-left: 4px solid #f97316;
   padding-left: 1rem;
-  font-style: italic;
   color: var(--color-text-light);
   margin: var(--spacing-lg) 0 0;
 }
 
+.qiskit-quote__text {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .qiskit-quote cite {
   display: block;
-  font-size: 0.875rem;
-  font-style: normal;
-  opacity: 0.8;
+  font-size: 1rem;
+  font-style: italic;
   margin-top: 0.25rem;
 }
 

@@ -31,6 +31,10 @@ export default function Home() {
       <h3>Gallery</h3>
       <p>A collection of photographs capturing our star parties, trips, events, workshops, and other activities. Click here to explore the gallery.</p>
     </Link>,
+    <Link key="qiskit" to="/qiskit" className="feature-card feature-card--inner feature-card--qiskit">
+      <h3>Qiskit</h3>
+      <p>Qiskit Fallfest 2026 is here—dive into quantum error correction, optimization, and open systems with hands-on fun!</p>
+    </Link>,
   ]
   return (
     <>

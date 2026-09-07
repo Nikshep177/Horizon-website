@@ -4,11 +4,13 @@ export default function QiskitSpeakers() {
       name: 'Prabha Mandayam',
       title: 'Professor, Department of Physics, IIT Madras',
       bio: 'She is a well known researcher and Professor in the Department of Physics at the Indian Institute of Technology, Madras. She was an Inspire faculty fellow at the Chennai Mathematical Institute and a Post-Doctoral Fellow with the Optics and Quantum Information Group at the Institute of Mathematical Sciences. She obtained her PhD in Physics from the Institute for Quantum Information and Matter at Caltech. Her domain of research is Quantum computation and Quantum information especially Quantum Error correction.',
+      image: '/assets/qiskit%20page%20images/prabha%20mandyam.jpeg',
     },
     {
       name: 'Sumesh K',
       title: 'Professor, Department of Mathematics, IIT Madras',
       bio: 'He is a Professor from the Department of Mathematics at the Indian Institute of Technology, Madras. His research lies broadly in Functional Analysis, with particular emphasis on Operator Algebras, Quantum Probability, and Quantum Information Theory. His research focuses on the theory of completely positive maps and their wide-ranging applications in both operator algebras and quantum information theory.',
+      image: '/assets/qiskit%20page%20images/sumesh%20K.jpeg',
     },
     {
       name: 'Dhinakaran Vinayagamurthy',
@@ -32,9 +34,18 @@ export default function QiskitSpeakers() {
       <div className="qiskit-speakers-grid">
         {speakers.map((speaker, index) => (
           <article key={index} className="qiskit-speaker-card">
-            <h3 className="qiskit-speaker-card__name">{speaker.name}</h3>
-            <p className="qiskit-speaker-card__title">{speaker.title}</p>
-            <p className="qiskit-speaker-card__bio">{speaker.bio}</p>
+            <div className="qiskit-speaker-card__content">
+              <h3 className="qiskit-speaker-card__name">{speaker.name}</h3>
+              <p className="qiskit-speaker-card__title">{speaker.title}</p>
+              <p className="qiskit-speaker-card__bio">{speaker.bio}</p>
+            </div>
+            {speaker.image && (
+              <img
+                className="qiskit-speaker-card__image"
+                src={speaker.image}
+                alt={speaker.name}
+              />
+            )}
           </article>
         ))}
       </div>

@@ -68,7 +68,7 @@ export default function QiskitIntro() {
       </div>
 
       <blockquote className="qiskit-quote">
-        &quot;WINTER IS COMING !!&quot;
+        <span className="qiskit-quote__text">&quot;WINTER IS COMING !!&quot;</span>
         <cite>— But first comes the fall ....</cite>
       </blockquote>
     </section>
