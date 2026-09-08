@@ -1,5 +1,5 @@
 export default function QiskitIntro() {
-  const registrationLink = '';
+  const registrationLink = 'https://docs.google.com/forms/u/1/d/e/1FAIpQLSeLPqW5b9OMTI8TBXb9yaYKOBKWYNI2QEYpBOqD7Sw9i3HOAA/viewform?usp=publish-editor';
 
   return (
     <section className="qiskit-section">
@@ -47,7 +47,7 @@ export default function QiskitIntro() {
         </h3>
         <p className="qiskit-body" style={{ fontSize: '0.9rem', margin: '0 0 1rem', opacity: 0.8 }}>
           {registrationLink
-            ? 'Click the button below to complete your registration.'
+            ? 'Registration starts from 25 / 09 / 2026. Click the button below to complete your registration.'
             : 'Registration link will be activated on 25 / 09 / 2026.'}
         </p>
 
