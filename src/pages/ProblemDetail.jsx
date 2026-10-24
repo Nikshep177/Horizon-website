@@ -1,18 +1,17 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 import { getIPTProblemBySlug } from '../lib/content-loader'
 import { imagePath } from '../lib/image-path'
-import MarkdownLink from '../components/MarkdownLink'
 
 const placeholderImage = '/assets/images/guild/ipt.jpeg'
 
 export default function ProblemDetail() {
   const { year, slug } = useParams()
   const problem = getIPTProblemBySlug(year, slug)
+  const [remarkGfm, setRemarkGfm] = useState(null)
+  const [remarkMath, setRemarkMath] = useState(null)
+  const [rehypeKatex, setRehypeKatex] = useState(null)
 
   if (!problem) {
     return (
@@ -20,6 +19,28 @@ export default function ProblemDetail() {
         <div className="container">
           <h1>Problem Not Found</h1>
           <p>The requested problem statement does not exist.</p>
+        </div>
+      </article>
+    )
+  }
+
+  // Dynamically import markdown dependencies only when needed
+  import('remark-gfm').then((mod) => setRemarkGfm(mod.default)).catch(() => {
+    /* fallback handled below */
+  })
+  import('remark-math').then((mod) => setRemarkMath(mod.default)).catch(() => {
+    /* fallback handled below */
+  })
+  import('rehype-katex').then((mod) => setRehypeKatex(mod.default)).catch(() => {
+    /* fallback handled below */
+  })
+
+  if (!remarkGfm || !remarkMath || !rehypeKatex) {
+    return (
+      <article className="problem-detail-page">
+        <div className="container">
+          <h1>Problem Not Found</h1>
+          <p>Loading problem content.</p>
         </div>
       </article>
     )

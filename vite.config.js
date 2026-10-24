@@ -12,10 +12,15 @@ export default defineConfig({
             if (id.includes('remark-math')) {
               return 'math'
             }
+            if (id.includes('remark-gfm')) {
+              return 'remark-gfm'
+            }
+            if (id.includes('rehype-katex')) {
+              return 'rehype-katex'
+            }
             if (
               id.includes('react-markdown') ||
-              id.includes('remark-gfm') ||
-              id.includes('rehype-katex')
+              id.includes('katex')
             ) {
               return 'markdown'
             }
