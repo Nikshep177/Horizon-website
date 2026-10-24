@@ -155,14 +155,14 @@ function validateIptProblems(problems) {
 }
 
 function parseFrontmatter(raw, filePath) {
-  const match = raw.match(/^---\n([\s\S]*?)\n---\n/)
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
   if (!match) {
     report(filePath, 'missing or malformed frontmatter')
     return {}
   }
 
   const data = {}
-  for (const line of match[1].split('\n')) {
+  for (const line of match[1].split(/\r?\n/)) {
     const colon = line.indexOf(':')
     if (colon === -1) continue
     const key = line.slice(0, colon).trim()
