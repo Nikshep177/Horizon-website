@@ -7,9 +7,22 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          markdown: ['react-markdown', 'remark-gfm', 'remark-math', 'rehype-katex', 'katex'],
-          three: ['three', 'postprocessing', 'ogl'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('remark-math')) {
+              return 'math'
+            }
+            if (
+              id.includes('react-markdown') ||
+              id.includes('remark-gfm') ||
+              id.includes('rehype-katex')
+            ) {
+              return 'markdown'
+            }
+            if (id.includes('three') || id.includes('postprocessing') || id.includes('ogl')) {
+              return 'three'
+            }
+          }
         },
       },
     },
